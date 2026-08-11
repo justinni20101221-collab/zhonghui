@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -8,1152 +9,722 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:#0b0d12;
+    color:#fff;
+    min-height:100vh
+}
+
+button,input{font:inherit}
+button{cursor:pointer}
+
+#homePage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:radial-gradient(circle at top left,rgba(88,101,242,.25),transparent 40%),#0b0d12
+}
+
+.home-card{
+    width:100%;
+    max-width:460px;
+    padding:50px 38px;
+    text-align:center;
+    border-radius:18px;
+    background:#15171d;
+    border:1px solid #252832;
+    box-shadow:0 25px 80px rgba(0,0,0,.45)
+}
+
+.logo{
+    width:82px;
+    height:82px;
+    margin:0 auto 25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:22px;
+    font-size:38px;
+    background:#5865f2;
+    box-shadow:0 15px 35px rgba(88,101,242,.35)
 }
 
-body {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-    background: #0b0d12;
-    color: #fff;
-    min-height: 100vh;
-}
-
-button,
-input {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-/* ==================== 首页 ==================== */
-
-#homePage {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(88,101,242,.25),
-            transparent 40%
-        ),
-        #0b0d12;
-}
-
-.home-card {
-    width: 100%;
-    max-width: 460px;
-    padding: 50px 38px;
-    text-align: center;
-    border-radius: 18px;
-
-    background: #15171d;
-    border: 1px solid #252832;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.45);
-}
-
-.logo {
-    width: 82px;
-    height: 82px;
-
-    margin: 0 auto 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 22px;
-
-    font-size: 38px;
-
-    background: #5865f2;
-
-    box-shadow:
-        0 15px 35px rgba(88,101,242,.35);
-}
-
-.home-card h1 {
-    font-size: 40px;
-    margin-bottom: 12px;
-}
-
-.home-card p {
-    color: #a6a8b0;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-.primary-button {
-    width: 100%;
-
-    border: none;
-    border-radius: 4px;
-
-    padding: 14px 20px;
-
-    color: white;
-    font-weight: 700;
-
-    background: #5865f2;
-
-    transition: .2s;
-}
-
-.primary-button:hover {
-    background: #4752c4;
-}
-
-.primary-button:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-}
-
-/* ==================== 页面 ==================== */
-
-.page {
-    position: fixed;
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: #0b0d12;
-}
-
-.auth-card {
-    width: 100%;
-    max-width: 430px;
-
-    padding: 32px;
-
-    border-radius: 8px;
-
-    background: #15171d;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45);
-}
-
-.auth-card h1 {
-    text-align: center;
-    font-size: 25px;
-    margin-bottom: 8px;
-}
-
-.auth-subtitle {
-    text-align: center;
-
-    color: #a6a8b0;
+.home-card h1{
+    font-size:40px;
+    margin-bottom:12px
+}
+
+.home-card p{
+    color:#a6a8b0;
+    line-height:1.7;
+    margin-bottom:30px
+}
+
+.primary-button{
+    width:100%;
+    border:none;
+    border-radius:4px;
+    padding:14px 20px;
+    color:white;
+    font-weight:700;
+    background:#5865f2;
+    transition:.2s
+}
 
-    font-size: 14px;
-
-    margin-bottom: 25px;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    color: #b5bac1;
-
-    margin-bottom: 8px;
-
-    text-transform: uppercase;
-}
-
-.form-input {
-    width: 100%;
-
-    border: none;
-    outline: none;
-
-    padding: 13px;
-
-    border-radius: 4px;
-
-    color: white;
-
-    background: #0f1116;
-
-    border: 1px solid #252832;
-}
-
-.form-input:focus {
-    border-color: #5865f2;
-}
-
-.auth-link {
-    text-align: center;
-
-    margin-top: 18px;
-
-    font-size: 14px;
-
-    color: #a6a8b0;
-}
-
-.auth-link button {
-    border: none;
-    background: none;
-
-    color: #5865f2;
-
-    font-weight: 600;
-}
-
-.auth-link button:hover {
-    text-decoration: underline;
-}
-
-.auth-error {
-    display: none;
-
-    padding: 10px;
-
-    margin-bottom: 15px;
-
-    border-radius: 4px;
-
-    background: rgba(237,66,69,.12);
-
-    color: #f38688;
-
-    font-size: 13px;
-}
-
-.auth-success {
-    display: none;
-
-    padding: 10px;
-
-    margin-bottom: 15px;
-
-    border-radius: 4px;
-
-    background: rgba(35,165,90,.12);
-
-    color: #57d48b;
-
-    font-size: 13px;
+.primary-button:hover{background:#4752c4}
+.primary-button:disabled{opacity:.55;cursor:not-allowed}
+
+.page{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:#0b0d12
+}
+
+.auth-card{
+    width:100%;
+    max-width:430px;
+    padding:32px;
+    border-radius:8px;
+    background:#15171d;
+    box-shadow:0 20px 60px rgba(0,0,0,.45)
 }
 
-/* ==================== 验证码 ==================== */
-
-.code-row {
-    display: flex;
-    gap: 8px;
+.auth-card h1{
+    text-align:center;
+    font-size:25px;
+    margin-bottom:8px
 }
 
-.code-row .form-input {
-    flex: 1;
+.auth-subtitle{
+    text-align:center;
+    color:#a6a8b0;
+    font-size:14px;
+    margin-bottom:25px
+}
 
-    letter-spacing: 5px;
+.form-group{margin-bottom:18px}
 
-    text-align: center;
-
-    font-size: 18px;
+.form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    color:#b5bac1;
+    margin-bottom:8px
 }
-
-.code-button {
-    width: 125px;
 
-    border: none;
-    border-radius: 4px;
-
-    background: #4f545c;
-
-    color: white;
-
-    font-size: 13px;
+.form-input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:13px;
+    border-radius:4px;
+    color:white;
+    background:#0f1116;
+    border:1px solid #252832
 }
 
-.code-button:hover {
-    background: #686d75;
-}
+.form-input:focus{border-color:#5865f2}
 
-.code-button:disabled {
-    opacity: .5;
-    cursor: not-allowed;
+.auth-link{
+    text-align:center;
+    margin-top:18px;
+    font-size:14px;
+    color:#a6a8b0
 }
 
-/* ==================== 头像 ==================== */
-
-.avatar-upload {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    margin-bottom: 25px;
+.auth-link button{
+    border:none;
+    background:none;
+    color:#5865f2;
+    font-weight:600
 }
-
-.avatar-preview {
-    width: 96px;
-    height: 96px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    background: #5865f2;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 38px;
-
-    margin-bottom: 12px;
 
-    border: 3px solid #2b2e35;
-}
+.auth-link button:hover{text-decoration:underline}
 
-.avatar-upload input {
-    display: none;
+.auth-error{
+    display:none;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:4px;
+    background:rgba(237,66,69,.12);
+    color:#f38688;
+    font-size:13px
 }
-
-.avatar-button {
-    border: none;
-
-    background: #4f545c;
-
-    color: white;
-
-    padding: 8px 14px;
-
-    border-radius: 4px;
 
-    font-size: 13px;
+.auth-success{
+    display:none;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:4px;
+    background:rgba(35,165,90,.12);
+    color:#57d48b;
+    font-size:13px
 }
 
-.avatar-button:hover {
-    background: #686d75;
+.code-row{
+    display:flex;
+    gap:8px
 }
 
-/* ==================== 聊天 ==================== */
-
-#chatPage {
-    display: none;
-
-    height: 100vh;
-
-    background: #111318;
+.code-row .form-input{
+    flex:1;
+    letter-spacing:5px;
+    text-align:center;
+    font-size:18px
 }
 
-.chat-container {
-    width: 100%;
-    height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
+.code-button{
+    width:125px;
+    border:none;
+    border-radius:4px;
+    background:#4f545c;
+    color:white;
+    font-size:13px
 }
-
-.chat-header {
-    height: 64px;
-
-    flex-shrink: 0;
 
-    display: flex;
+.code-button:hover{background:#686d75}
+.code-button:disabled{opacity:.5;cursor:not-allowed}
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 0 20px;
-
-    background: #15171d;
-
-    border-bottom: 1px solid #252832;
+.avatar-upload{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:25px
 }
-
-.chat-title {
-    display: flex;
-
-    align-items: center;
 
-    gap: 12px;
+.avatar-preview{
+    width:96px;
+    height:96px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#5865f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:38px;
+    margin-bottom:12px;
+    border:3px solid #2b2e35
 }
 
-.chat-icon {
-    width: 38px;
-    height: 38px;
+.avatar-upload input{display:none}
 
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-
-    background: #5865f2;
+.avatar-button{
+    border:none;
+    background:#4f545c;
+    color:white;
+    padding:8px 14px;
+    border-radius:4px;
+    font-size:13px
 }
 
-.chat-title h2 {
-    font-size: 16px;
+#chatPage{
+    display:none;
+    height:100vh;
+    background:#111318
 }
 
-.status {
-    font-size: 11px;
-
-    color: #23a55a;
-
-    margin-top: 2px;
+.chat-container{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column
 }
-
-.header-right {
-    display: flex;
-
-    align-items: center;
 
-    gap: 12px;
+.chat-header{
+    height:64px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    background:#15171d;
+    border-bottom:1px solid #252832
 }
 
-.current-user {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: #dbdee1;
-
-    font-size: 13px;
+.chat-title{
+    display:flex;
+    align-items:center;
+    gap:12px
 }
-
-.header-avatar {
-    width: 32px;
-    height: 32px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
 
-    background: #5865f2;
+.chat-icon{
+    width:38px;
+    height:38px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:#5865f2
 }
 
-.logout-button {
-    border: none;
+.chat-title h2{font-size:16px}
 
-    border-radius: 4px;
-
-    padding: 8px 12px;
-
-    background: #2b2e35;
-
-    color: #dbdee1;
-
-    font-size: 13px;
-}
-
-.logout-button:hover {
-    background: #ed4245;
+.status{
+    font-size:11px;
+    color:#23a55a;
+    margin-top:2px
 }
-
-/* ==================== 消息 ==================== */
 
-#messages {
-    flex: 1;
-
-    overflow-y: auto;
-
-    padding: 25px;
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:12px
 }
-
-.message {
-    display: flex;
 
-    gap: 12px;
-
-    margin-bottom: 18px;
+.current-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#dbdee1;
+    font-size:13px
 }
 
-.message.mine {
-    flex-direction: row-reverse;
+.header-avatar{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#5865f2
 }
-
-.message-avatar {
-    width: 40px;
-    height: 40px;
-
-    flex-shrink: 0;
 
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    background: #5865f2;
+.logout-button{
+    border:none;
+    border-radius:4px;
+    padding:8px 12px;
+    background:#2b2e35;
+    color:#dbdee1;
+    font-size:13px
 }
 
-.message-body {
-    max-width: 75%;
-}
+.logout-button:hover{background:#ed4245}
 
-.message.mine .message-body {
-    text-align: right;
+#messages{
+    flex:1;
+    overflow-y:auto;
+    padding:25px
 }
 
-.nickname {
-    font-size: 13px;
-
-    color: #b5bac1;
-
-    margin-bottom: 4px;
-
-    font-weight: 600;
+.message{
+    display:flex;
+    gap:12px;
+    margin-bottom:18px
 }
-
-.bubble {
-    display: inline-block;
 
-    padding: 9px 13px;
+.message.mine{flex-direction:row-reverse}
 
-    border-radius: 8px;
-
-    background: #1e2128;
-
-    color: #dbdee1;
-
-    line-height: 1.5;
-
-    word-break: break-word;
-
-    text-align: left;
-
-    white-space: pre-wrap;
+.message-avatar{
+    width:40px;
+    height:40px;
+    flex-shrink:0;
+    border-radius:50%;
+    object-fit:cover;
+    background:#5865f2
 }
 
-.mine .bubble {
-    background: #5865f2;
-    color: white;
-}
+.message-body{max-width:75%}
 
-.time {
-    font-size: 10px;
+.message.mine .message-body{text-align:right}
 
-    margin-top: 4px;
-
-    color: #6d717a;
+.nickname{
+    font-size:13px;
+    color:#b5bac1;
+    margin-bottom:4px;
+    font-weight:600
 }
-
-.empty {
-    height: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    color: #6d717a;
 
-    text-align: center;
+.bubble{
+    display:inline-block;
+    padding:9px 13px;
+    border-radius:8px;
+    background:#1e2128;
+    color:#dbdee1;
+    line-height:1.5;
+    word-break:break-word;
+    text-align:left
 }
 
-/* ==================== 图片 ==================== */
-
-.image-bubble {
-    padding: 5px;
+.mine .bubble{
+    background:#5865f2;
+    color:white
 }
-
-.chat-image {
-    display: block;
-
-    max-width: 320px;
-    max-height: 400px;
 
-    border-radius: 8px;
-
-    object-fit: contain;
-
-    cursor: pointer;
+.time{
+    font-size:10px;
+    margin-top:4px;
+    color:#6d717a
 }
 
-.chat-image:hover {
-    opacity: .9;
+.empty{
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#6d717a;
+    text-align:center
 }
-
-/* ==================== 输入 ==================== */
 
-.input-area {
-    display: flex;
+.image-bubble{padding:5px}
 
-    gap: 8px;
-
-    padding: 15px 20px;
-
-    background: #15171d;
-
-    border-top: 1px solid #252832;
+.chat-image{
+    display:block;
+    max-width:320px;
+    max-height:400px;
+    border-radius:8px;
+    object-fit:contain;
+    cursor:pointer
 }
-
-#messageInput {
-    flex: 1;
-
-    min-width: 0;
-
-    border: none;
-
-    outline: none;
 
-    padding: 12px 14px;
+.chat-image:hover{opacity:.9}
 
-    border-radius: 6px;
-
-    color: white;
-
-    background: #1e2128;
-}
-
-#messageInput::placeholder {
-    color: #6d717a;
+.input-area{
+    display:flex;
+    gap:8px;
+    padding:15px 20px;
+    background:#15171d;
+    border-top:1px solid #252832
 }
 
-#imageInput {
-    display: none;
+#messageInput{
+    flex:1;
+    min-width:0;
+    border:none;
+    outline:none;
+    padding:12px 14px;
+    border-radius:6px;
+    color:white;
+    background:#1e2128
 }
-
-#imageButton {
-    width: 46px;
-
-    border: none;
-
-    border-radius: 6px;
 
-    background: #2b2e35;
+#messageInput::placeholder{color:#6d717a}
 
-    color: white;
+#imageInput{display:none}
 
-    font-size: 18px;
+#imageButton{
+    width:46px;
+    border:none;
+    border-radius:6px;
+    background:#2b2e35;
+    color:white;
+    font-size:18px
 }
 
-#imageButton:hover {
-    background: #40444b;
-}
-
-#sendButton {
-    width: 75px;
-
-    border: none;
+#imageButton:hover{background:#40444b}
 
-    border-radius: 6px;
-
-    background: #5865f2;
-
-    color: white;
-
-    font-weight: 700;
+#sendButton{
+    width:75px;
+    border:none;
+    border-radius:6px;
+    background:#5865f2;
+    color:white;
+    font-weight:700
 }
 
-#sendButton:hover {
-    background: #4752c4;
-}
+#sendButton:hover{background:#4752c4}
 
 #sendButton:disabled,
-#imageButton:disabled {
-    opacity: .5;
-
-    cursor: not-allowed;
+#imageButton:disabled{
+    opacity:.5;
+    cursor:not-allowed
 }
 
-/* ==================== 图片查看 ==================== */
-
-#imageViewer {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 20px;
-
-    background: rgba(0,0,0,.9);
-
-    z-index: 999;
+#imageViewer{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:rgba(0,0,0,.9);
+    z-index:999
 }
 
-#viewerImage {
-    max-width: 95vw;
-
-    max-height: 90vh;
-
-    border-radius: 8px;
+#viewerImage{
+    max-width:95vw;
+    max-height:90vh;
+    border-radius:8px
 }
 
-#closeViewer {
-    position: absolute;
-
-    top: 20px;
-
-    right: 25px;
-
-    width: 45px;
-
-    height: 45px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.15);
-
-    color: white;
-
-    font-size: 28px;
+#closeViewer{
+    position:absolute;
+    top:20px;
+    right:25px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:28px
 }
 
-/* ==================== 手机 ==================== */
-
-@media (max-width:600px) {
-
-    .auth-card {
-        padding: 25px 20px;
-    }
-
-    #messages {
-        padding: 18px 12px;
-    }
-
-    .message-body {
-        max-width: 78%;
-    }
-
-    .chat-header {
-        padding: 0 12px;
-    }
-
-    .current-user span {
-        display: none;
-    }
-
-    .chat-image {
-        max-width: 250px;
-        max-height: 350px;
-    }
-
-    .input-area {
-        padding: 10px;
-    }
-
-    #sendButton {
-        width: 60px;
-    }
+@media(max-width:600px){
+    .auth-card{padding:25px 20px}
+    #messages{padding:18px 12px}
+    .message-body{max-width:78%}
+    .chat-header{padding:0 12px}
+    .current-user span{display:none}
+    .chat-image{max-width:250px;max-height:350px}
+    .input-area{padding:10px}
+    #sendButton{width:60px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ==================== 首页 ==================== -->
-
 <div id="homePage">
-
     <div class="home-card">
-
         <div class="logo">💬</div>
-
         <h1>My Chat</h1>
-
         <p>
             一个属于你和朋友的私人聊天室。
             <br>
             安全、简单、实时聊天。
         </p>
-
-        <button
-            class="primary-button"
-            onclick="openLoginPage()">
+        <button class="primary-button" onclick="openLoginPage()">
             开始聊天
         </button>
-
     </div>
-
 </div>
 
-
-<!-- ==================== 登录 ==================== -->
-
 <div id="loginPage" class="page">
-
     <div class="auth-card">
-
         <h1>欢迎回来</h1>
-
-        <div class="auth-subtitle">
-            登录 My Chat
-        </div>
+        <div class="auth-subtitle">登录 My Chat</div>
 
         <div id="loginError" class="auth-error"></div>
 
         <div class="form-group">
-
             <label>邮箱</label>
-
-            <input
-                id="loginEmail"
-                class="form-input"
-                type="email"
-                placeholder="you@example.com"
-                autocomplete="email">
-
+            <input id="loginEmail"
+                   class="form-input"
+                   type="email"
+                   placeholder="you@example.com"
+                   autocomplete="email">
         </div>
 
         <div class="form-group">
-
             <label>密码</label>
-
-            <input
-                id="loginPassword"
-                class="form-input"
-                type="password"
-                placeholder="输入密码"
-                autocomplete="current-password">
-
+            <input id="loginPassword"
+                   class="form-input"
+                   type="password"
+                   placeholder="输入密码"
+                   autocomplete="current-password">
         </div>
 
-        <button
-            id="loginButton"
-            class="primary-button"
-            onclick="loginUser()">
+        <button id="loginButton"
+                class="primary-button"
+                onclick="loginUser()">
             登录
         </button>
 
         <div class="auth-link">
-
             还没有账号？
-
-            <button onclick="openRegisterPage()">
-                创建账号
-            </button>
-
+            <button onclick="openRegisterPage()">创建账号</button>
         </div>
 
         <div class="auth-link">
-
-            <button onclick="backToHome()">
-                返回首页
-            </button>
-
+            <button onclick="backToHome()">返回首页</button>
         </div>
-
     </div>
-
 </div>
 
-
-<!-- ==================== 注册 ==================== -->
-
 <div id="registerPage" class="page">
-
     <div class="auth-card">
-
         <h1>创建账号</h1>
-
-        <div class="auth-subtitle">
-            注册 My Chat
-        </div>
+        <div class="auth-subtitle">注册 My Chat</div>
 
         <div id="registerError" class="auth-error"></div>
-
         <div id="registerSuccess" class="auth-success"></div>
 
         <div class="form-group">
-
             <label>邮箱</label>
-
-            <input
-                id="registerEmail"
-                class="form-input"
-                type="email"
-                placeholder="you@example.com"
-                autocomplete="email">
-
+            <input id="registerEmail"
+                   class="form-input"
+                   type="email"
+                   placeholder="you@example.com"
+                   autocomplete="email">
         </div>
 
         <div class="form-group">
-
             <label>密码</label>
-
-            <input
-                id="registerPassword"
-                class="form-input"
-                type="password"
-                placeholder="至少 6 个字符"
-                autocomplete="new-password">
-
+            <input id="registerPassword"
+                   class="form-input"
+                   type="password"
+                   placeholder="至少 6 个字符"
+                   autocomplete="new-password">
         </div>
 
         <div class="form-group">
-
             <label>8位验证码</label>
-
             <div class="code-row">
+                <input id="registerCode"
+                       class="form-input"
+                       type="text"
+                       inputmode="numeric"
+                       maxlength="8"
+                       placeholder="8位验证码"
+                       autocomplete="one-time-code">
 
-                <input
-                    id="registerCode"
-                    class="form-input"
-                    type="text"
-                    inputmode="numeric"
-                    maxlength="8"
-                    placeholder="8位验证码"
-                    autocomplete="one-time-code">
-
-                <button
-                    id="sendCodeButton"
-                    class="code-button"
-                    onclick="sendRegisterCode()">
+                <button id="sendCodeButton"
+                        class="code-button"
+                        onclick="sendRegisterCode()">
                     获取验证码
                 </button>
-
             </div>
-
         </div>
 
-        <button
-            id="verifyButton"
-            class="primary-button"
-            onclick="verifyRegisterCode()">
+        <button id="verifyButton"
+                class="primary-button"
+                onclick="verifyRegisterCode()">
             验证并继续
         </button>
 
         <div class="auth-link">
-
             已经有账号？
-
-            <button onclick="openLoginPage()">
-                登录
-            </button>
-
+            <button onclick="openLoginPage()">登录</button>
         </div>
-
     </div>
-
 </div>
 
-
-<!-- ==================== 注册资料 ==================== -->
-
 <div id="profilePage" class="page">
-
     <div class="auth-card">
-
         <h1>完善资料</h1>
-
-        <div class="auth-subtitle">
-            设置你的昵称和头像
-        </div>
+        <div class="auth-subtitle">设置你的昵称和头像</div>
 
         <div id="profileError" class="auth-error"></div>
 
         <div class="avatar-upload">
+            <img id="avatarPreview"
+                 class="avatar-preview"
+                 src=""
+                 alt="头像"
+                 style="display:none;">
 
-            <img
-                id="avatarPreview"
-                class="avatar-preview"
-                src=""
-                alt="头像"
-                style="display:none;">
-
-            <div
-                id="avatarDefault"
-                class="avatar-preview">
+            <div id="avatarDefault"
+                 class="avatar-preview">
                 👤
             </div>
 
-            <input
-                id="avatarInput"
-                type="file"
-                accept="image/jpeg,image/png,image/gif,image/webp">
+            <input id="avatarInput"
+                   type="file"
+                   accept="image/jpeg,image/png,image/gif,image/webp"
+                   onchange="previewAvatar(event)">
 
-            <button
-                class="avatar-button"
-                onclick="document.getElementById('avatarInput').click()">
+            <button class="avatar-button"
+                    onclick="document.getElementById('avatarInput').click()">
                 选择头像
             </button>
-
         </div>
 
         <div class="form-group">
-
             <label>昵称</label>
-
-            <input
-                id="profileNickname"
-                class="form-input"
-                type="text"
-                maxlength="30"
-                placeholder="例如：Justin"
-                autocomplete="off">
-
+            <input id="profileNickname"
+                   class="form-input"
+                   type="text"
+                   maxlength="30"
+                   placeholder="例如：Justin"
+                   autocomplete="off">
         </div>
 
-        <button
-            id="finishProfileButton"
-            class="primary-button"
-            onclick="finishProfile()">
+        <button id="finishProfileButton"
+                class="primary-button"
+                onclick="finishProfile()">
             完成注册并进入聊天
         </button>
-
     </div>
-
 </div>
 
-
-<!-- ==================== 聊天 ==================== -->
-
 <div id="chatPage">
-
     <div class="chat-container">
 
         <header class="chat-header">
 
             <div class="chat-title">
-
-                <div class="chat-icon">
-                    💬
-                </div>
+                <div class="chat-icon">💬</div>
 
                 <div>
-
                     <h2>My Chat</h2>
-
-                    <div class="status">
-                        ● 实时连接
-                    </div>
-
+                    <div class="status">● 实时连接</div>
                 </div>
-
             </div>
 
             <div class="header-right">
 
                 <div class="current-user">
+                    <img id="currentUserAvatar"
+                         class="header-avatar"
+                         src=""
+                         alt="头像">
 
-                    <img
-                        id="currentUserAvatar"
-                        class="header-avatar"
-                        src=""
-                        alt="头像">
-
-                    <span id="currentUserName">
-                        用户
-                    </span>
-
+                    <span id="currentUserName">用户</span>
                 </div>
 
-                <button
-                    class="logout-button"
-                    onclick="logoutUser()">
+                <button class="logout-button"
+                        onclick="logoutUser()">
                     退出
                 </button>
-
             </div>
 
         </header>
 
-
         <main id="messages">
-
-            <div
-                class="empty"
-                id="emptyMessage">
-
+            <div class="empty" id="emptyMessage">
                 暂时还没有消息
                 <br>
                 成为第一个发言的人吧！
-
             </div>
-
         </main>
-
 
         <div class="input-area">
 
-            <input
-                id="messageInput"
-                type="text"
-                maxlength="1500"
-                placeholder="输入消息..."
-                autocomplete="off">
+            <input id="messageInput"
+                   type="text"
+                   maxlength="1500"
+                   placeholder="输入消息..."
+                   autocomplete="off">
 
-            <input
-                id="imageInput"
-                type="file"
-                accept="image/jpeg,image/png,image/gif,image/webp">
+            <input id="imageInput"
+                   type="file"
+                   accept="image/jpeg,image/png,image/gif,image/webp">
 
-            <button
-                id="imageButton"
-                onclick="document.getElementById('imageInput').click()"
-                title="发送图片">
+            <button id="imageButton"
+                    onclick="document.getElementById('imageInput').click()"
+                    title="发送图片">
                 📷
             </button>
 
-            <button
-                id="sendButton"
-                onclick="sendMessage()">
+            <button id="sendButton"
+                    onclick="sendMessage()">
                 发送
             </button>
 
         </div>
-
     </div>
-
 </div>
 
+<div id="imageViewer"
+     onclick="closeImageViewer()">
 
-<!-- ==================== 图片查看器 ==================== -->
-
-<div
-    id="imageViewer"
-    onclick="closeImageViewer()">
-
-    <button
-        id="closeViewer"
-        onclick="closeImageViewer(event)">
+    <button id="closeViewer"
+            onclick="closeImageViewer(event)">
         ×
     </button>
 
-    <img
-        id="viewerImage"
-        src=""
-        alt="图片"
-        onclick="event.stopPropagation()">
-
+    <img id="viewerImage"
+         src=""
+         alt="图片"
+         onclick="event.stopPropagation()">
 </div>
-
 
 <script>
 
@@ -1186,35 +757,19 @@ const AVATAR_BUCKET = "avatars";
 
 
 /* =====================================================
-   限制
-===================================================== */
-
-const MAX_MESSAGE_LENGTH = 1500;
-
-const MAX_IMAGE_SIZE =
-    10 * 1024 * 1024;
-
-const MAX_AVATAR_SIZE =
-    5 * 1024 * 1024;
-
-const MAX_MESSAGES_PER_MINUTE = 40;
-
-
-/* =====================================================
    状态
 ===================================================== */
 
 let currentUser = null;
 let currentProfile = null;
-
 let realtimeChannel = null;
-
 let temporaryAvatarFile = null;
 
 let codeCooldown = 0;
 let codeTimer = null;
 
-let messageSendTimes = [];
+/* 发送频率限制 */
+let sentMessageTimes = [];
 
 
 /* =====================================================
@@ -1256,7 +811,7 @@ const imageInput =
    页面切换
 ===================================================== */
 
-function hideAllPages() {
+function hideAllPages(){
 
     homePage.style.display = "none";
     loginPage.style.display = "none";
@@ -1265,8 +820,7 @@ function hideAllPages() {
     chatPage.style.display = "none";
 }
 
-
-function openLoginPage() {
+function openLoginPage(){
 
     hideAllPages();
 
@@ -1277,8 +831,7 @@ function openLoginPage() {
         .focus();
 }
 
-
-function openRegisterPage() {
+function openRegisterPage(){
 
     hideAllPages();
 
@@ -1289,16 +842,14 @@ function openRegisterPage() {
         .focus();
 }
 
-
-function openProfilePage() {
+function openProfilePage(){
 
     hideAllPages();
 
     profilePage.style.display = "flex";
 }
 
-
-function backToHome() {
+function backToHome(){
 
     hideAllPages();
 
@@ -1310,35 +861,30 @@ function backToHome() {
    错误
 ===================================================== */
 
-function showError(id, text) {
+function showError(id,text){
 
     const box =
         document.getElementById(id);
 
     box.textContent = text;
-
     box.style.display = "block";
 }
 
-
-function hideMessage(id) {
+function hideMessage(id){
 
     const box =
         document.getElementById(id);
 
     box.style.display = "none";
-
     box.textContent = "";
 }
 
-
-function showSuccess(id, text) {
+function showSuccess(id,text){
 
     const box =
         document.getElementById(id);
 
     box.textContent = text;
-
     box.style.display = "block";
 }
 
@@ -1347,54 +893,42 @@ function showSuccess(id, text) {
    初始化
 ===================================================== */
 
-async function initializeApp() {
+async function initializeApp(){
 
-    const {
-        data
-    } =
+    const {data} =
         await supabaseClient.auth.getSession();
 
-    if (
-        data &&
-        data.session
-    ) {
+    if(data && data.session){
 
         currentUser =
             data.session.user;
 
         await loadCurrentProfile();
 
-        if (currentProfile) {
+        if(currentProfile){
 
-            await openChat();
+            openChat();
 
-        } else {
+        }else{
 
             openProfilePage();
         }
 
-    } else {
+    }else{
 
         hideAllPages();
-
         homePage.style.display = "flex";
     }
 
-
     supabaseClient.auth.onAuthStateChange(
-        async function(event, session) {
+        async function(event,session){
 
-            if (
-                event === "SIGNED_OUT"
-            ) {
+            if(event === "SIGNED_OUT"){
 
                 currentUser = null;
-
                 currentProfile = null;
 
-                messageSendTimes = [];
-
-                if (realtimeChannel) {
+                if(realtimeChannel){
 
                     await supabaseClient
                         .removeChannel(
@@ -1407,16 +941,11 @@ async function initializeApp() {
                 backToHome();
             }
 
-
-            if (
-                session &&
-                event === "SIGNED_IN"
-            ) {
+            if(session && event === "SIGNED_IN"){
 
                 currentUser =
                     session.user;
             }
-
         }
     );
 }
@@ -1426,7 +955,7 @@ async function initializeApp() {
    登录
 ===================================================== */
 
-async function loginUser() {
+async function loginUser(){
 
     hideMessage("loginError");
 
@@ -1441,8 +970,7 @@ async function loginUser() {
             .getElementById("loginPassword")
             .value;
 
-
-    if (!email) {
+    if(!email){
 
         showError(
             "loginError",
@@ -1452,8 +980,7 @@ async function loginUser() {
         return;
     }
 
-
-    if (!password) {
+    if(!password){
 
         showError(
             "loginError",
@@ -1463,92 +990,64 @@ async function loginUser() {
         return;
     }
 
-
     const button =
-        document.getElementById(
-            "loginButton"
-        );
+        document.getElementById("loginButton");
 
     button.disabled = true;
-
     button.textContent = "登录中...";
 
-
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
         await supabaseClient.auth.signInWithPassword({
-
-            email: email,
-
-            password: password
-
+            email,
+            password
         });
 
-
     button.disabled = false;
-
     button.textContent = "登录";
 
-
-    if (error) {
-
-        console.error(
-            "登录失败：",
-            error
-        );
+    if(error){
 
         showError(
             "loginError",
-            "登录失败：" +
-            error.message
+            "登录失败：" + error.message
         );
 
         return;
     }
 
-
     currentUser = data.user;
 
     await loadCurrentProfile();
 
-
-    if (!currentProfile) {
+    if(!currentProfile){
 
         openProfilePage();
 
         return;
     }
 
-
-    await openChat();
+    openChat();
 }
 
 
 /* =====================================================
-   发送验证码
+   验证码
 ===================================================== */
 
-async function sendRegisterCode() {
+async function sendRegisterCode(){
 
     hideMessage("registerError");
-
     hideMessage("registerSuccess");
 
-
-    if (codeCooldown > 0) {
+    if(codeCooldown > 0){
 
         showError(
             "registerError",
-            "请等待 " +
-            codeCooldown +
-            " 秒后再发送验证码。"
+            "请等待 " + codeCooldown + " 秒。"
         );
 
         return;
     }
-
 
     const email =
         document
@@ -1561,8 +1060,7 @@ async function sendRegisterCode() {
             .getElementById("registerPassword")
             .value;
 
-
-    if (!email) {
+    if(!email){
 
         showError(
             "registerError",
@@ -1572,8 +1070,7 @@ async function sendRegisterCode() {
         return;
     }
 
-
-    if (password.length < 6) {
+    if(password.length < 6){
 
         showError(
             "registerError",
@@ -1583,42 +1080,28 @@ async function sendRegisterCode() {
         return;
     }
 
-
     const button =
         document.getElementById(
             "sendCodeButton"
         );
 
     button.disabled = true;
-
     button.textContent = "发送中...";
 
-
-    const {
-        error
-    } =
+    const {error} =
         await supabaseClient.auth.signInWithOtp({
 
-            email: email,
+            email,
 
-            options: {
-                shouldCreateUser: true
+            options:{
+                shouldCreateUser:true
             }
-
         });
 
-
-    if (error) {
-
-        console.error(
-            "验证码发送失败：",
-            error
-        );
+    if(error){
 
         button.disabled = false;
-
-        button.textContent =
-            "获取验证码";
+        button.textContent = "获取验证码";
 
         showError(
             "registerError",
@@ -1629,47 +1112,36 @@ async function sendRegisterCode() {
         return;
     }
 
-
     showSuccess(
         "registerSuccess",
-        "8位验证码已经发送到你的邮箱，请检查邮箱。"
+        "8位验证码已经发送到你的 QQ 邮箱。"
     );
 
     startCodeCooldown();
 }
 
-
-/* =====================================================
-   验证码倒计时
-===================================================== */
-
-function startCodeCooldown() {
+function startCodeCooldown(){
 
     const button =
         document.getElementById(
             "sendCodeButton"
         );
 
-
     codeCooldown = 60;
 
     button.disabled = true;
 
     button.textContent =
-        codeCooldown +
-        " 秒后重试";
-
+        codeCooldown + " 秒后重试";
 
     clearInterval(codeTimer);
 
-
     codeTimer =
-        setInterval(function() {
+        setInterval(function(){
 
             codeCooldown--;
 
-
-            if (codeCooldown <= 0) {
+            if(codeCooldown <= 0){
 
                 clearInterval(codeTimer);
 
@@ -1683,23 +1155,16 @@ function startCodeCooldown() {
                 return;
             }
 
-
             button.textContent =
                 codeCooldown +
                 " 秒后重试";
 
-        }, 1000);
+        },1000);
 }
 
-
-/* =====================================================
-   验证验证码
-===================================================== */
-
-async function verifyRegisterCode() {
+async function verifyRegisterCode(){
 
     hideMessage("registerError");
-
 
     const email =
         document
@@ -1718,19 +1183,14 @@ async function verifyRegisterCode() {
             .value
             .trim();
 
+    if(!email){
 
-    if (!email) {
-
-        showError(
-            "registerError",
-            "请输入邮箱。"
-        );
+        showError("registerError","请输入邮箱。");
 
         return;
     }
 
-
-    if (password.length < 6) {
+    if(password.length < 6){
 
         showError(
             "registerError",
@@ -1740,17 +1200,15 @@ async function verifyRegisterCode() {
         return;
     }
 
-
-    if (!/^\d{8}$/.test(token)) {
+    if(!/^\d{8}$/.test(token)){
 
         showError(
             "registerError",
-            "请输入完整的8位数字验证码。"
+            "请输入完整的8位验证码。"
         );
 
         return;
     }
-
 
     const button =
         document.getElementById(
@@ -1758,81 +1216,49 @@ async function verifyRegisterCode() {
         );
 
     button.disabled = true;
-
     button.textContent = "验证中...";
 
-
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
         await supabaseClient.auth.verifyOtp({
 
-            email: email,
-
-            token: token,
-
-            type: "email"
-
+            email,
+            token,
+            type:"email"
         });
 
-
-    if (error) {
-
-        console.error(
-            "验证码验证失败：",
-            error
-        );
+    if(error){
 
         button.disabled = false;
-
-        button.textContent =
-            "验证并继续";
+        button.textContent = "验证并继续";
 
         showError(
             "registerError",
-            "验证码错误，请检查后重新输入。"
+            "验证码错误，请重新检查。"
         );
 
         return;
     }
 
-
     currentUser = data.user;
 
-
-    const {
-        error: passwordError
-    } =
+    const {error:passwordError} =
         await supabaseClient.auth.updateUser({
-
-            password: password
-
+            password
         });
 
-
     button.disabled = false;
+    button.textContent = "验证并继续";
 
-    button.textContent =
-        "验证并继续";
-
-
-    if (passwordError) {
-
-        console.error(
-            "设置密码失败：",
-            passwordError
-        );
+    if(passwordError){
 
         showError(
             "registerError",
-            "邮箱验证成功，但设置密码失败：" +
+            "设置密码失败：" +
             passwordError.message
         );
 
         return;
     }
-
 
     openProfilePage();
 }
@@ -1842,104 +1268,68 @@ async function verifyRegisterCode() {
    头像预览
 ===================================================== */
 
-function previewAvatar(file) {
+function previewAvatar(event){
 
-    if (!file) {
-        return;
-    }
+    const file =
+        event.target.files[0];
 
+    if(!file)return;
 
     const allowedTypes = [
-
         "image/jpeg",
         "image/png",
         "image/gif",
         "image/webp"
-
     ];
 
+    if(!allowedTypes.includes(file.type)){
 
-    if (
-        !allowedTypes.includes(
-            file.type
-        )
-    ) {
+        alert("头像只支持 JPG、PNG、GIF、WEBP。");
 
-        alert(
-            "头像只支持 JPG、PNG、GIF、WEBP。"
-        );
+        event.target.value = "";
 
         return;
     }
 
+    if(file.size > 5 * 1024 * 1024){
 
-    if (
-        file.size >
-        MAX_AVATAR_SIZE
-    ) {
+        alert("头像不能超过 5MB。");
 
-        alert(
-            "头像不能超过 5MB。"
-        );
+        event.target.value = "";
 
         return;
     }
-
 
     temporaryAvatarFile = file;
 
-
     const url =
         URL.createObjectURL(file);
-
 
     const preview =
         document.getElementById(
             "avatarPreview"
         );
 
-
     const defaultAvatar =
         document.getElementById(
             "avatarDefault"
         );
 
-
     preview.src = url;
-
-    preview.style.display =
-        "block";
-
-    defaultAvatar.style.display =
-        "none";
+    preview.style.display = "block";
+    defaultAvatar.style.display = "none";
 }
 
 
-document
-    .getElementById("avatarInput")
-    .addEventListener(
-        "change",
-        function() {
-
-            const file =
-                this.files[0];
-
-            previewAvatar(file);
-
-        }
-    );
-
-
 /* =====================================================
-   创建资料
+   完善资料
 ===================================================== */
 
-async function finishProfile() {
+async function finishProfile(){
 
     hideMessage("profileError");
 
-
-    if (!currentUser) {
+    if(!currentUser){
 
         showError(
             "profileError",
@@ -1949,15 +1339,13 @@ async function finishProfile() {
         return;
     }
 
-
     const nickname =
         document
             .getElementById("profileNickname")
             .value
             .trim();
 
-
-    if (!nickname) {
+    if(!nickname){
 
         showError(
             "profileError",
@@ -1967,43 +1355,25 @@ async function finishProfile() {
         return;
     }
 
-
-    if (nickname.length > 30) {
-
-        showError(
-            "profileError",
-            "昵称不能超过30个字符。"
-        );
-
-        return;
-    }
-
-
     const button =
         document.getElementById(
             "finishProfileButton"
         );
 
-
     button.disabled = true;
+    button.textContent = "正在创建资料...";
 
-    button.textContent =
-        "正在创建资料...";
+    let avatarUrl = null;
 
+    try{
 
-    let avatarPath = null;
-
-
-    try {
-
-        if (temporaryAvatarFile) {
+        if(temporaryAvatarFile){
 
             const extension =
                 temporaryAvatarFile.name
                     .split(".")
                     .pop()
                     .toLowerCase();
-
 
             const fileName =
                 currentUser.id +
@@ -2012,101 +1382,66 @@ async function finishProfile() {
                 "." +
                 extension;
 
-
-            const {
-                error: uploadError
-            } =
+            const {error:uploadError} =
                 await supabaseClient.storage
                     .from(AVATAR_BUCKET)
                     .upload(
                         fileName,
                         temporaryAvatarFile,
                         {
-                            cacheControl: "3600",
-
-                            upsert: false,
-
+                            cacheControl:"3600",
+                            upsert:false,
                             contentType:
                                 temporaryAvatarFile.type
                         }
                     );
 
+            if(uploadError)
+                throw uploadError;
 
-            if (uploadError) {
-
-                throw new Error(
-                    "头像上传失败：" +
-                    uploadError.message
-                );
-            }
-
-
-            avatarPath = fileName;
+            /*
+             * 注意：
+             * 如果 avatars bucket 是 private，
+             * getPublicUrl 不能用于真正读取。
+             *
+             * 这里保存文件路径。
+             */
+            avatarUrl = fileName;
         }
 
-
-        const {
-            error: profileError
-        } =
+        const {error:profileError} =
             await supabaseClient
                 .from(PROFILE_TABLE)
                 .upsert({
-
-                    id:
-                        currentUser.id,
-
-                    nickname:
-                        nickname,
-
-                    avatar_url:
-                        avatarPath
-
+                    id:currentUser.id,
+                    nickname,
+                    avatar_url:avatarUrl
                 });
 
-
-        if (profileError) {
-
-            throw new Error(
-                "保存用户资料失败：" +
-                profileError.message
-            );
-        }
-
+        if(profileError)
+            throw profileError;
 
         currentProfile = {
-
-            id:
-                currentUser.id,
-
-            nickname:
-                nickname,
-
-            avatar_url:
-                avatarPath
-
+            id:currentUser.id,
+            nickname,
+            avatar_url:avatarUrl
         };
-
 
         temporaryAvatarFile = null;
 
+        openChat();
 
-        await openChat();
+    }catch(error){
 
-
-    } catch (error) {
-
-        console.error(
-            "创建资料失败：",
-            error
-        );
+        console.error(error);
 
         showError(
             "profileError",
+            "保存资料失败：" +
             error.message
         );
 
-
-    } finally {
+    }finally{
 
         button.disabled = false;
 
@@ -2117,33 +1452,22 @@ async function finishProfile() {
 
 
 /* =====================================================
-   获取当前用户资料
+   获取资料
 ===================================================== */
 
-async function loadCurrentProfile() {
+async function loadCurrentProfile(){
 
-    if (!currentUser) {
+    if(!currentUser)
         return null;
-    }
 
-
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
         await supabaseClient
             .from(PROFILE_TABLE)
-            .select(
-                "id,nickname,avatar_url"
-            )
-            .eq(
-                "id",
-                currentUser.id
-            )
+            .select("id,nickname,avatar_url")
+            .eq("id",currentUser.id)
             .maybeSingle();
 
-
-    if (error) {
+    if(error){
 
         console.error(
             "读取用户资料失败：",
@@ -2153,86 +1477,52 @@ async function loadCurrentProfile() {
         return null;
     }
 
-
-    currentProfile =
-        data || null;
-
+    currentProfile = data || null;
 
     return currentProfile;
 }
 
 
 /* =====================================================
-   创建头像 Signed URL
+   Storage 图片 URL
 ===================================================== */
 
-async function getSignedAvatarUrl(path) {
+async function getPrivateImageUrl(
+    bucket,
+    path
+){
 
-    if (!path) {
+    if(!path)
         return null;
+
+    /*
+     * 如果旧资料里保存的是完整 http URL，
+     * 直接使用。
+     */
+    if(
+        path.startsWith("http://") ||
+        path.startsWith("https://")
+    ){
+        return path;
     }
 
-
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
         await supabaseClient.storage
-            .from(AVATAR_BUCKET)
+            .from(bucket)
             .createSignedUrl(
                 path,
                 3600
             );
 
-
-    if (error) {
+    if(error){
 
         console.error(
-            "头像URL生成失败：",
+            "生成图片访问地址失败：",
             error
         );
 
         return null;
     }
-
-
-    return data.signedUrl;
-}
-
-
-/* =====================================================
-   创建聊天图片 Signed URL
-===================================================== */
-
-async function getSignedImageUrl(path) {
-
-    if (!path) {
-        return null;
-    }
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient.storage
-            .from(CHAT_IMAGE_BUCKET)
-            .createSignedUrl(
-                path,
-                3600
-            );
-
-
-    if (error) {
-
-        console.error(
-            "图片URL生成失败：",
-            error
-        );
-
-        return null;
-    }
-
 
     return data.signedUrl;
 }
@@ -2242,43 +1532,34 @@ async function getSignedImageUrl(path) {
    打开聊天室
 ===================================================== */
 
-async function openChat() {
+async function openChat(){
 
-    if (!currentUser) {
+    if(!currentUser){
 
         openLoginPage();
 
         return;
     }
 
-
-    if (!currentProfile) {
-
+    if(!currentProfile)
         await loadCurrentProfile();
-    }
 
-
-    if (!currentProfile) {
+    if(!currentProfile){
 
         openProfilePage();
 
         return;
     }
 
-
     hideAllPages();
 
-
-    chatPage.style.display =
-        "block";
-
+    chatPage.style.display = "block";
 
     await updateCurrentUserUI();
 
     await loadMessages();
 
     subscribeToMessages();
-
 
     messageInput.focus();
 }
@@ -2288,47 +1569,38 @@ async function openChat() {
    当前用户 UI
 ===================================================== */
 
-async function updateCurrentUserUI() {
+async function updateCurrentUserUI(){
 
     const name =
         document.getElementById(
             "currentUserName"
         );
 
-
     const avatar =
         document.getElementById(
             "currentUserAvatar"
         );
 
-
     name.textContent =
         currentProfile.nickname;
 
-
-    if (
-        currentProfile.avatar_url
-    ) {
+    if(currentProfile.avatar_url){
 
         const url =
-            await getSignedAvatarUrl(
+            await getPrivateImageUrl(
+                AVATAR_BUCKET,
                 currentProfile.avatar_url
             );
 
-
-        if (url) {
-
+        if(url)
             avatar.src = url;
-
-        } else {
-
+        else
             avatar.src =
                 createDefaultAvatar(
                     currentProfile.nickname
                 );
-        }
 
-    } else {
+    }else{
 
         avatar.src =
             createDefaultAvatar(
@@ -2342,101 +1614,82 @@ async function updateCurrentUserUI() {
    历史消息
 ===================================================== */
 
-async function loadMessages() {
+async function loadMessages(){
 
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
         await supabaseClient
             .from(MESSAGE_TABLE)
             .select(
-                "id,user_id,nickname,message,image_url,created_at"
+                "id,nickname,message,created_at,image_url"
             )
             .order(
                 "created_at",
-                {
-                    ascending: true
-                }
+                {ascending:true}
             );
 
-
-    if (error) {
+    if(error){
 
         console.error(
             "读取历史消息失败：",
             error
         );
 
-        messages.replaceChildren();
+        messages.innerHTML = "";
 
-        const empty =
+        const errorBox =
             document.createElement("div");
 
-        empty.className = "empty";
+        errorBox.className = "empty";
 
-        empty.textContent =
+        errorBox.textContent =
             "读取聊天记录失败：" +
             error.message;
 
-        messages.appendChild(empty);
+        messages.appendChild(errorBox);
 
         return;
     }
 
+    messages.innerHTML = "";
 
-    messages.replaceChildren();
-
-
-    if (
-        !data ||
-        data.length === 0
-    ) {
+    if(!data || data.length === 0){
 
         showEmpty();
 
         return;
     }
 
-
-    const {
-        data: profiles
-    } =
+    const {data:profiles} =
         await supabaseClient
             .from(PROFILE_TABLE)
             .select(
-                "id,nickname,avatar_url"
+                "nickname,avatar_url"
             );
-
 
     const profileMap =
         new Map();
 
+    if(profiles){
 
-    if (profiles) {
+        profiles.forEach(function(profile){
 
-        for (
-            const profile of profiles
-        ) {
+            if(!profileMap.has(profile.nickname)){
 
-            profileMap.set(
-                profile.id,
-                profile
-            );
-        }
+                profileMap.set(
+                    profile.nickname,
+                    profile
+                );
+            }
+        });
     }
 
-
-    for (
-        const message of data
-    ) {
+    for(const message of data){
 
         await renderMessage(
             message,
             profileMap
         );
     }
-
 
     scrollToBottom();
 }
@@ -2446,56 +1699,31 @@ async function loadMessages() {
    空消息
 ===================================================== */
 
-function showEmpty() {
+function showEmpty(){
 
-    messages.replaceChildren();
-
+    messages.innerHTML = "";
 
     const empty =
         document.createElement("div");
 
+    empty.className = "empty";
+    empty.id = "emptyMessage";
 
-    empty.className =
-        "empty";
-
-    empty.id =
-        "emptyMessage";
-
-
-    empty.textContent =
-        "暂时还没有消息";
-
-
-    const br =
-        document.createElement("br");
-
-
-    empty.appendChild(br);
-
-
-    empty.appendChild(
-        document.createTextNode(
-            "成为第一个发言的人吧！"
-        )
-    );
-
+    empty.innerHTML =
+        "暂时还没有消息<br>成为第一个发言的人吧！";
 
     messages.appendChild(empty);
 }
 
-
-function hideEmpty() {
+function hideEmpty(){
 
     const empty =
         document.getElementById(
             "emptyMessage"
         );
 
-
-    if (empty) {
-
+    if(empty)
         empty.remove();
-    }
 }
 
 
@@ -2503,43 +1731,36 @@ function hideEmpty() {
    默认头像
 ===================================================== */
 
-function createDefaultAvatar(name) {
+function createDefaultAvatar(name){
 
     const letter =
         (name || "?")
             .charAt(0)
             .toUpperCase();
 
-
     const svg =
         `
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="80"
-            height="80">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="80"
+             height="80">
 
-            <rect
-                width="80"
-                height="80"
-                rx="40"
-                fill="#5865f2"/>
+            <rect width="80"
+                  height="80"
+                  rx="40"
+                  fill="#5865f2"/>
 
-            <text
-                x="50%"
-                y="55%"
-                text-anchor="middle"
-                dominant-baseline="middle"
-                fill="white"
-                font-size="32"
-                font-family="Arial">
-
-                ${escapeXml(letter)}
-
+            <text x="50%"
+                  y="55%"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
+                  fill="white"
+                  font-size="32"
+                  font-family="Arial">
+                ${letter}
             </text>
 
         </svg>
         `;
-
 
     return (
         "data:image/svg+xml;charset=UTF-8," +
@@ -2548,103 +1769,65 @@ function createDefaultAvatar(name) {
 }
 
 
-function escapeXml(value) {
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
 /* =====================================================
    显示消息
+   重要安全修改：
+   message.message 永远只作为纯文本
+   image_url 才是图片
 ===================================================== */
 
 async function renderMessage(
     message,
     profileMap = null
-) {
+){
 
     hideEmpty();
-
 
     const row =
         document.createElement("div");
 
-
-    row.className =
-        "message";
-
+    row.className = "message";
 
     const isMine =
-        currentUser &&
-        message.user_id ===
-        currentUser.id;
+        currentProfile &&
+        message.nickname ===
+        currentProfile.nickname;
 
-
-    if (isMine) {
-
+    if(isMine)
         row.classList.add("mine");
-    }
-
 
     let profile = null;
 
-
-    if (
-        profileMap &&
-        message.user_id
-    ) {
+    if(profileMap){
 
         profile =
             profileMap.get(
-                message.user_id
+                message.nickname
             );
     }
 
-
-    if (
-        isMine &&
-        currentProfile
-    ) {
-
-        profile =
-            currentProfile;
-    }
-
+    if(isMine && currentProfile)
+        profile = currentProfile;
 
     const avatar =
         document.createElement("img");
 
-
     avatar.className =
         "message-avatar";
 
-
-    avatar.alt =
-        "头像";
-
-
-    if (
-        profile &&
-        profile.avatar_url
-    ) {
+    if(profile && profile.avatar_url){
 
         const avatarUrl =
-            await getSignedAvatarUrl(
+            await getPrivateImageUrl(
+                AVATAR_BUCKET,
                 profile.avatar_url
             );
 
+        if(avatarUrl){
 
-        if (avatarUrl) {
+            avatar.src = avatarUrl;
 
-            avatar.src =
-                avatarUrl;
-
-        } else {
+        }else{
 
             avatar.src =
                 createDefaultAvatar(
@@ -2652,7 +1835,7 @@ async function renderMessage(
                 );
         }
 
-    } else {
+    }else{
 
         avatar.src =
             createDefaultAvatar(
@@ -2660,177 +1843,107 @@ async function renderMessage(
             );
     }
 
+    avatar.alt = "头像";
 
     const body =
         document.createElement("div");
 
-
     body.className =
         "message-body";
-
 
     const name =
         document.createElement("div");
 
-
     name.className =
         "nickname";
 
-
     /*
-       重要安全措施：
-
-       用户昵称永远使用 textContent。
-       不使用 innerHTML。
-    */
-
+     * 永远使用 textContent。
+     * 用户发送 HTML / JS / URL 都只会显示文字。
+     */
     name.textContent =
-        message.nickname ||
-        "匿名";
-
+        message.nickname || "匿名";
 
     const bubble =
         document.createElement("div");
 
-
-    bubble.className =
-        "bubble";
-
+    bubble.className = "bubble";
 
     /*
-       重要：
-
-       只有 image_url 有值时才显示图片。
-
-       message 字段永远只是文字。
-
-       即使 message 是：
-       https://evil.com/xss
-
-       也只会显示文字。
-    */
-
-    if (
-        message.image_url
-    ) {
+     * 只有 image_url 存在时才创建 img。
+     *
+     * message.message 不参与图片判断。
+     */
+    if(message.image_url){
 
         bubble.classList.add(
             "image-bubble"
         );
 
-
         const img =
             document.createElement("img");
-
 
         img.className =
             "chat-image";
 
-
-        img.alt =
-            "聊天图片";
-
-
-        img.loading =
-            "lazy";
-
-
         const imageUrl =
-            await getSignedImageUrl(
+            await getPrivateImageUrl(
+                CHAT_IMAGE_BUCKET,
                 message.image_url
             );
 
+        if(imageUrl){
 
-        if (imageUrl) {
+            img.src = imageUrl;
 
-            img.src =
-                imageUrl;
+            img.alt = "聊天图片";
 
+            img.loading = "lazy";
 
             img.onclick =
-                function() {
+                function(){
 
                     openImageViewer(
                         imageUrl
                     );
-
                 };
-
-
-            img.onerror =
-                function() {
-
-                    bubble.replaceChildren();
-
-                    const text =
-                        document.createElement(
-                            "div"
-                        );
-
-                    text.textContent =
-                        "图片无法加载";
-
-                    bubble.appendChild(
-                        text
-                    );
-                };
-
 
             bubble.appendChild(img);
 
-        } else {
+        }else{
 
             bubble.textContent =
-                "图片无法加载";
+                "[图片无法加载]";
         }
 
-
-    } else {
+    }else{
 
         /*
-           普通消息：
-
-           永远使用 textContent。
-
-           不使用 innerHTML。
-        */
-
+         * 最关键的 XSS 防护：
+         * 不使用 innerHTML。
+         */
         bubble.textContent =
-            message.message ||
-            "";
+            message.message || "";
     }
-
 
     const time =
         document.createElement("div");
 
-
-    time.className =
-        "time";
-
+    time.className = "time";
 
     time.textContent =
         formatTime(
             message.created_at
         );
 
-
     body.appendChild(name);
-
     body.appendChild(bubble);
-
     body.appendChild(time);
 
-
     row.appendChild(avatar);
-
     row.appendChild(body);
 
-
     messages.appendChild(row);
-
-
-    scrollToBottom();
 }
 
 
@@ -2838,34 +1951,24 @@ async function renderMessage(
    时间
 ===================================================== */
 
-function formatTime(value) {
+function formatTime(value){
 
-    if (!value) {
+    if(!value)
         return "";
-    }
-
 
     const date =
         new Date(value);
 
-
-    if (
-        isNaN(
-            date.getTime()
-        )
-    ) {
-
+    if(isNaN(date.getTime()))
         return "";
-    }
-
 
     return date.toLocaleString(
         "zh-CN",
         {
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit"
+            month:"2-digit",
+            day:"2-digit",
+            hour:"2-digit",
+            minute:"2-digit"
         }
     );
 }
@@ -2875,55 +1978,42 @@ function formatTime(value) {
    滚动
 ===================================================== */
 
-function scrollToBottom() {
+function scrollToBottom(){
 
-    setTimeout(
-        function() {
+    setTimeout(function(){
 
-            messages.scrollTop =
-                messages.scrollHeight;
+        messages.scrollTop =
+            messages.scrollHeight;
 
-        },
-        30
-    );
+    },50);
 }
 
 
 /* =====================================================
-   发送频率限制
+   40条/分钟限制
 ===================================================== */
 
-function canSendMessage() {
+function checkRateLimit(){
 
-    const now =
-        Date.now();
+    const now = Date.now();
 
+    /*
+     * 删除一分钟以前的记录
+     */
+    sentMessageTimes =
+        sentMessageTimes.filter(
+            function(time){
 
-    const oneMinuteAgo =
-        now - 60 * 1000;
-
-
-    messageSendTimes =
-        messageSendTimes.filter(
-            function(time) {
-
-                return time >
-                    oneMinuteAgo;
+                return now - time < 60000;
             }
         );
 
-
-    if (
-        messageSendTimes.length >=
-        MAX_MESSAGES_PER_MINUTE
-    ) {
+    if(sentMessageTimes.length >= 40){
 
         return false;
     }
 
-
-    messageSendTimes.push(now);
-
+    sentMessageTimes.push(now);
 
     return true;
 }
@@ -2933,135 +2023,100 @@ function canSendMessage() {
    发送文字
 ===================================================== */
 
-async function sendMessage() {
+async function sendMessage(){
 
-    if (
-        !currentUser ||
-        !currentProfile
-    ) {
+    if(!currentUser || !currentProfile){
 
         openLoginPage();
 
         return;
     }
 
-
     const text =
         messageInput.value.trim();
 
-
-    if (!text) {
-
+    if(!text)
         return;
-    }
-
 
     /*
-       1500 字限制
-    */
-
-    if (
-        text.length >
-        MAX_MESSAGE_LENGTH
-    ) {
+     * 最多 1500 字符
+     */
+    if(text.length > 1500){
 
         alert(
-            "消息不能超过 1500 个字符。"
+            "一条消息最多 1500 个字符。"
         );
 
         return;
     }
 
-
     /*
-       每分钟最多40条
-    */
-
-    if (!canSendMessage()) {
+     * 每分钟最多40条
+     */
+    if(!checkRateLimit()){
 
         alert(
-            "发送太频繁了，请等待一分钟后再继续发送。"
+            "发送太频繁了，请一分钟后再继续发送。"
         );
 
         return;
     }
-
 
     sendButton.disabled = true;
 
+    const {data,error} =
+        await supabaseClient
+            .from(MESSAGE_TABLE)
+            .insert({
 
-    try {
+                nickname:
+                    currentProfile.nickname,
 
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from(MESSAGE_TABLE)
-                .insert({
+                message:
+                    text,
 
-                    user_id:
-                        currentUser.id,
+                image_url:
+                    null
 
-                    nickname:
-                        currentProfile.nickname,
+            })
+            .select(
+                "id,nickname,message,created_at,image_url"
+            )
+            .single();
 
-                    message:
-                        text,
+    sendButton.disabled = false;
 
-                    image_url:
-                        null
-
-                })
-                .select(
-                    "id,user_id,nickname,message,image_url,created_at"
-                )
-                .single();
-
-
-        if (error) {
-
-            throw error;
-        }
-
-
-        messageInput.value = "";
-
-
-        if (data) {
-
-            await renderMessage(
-                data,
-                new Map([
-                    [
-                        currentUser.id,
-                        currentProfile
-                    ]
-                ])
-            );
-        }
-
-
-        messageInput.focus();
-
-
-    } catch (error) {
+    if(error){
 
         console.error(
             "发送消息失败：",
             error
         );
 
-
         alert(
             "发送失败：\n" +
             error.message
         );
 
-    } finally {
-
-        sendButton.disabled = false;
+        return;
     }
+
+    messageInput.value = "";
+
+    if(data){
+
+        await renderMessage(
+            data,
+            new Map([
+                [
+                    currentProfile.nickname,
+                    currentProfile
+                ]
+            ])
+        );
+    }
+
+    messageInput.focus();
 }
 
 
@@ -3071,86 +2126,38 @@ async function sendMessage() {
 
 imageInput.addEventListener(
     "change",
-    async function() {
+    async function(){
 
         const file =
             this.files[0];
 
-
-        if (!file) {
-
+        if(!file)
             return;
-        }
-
 
         await uploadImage(file);
 
-
         this.value = "";
-
     }
 );
 
 
 /* =====================================================
-   上传聊天图片
+   上传图片
 ===================================================== */
 
-async function uploadImage(file) {
+async function uploadImage(file){
 
-    if (
-        !currentUser ||
-        !currentProfile
-    ) {
+    if(!currentUser || !currentProfile){
 
         openLoginPage();
 
         return;
     }
 
-
-    if (
-        file.size >
-        MAX_IMAGE_SIZE
-    ) {
-
-        alert(
-            "图片太大，请选择10MB以下的图片。"
-        );
-
-        return;
-    }
-
-
-    const allowedTypes = [
-
-        "image/jpeg",
-        "image/png",
-        "image/gif",
-        "image/webp"
-
-    ];
-
-
-    if (
-        !allowedTypes.includes(
-            file.type
-        )
-    ) {
-
-        alert(
-            "只支持 JPG、PNG、GIF、WEBP 图片。"
-        );
-
-        return;
-    }
-
-
     /*
-       图片也使用发送频率限制。
-    */
-
-    if (!canSendMessage()) {
+     * 图片也使用相同的发送频率限制。
+     */
+    if(!checkRateLimit()){
 
         alert(
             "发送太频繁了，请稍后再试。"
@@ -3159,27 +2166,44 @@ async function uploadImage(file) {
         return;
     }
 
+    const maxSize =
+        10 * 1024 * 1024;
+
+    if(file.size > maxSize){
+
+        alert(
+            "图片不能超过 10MB。"
+        );
+
+        return;
+    }
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "image/webp"
+    ];
+
+    if(!allowedTypes.includes(file.type)){
+
+        alert(
+            "只支持 JPG、PNG、GIF、WEBP。"
+        );
+
+        return;
+    }
 
     imageButton.disabled = true;
+    imageButton.textContent = "⏳";
 
-    imageButton.textContent =
-        "⏳";
-
-
-    try {
+    try{
 
         const extension =
             file.name
                 .split(".")
                 .pop()
                 .toLowerCase();
-
-
-        /*
-           文件名使用当前用户ID。
-
-           避免单纯依靠昵称。
-        */
 
         const fileName =
             currentUser.id +
@@ -3188,112 +2212,82 @@ async function uploadImage(file) {
             "_" +
             Math.random()
                 .toString(36)
-                .slice(2, 10) +
+                .substring(2,10) +
             "." +
             extension;
 
-
-        const {
-            error: uploadError
-        } =
+        const {error:uploadError} =
             await supabaseClient.storage
                 .from(CHAT_IMAGE_BUCKET)
                 .upload(
                     fileName,
                     file,
                     {
-                        cacheControl:
-                            "3600",
-
-                        upsert:
-                            false,
-
-                        contentType:
-                            file.type
+                        cacheControl:"3600",
+                        upsert:false,
+                        contentType:file.type
                     }
                 );
 
-
-        if (uploadError) {
-
+        if(uploadError)
             throw uploadError;
-        }
-
 
         /*
-           注意：
-
-           不把 public URL 保存进数据库。
-
-           只保存 Storage path。
-        */
-
-        const {
-            data,
-            error
-        } =
+         * 不再使用 getPublicUrl。
+         *
+         * 只把 Storage 路径写入数据库。
+         */
+        const {data,error} =
             await supabaseClient
                 .from(MESSAGE_TABLE)
                 .insert({
 
-                    user_id:
-                        currentUser.id,
-
                     nickname:
                         currentProfile.nickname,
 
-                    message:
-                        null,
+                    message:"",
 
                     image_url:
                         fileName
 
                 })
                 .select(
-                    "id,user_id,nickname,message,image_url,created_at"
+                    "id,nickname,message,created_at,image_url"
                 )
                 .single();
 
-
-        if (error) {
-
+        if(error)
             throw error;
-        }
 
-
-        if (data) {
+        if(data){
 
             await renderMessage(
                 data,
                 new Map([
                     [
-                        currentUser.id,
+                        currentProfile.nickname,
                         currentProfile
                     ]
                 ])
             );
         }
 
-
-    } catch (error) {
+    }catch(error){
 
         console.error(
             "图片发送失败：",
             error
         );
 
-
         alert(
             "图片发送失败：\n" +
             error.message
         );
 
-    } finally {
+    }finally{
 
         imageButton.disabled = false;
-
-        imageButton.textContent =
-            "📷";
+        imageButton.textContent = "📷";
     }
 }
 
@@ -3302,9 +2296,9 @@ async function uploadImage(file) {
    Realtime
 ===================================================== */
 
-function subscribeToMessages() {
+function subscribeToMessages(){
 
-    if (realtimeChannel) {
+    if(realtimeChannel){
 
         supabaseClient
             .removeChannel(
@@ -3312,97 +2306,73 @@ function subscribeToMessages() {
             );
     }
 
-
     realtimeChannel =
         supabaseClient
-
             .channel(
                 "messages-realtime"
             )
-
             .on(
-
                 "postgres_changes",
-
                 {
-                    event: "INSERT",
-
-                    schema: "public",
-
-                    table: MESSAGE_TABLE
+                    event:"INSERT",
+                    schema:"public",
+                    table:MESSAGE_TABLE
                 },
-
-                async function(payload) {
+                async function(payload){
 
                     /*
-                       自己发送的消息已经
-                       立即显示，不重复显示。
-                    */
-
-                    if (
-                        currentUser &&
-                        payload.new.user_id ===
-                        currentUser.id
-                    ) {
+                     * 自己发送的消息已经在发送函数
+                     * 里显示，所以不要重复。
+                     */
+                    if(
+                        currentProfile &&
+                        payload.new.nickname ===
+                        currentProfile.nickname
+                    ){
 
                         return;
                     }
 
-
                     let profileMap =
                         new Map();
 
-
-                    if (
-                        payload.new.user_id
-                    ) {
-
-                        const {
-                            data
-                        } =
-                            await supabaseClient
-                                .from(PROFILE_TABLE)
-                                .select(
-                                    "id,nickname,avatar_url"
-                                )
-                                .eq(
-                                    "id",
-                                    payload.new.user_id
-                                );
-
-
-                        if (data) {
-
-                            data.forEach(
-                                function(profile) {
-
-                                    profileMap.set(
-                                        profile.id,
-                                        profile
-                                    );
-
-                                }
+                    const {data} =
+                        await supabaseClient
+                            .from(PROFILE_TABLE)
+                            .select(
+                                "nickname,avatar_url"
+                            )
+                            .eq(
+                                "nickname",
+                                payload.new.nickname
                             );
-                        }
-                    }
 
+                    if(data){
+
+                        data.forEach(
+                            function(profile){
+
+                                profileMap.set(
+                                    profile.nickname,
+                                    profile
+                                );
+                            }
+                        );
+                    }
 
                     await renderMessage(
                         payload.new,
                         profileMap
                     );
                 }
-
             )
-
             .subscribe(
-                function(status) {
+                function(status){
 
                     console.log(
                         "Realtime:",
                         status
                     );
-
                 }
             );
 }
@@ -3412,9 +2382,9 @@ function subscribeToMessages() {
    退出
 ===================================================== */
 
-async function logoutUser() {
+async function logoutUser(){
 
-    if (realtimeChannel) {
+    if(realtimeChannel){
 
         await supabaseClient
             .removeChannel(
@@ -3424,7 +2394,6 @@ async function logoutUser() {
         realtimeChannel = null;
     }
 
-
     await supabaseClient.auth.signOut();
 }
 
@@ -3433,75 +2402,41 @@ async function logoutUser() {
    图片查看器
 ===================================================== */
 
-function openImageViewer(url) {
+function openImageViewer(url){
 
     const viewer =
         document.getElementById(
             "imageViewer"
         );
 
-
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
+    viewerImage.src = url;
 
-    viewerImage.src =
-        url;
-
-
-    viewer.style.display =
-        "flex";
+    viewer.style.display = "flex";
 }
 
+function closeImageViewer(event){
 
-function closeImageViewer(event) {
-
-    if (event) {
-
+    if(event)
         event.stopPropagation();
-    }
-
 
     const viewer =
         document.getElementById(
             "imageViewer"
         );
 
-
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
+    viewer.style.display = "none";
 
-    viewer.style.display =
-        "none";
-
-
-    viewerImage.src =
-        "";
-}
-
-
-/* =====================================================
-   HTML / XML 安全
-===================================================== */
-
-function escapeHtml(value) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        value || "";
-
-
-    return div.innerHTML;
+    viewerImage.src = "";
 }
 
 
@@ -3511,18 +2446,17 @@ function escapeHtml(value) {
 
 messageInput.addEventListener(
     "keydown",
-    function(event) {
+    function(event){
 
-        if (
+        if(
             event.key === "Enter" &&
             !event.shiftKey
-        ) {
+        ){
 
             event.preventDefault();
 
             sendMessage();
         }
-
     }
 );
 
@@ -3535,13 +2469,12 @@ document
     .getElementById("registerCode")
     .addEventListener(
         "input",
-        function() {
+        function(){
 
             this.value =
                 this.value
-                    .replace(/\D/g, "")
-                    .slice(0, 8);
-
+                    .replace(/\D/g,"")
+                    .slice(0,8);
         }
     );
 
@@ -3556,3 +2489,4 @@ initializeApp();
 
 </body>
 </html>
+```
