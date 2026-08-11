@@ -44,6 +44,7 @@ button {
     justify-content: center;
     align-items: center;
     padding: 20px;
+
     background:
         radial-gradient(
             circle at top left,
@@ -59,22 +60,32 @@ button {
     padding: 50px 38px;
     text-align: center;
     border-radius: 18px;
+
     background: #15171d;
     border: 1px solid #252832;
-    box-shadow: 0 25px 80px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
 }
 
 .logo {
     width: 82px;
     height: 82px;
+
     margin: 0 auto 25px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 22px;
+
     font-size: 38px;
+
     background: #5865f2;
-    box-shadow: 0 15px 35px rgba(88,101,242,.35);
+
+    box-shadow:
+        0 15px 35px rgba(88,101,242,.35);
 }
 
 .home-card h1 {
@@ -90,12 +101,17 @@ button {
 
 .primary-button {
     width: 100%;
+
     border: none;
     border-radius: 4px;
+
     padding: 14px 20px;
+
     color: white;
     font-weight: 700;
+
     background: #5865f2;
+
     transition: .2s;
 }
 
@@ -113,20 +129,29 @@ button {
 .page {
     position: fixed;
     inset: 0;
+
     display: none;
+
     align-items: center;
     justify-content: center;
+
     padding: 20px;
+
     background: #0b0d12;
 }
 
 .auth-card {
     width: 100%;
     max-width: 430px;
+
     padding: 32px;
+
     border-radius: 8px;
+
     background: #15171d;
-    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
 }
 
 .auth-card h1 {
@@ -137,8 +162,11 @@ button {
 
 .auth-subtitle {
     text-align: center;
+
     color: #a6a8b0;
+
     font-size: 14px;
+
     margin-bottom: 25px;
 }
 
@@ -148,21 +176,31 @@ button {
 
 .form-group label {
     display: block;
+
     font-size: 12px;
     font-weight: 700;
+
     color: #b5bac1;
+
     margin-bottom: 8px;
+
     text-transform: uppercase;
 }
 
 .form-input {
     width: 100%;
+
     border: none;
     outline: none;
+
     padding: 13px;
+
     border-radius: 4px;
+
     color: white;
+
     background: #0f1116;
+
     border: 1px solid #252832;
 }
 
@@ -172,15 +210,20 @@ button {
 
 .auth-link {
     text-align: center;
+
     margin-top: 18px;
+
     font-size: 14px;
+
     color: #a6a8b0;
 }
 
 .auth-link button {
     border: none;
     background: none;
+
     color: #5865f2;
+
     font-weight: 600;
 }
 
@@ -190,21 +233,33 @@ button {
 
 .auth-error {
     display: none;
+
     padding: 10px;
+
     margin-bottom: 15px;
+
     border-radius: 4px;
+
     background: rgba(237,66,69,.12);
+
     color: #f38688;
+
     font-size: 13px;
 }
 
 .auth-success {
     display: none;
+
     padding: 10px;
+
     margin-bottom: 15px;
+
     border-radius: 4px;
+
     background: rgba(35,165,90,.12);
+
     color: #57d48b;
+
     font-size: 13px;
 }
 
@@ -217,17 +272,24 @@ button {
 
 .code-row .form-input {
     flex: 1;
+
     letter-spacing: 5px;
+
     text-align: center;
+
     font-size: 18px;
 }
 
 .code-button {
     width: 125px;
+
     border: none;
     border-radius: 4px;
+
     background: #4f545c;
+
     color: white;
+
     font-size: 13px;
 }
 
@@ -244,22 +306,34 @@ button {
 
 .avatar-upload {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     margin-bottom: 25px;
 }
 
 .avatar-preview {
     width: 96px;
     height: 96px;
+
     border-radius: 50%;
+
     object-fit: cover;
+
     background: #5865f2;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     font-size: 38px;
+
     margin-bottom: 12px;
+
     border: 3px solid #2b2e35;
 }
 
@@ -269,10 +343,15 @@ button {
 
 .avatar-button {
     border: none;
+
     background: #4f545c;
+
     color: white;
+
     padding: 8px 14px;
+
     border-radius: 4px;
+
     font-size: 13px;
 }
 
@@ -284,41 +363,58 @@ button {
 
 #chatPage {
     display: none;
+
     height: 100vh;
+
     background: #111318;
 }
 
 .chat-container {
     width: 100%;
     height: 100vh;
+
     display: flex;
+
     flex-direction: column;
 }
 
 .chat-header {
     height: 64px;
+
     flex-shrink: 0;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     padding: 0 20px;
+
     background: #15171d;
+
     border-bottom: 1px solid #252832;
 }
 
 .chat-title {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
 
 .chat-icon {
     width: 38px;
     height: 38px;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     border-radius: 50%;
+
     background: #5865f2;
 }
 
@@ -328,38 +424,54 @@ button {
 
 .status {
     font-size: 11px;
+
     color: #23a55a;
+
     margin-top: 2px;
 }
 
 .header-right {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
 
 .current-user {
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
     color: #dbdee1;
+
     font-size: 13px;
 }
 
 .header-avatar {
     width: 32px;
     height: 32px;
+
     border-radius: 50%;
+
     object-fit: cover;
+
     background: #5865f2;
 }
 
 .logout-button {
     border: none;
+
     border-radius: 4px;
+
     padding: 8px 12px;
+
     background: #2b2e35;
+
     color: #dbdee1;
+
     font-size: 13px;
 }
 
@@ -371,13 +483,17 @@ button {
 
 #messages {
     flex: 1;
+
     overflow-y: auto;
+
     padding: 25px;
 }
 
 .message {
     display: flex;
+
     gap: 12px;
+
     margin-bottom: 18px;
 }
 
@@ -388,9 +504,13 @@ button {
 .message-avatar {
     width: 40px;
     height: 40px;
+
     flex-shrink: 0;
+
     border-radius: 50%;
+
     object-fit: cover;
+
     background: #5865f2;
 }
 
@@ -404,20 +524,32 @@ button {
 
 .nickname {
     font-size: 13px;
+
     color: #b5bac1;
+
     margin-bottom: 4px;
+
     font-weight: 600;
 }
 
 .bubble {
     display: inline-block;
+
     padding: 9px 13px;
+
     border-radius: 8px;
+
     background: #1e2128;
+
     color: #dbdee1;
+
     line-height: 1.5;
+
     word-break: break-word;
+
     text-align: left;
+
+    white-space: pre-wrap;
 }
 
 .mine .bubble {
@@ -427,16 +559,23 @@ button {
 
 .time {
     font-size: 10px;
+
     margin-top: 4px;
+
     color: #6d717a;
 }
 
 .empty {
     height: 100%;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     color: #6d717a;
+
     text-align: center;
 }
 
@@ -448,10 +587,14 @@ button {
 
 .chat-image {
     display: block;
+
     max-width: 320px;
     max-height: 400px;
+
     border-radius: 8px;
+
     object-fit: contain;
+
     cursor: pointer;
 }
 
@@ -463,20 +606,31 @@ button {
 
 .input-area {
     display: flex;
+
     gap: 8px;
+
     padding: 15px 20px;
+
     background: #15171d;
+
     border-top: 1px solid #252832;
 }
 
 #messageInput {
     flex: 1;
+
     min-width: 0;
+
     border: none;
+
     outline: none;
+
     padding: 12px 14px;
+
     border-radius: 6px;
+
     color: white;
+
     background: #1e2128;
 }
 
@@ -490,10 +644,15 @@ button {
 
 #imageButton {
     width: 46px;
+
     border: none;
+
     border-radius: 6px;
+
     background: #2b2e35;
+
     color: white;
+
     font-size: 18px;
 }
 
@@ -503,10 +662,15 @@ button {
 
 #sendButton {
     width: 75px;
+
     border: none;
+
     border-radius: 6px;
+
     background: #5865f2;
+
     color: white;
+
     font-weight: 700;
 }
 
@@ -517,6 +681,7 @@ button {
 #sendButton:disabled,
 #imageButton:disabled {
     opacity: .5;
+
     cursor: not-allowed;
 }
 
@@ -524,37 +689,56 @@ button {
 
 #imageViewer {
     position: fixed;
+
     inset: 0;
+
     display: none;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 20px;
+
     background: rgba(0,0,0,.9);
+
     z-index: 999;
 }
 
 #viewerImage {
     max-width: 95vw;
+
     max-height: 90vh;
+
     border-radius: 8px;
 }
 
 #closeViewer {
     position: absolute;
+
     top: 20px;
+
     right: 25px;
+
     width: 45px;
+
     height: 45px;
+
     border: none;
+
     border-radius: 50%;
+
     background: rgba(255,255,255,.15);
+
     color: white;
+
     font-size: 28px;
 }
 
 /* ==================== 手机 ==================== */
 
 @media (max-width:600px) {
+
     .auth-card {
         padding: 25px 20px;
     }
@@ -596,6 +780,7 @@ button {
 <!-- ==================== 首页 ==================== -->
 
 <div id="homePage">
+
     <div class="home-card">
 
         <div class="logo">💬</div>
@@ -615,7 +800,9 @@ button {
         </button>
 
     </div>
+
 </div>
+
 
 <!-- ==================== 登录 ==================== -->
 
@@ -665,20 +852,27 @@ button {
         </button>
 
         <div class="auth-link">
+
             还没有账号？
+
             <button onclick="openRegisterPage()">
                 创建账号
             </button>
+
         </div>
 
         <div class="auth-link">
+
             <button onclick="backToHome()">
                 返回首页
             </button>
+
         </div>
 
     </div>
+
 </div>
+
 
 <!-- ==================== 注册 ==================== -->
 
@@ -766,7 +960,9 @@ button {
         </div>
 
     </div>
+
 </div>
+
 
 <!-- ==================== 注册资料 ==================== -->
 
@@ -800,8 +996,7 @@ button {
             <input
                 id="avatarInput"
                 type="file"
-                accept="image/jpeg,image/png,image/gif,image/webp"
-                onchange="previewAvatar(event)">
+                accept="image/jpeg,image/png,image/gif,image/webp">
 
             <button
                 class="avatar-button"
@@ -833,7 +1028,9 @@ button {
         </button>
 
     </div>
+
 </div>
+
 
 <!-- ==================== 聊天 ==================== -->
 
@@ -887,6 +1084,7 @@ button {
 
         </header>
 
+
         <main id="messages">
 
             <div
@@ -901,12 +1099,13 @@ button {
 
         </main>
 
+
         <div class="input-area">
 
             <input
                 id="messageInput"
                 type="text"
-                maxlength="1000"
+                maxlength="1500"
                 placeholder="输入消息..."
                 autocomplete="off">
 
@@ -931,7 +1130,9 @@ button {
         </div>
 
     </div>
+
 </div>
+
 
 <!-- ==================== 图片查看器 ==================== -->
 
@@ -953,6 +1154,7 @@ button {
 
 </div>
 
+
 <script>
 
 /* =====================================================
@@ -963,7 +1165,7 @@ const SUPABASE_URL =
     "https://fhkqnknpmdddiehpktnu.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_3p3PR-D3GUy5BRhQDl57AA__4Gbg388";
+    "sb_publishable_E7YD5Tnv2-nMv1d-0U_Weg_xdUTHO1x";
 
 const supabaseClient =
     window.supabase.createClient(
@@ -971,14 +1173,32 @@ const supabaseClient =
         SUPABASE_KEY
     );
 
+
 /* =====================================================
    数据库
 ===================================================== */
 
 const MESSAGE_TABLE = "messages";
 const PROFILE_TABLE = "profiles";
+
 const CHAT_IMAGE_BUCKET = "chat-images";
 const AVATAR_BUCKET = "avatars";
+
+
+/* =====================================================
+   限制
+===================================================== */
+
+const MAX_MESSAGE_LENGTH = 1500;
+
+const MAX_IMAGE_SIZE =
+    10 * 1024 * 1024;
+
+const MAX_AVATAR_SIZE =
+    5 * 1024 * 1024;
+
+const MAX_MESSAGES_PER_MINUTE = 40;
+
 
 /* =====================================================
    状态
@@ -986,11 +1206,16 @@ const AVATAR_BUCKET = "avatars";
 
 let currentUser = null;
 let currentProfile = null;
+
 let realtimeChannel = null;
+
 let temporaryAvatarFile = null;
 
 let codeCooldown = 0;
 let codeTimer = null;
+
+let messageSendTimes = [];
+
 
 /* =====================================================
    DOM
@@ -1026,6 +1251,7 @@ const imageButton =
 const imageInput =
     document.getElementById("imageInput");
 
+
 /* =====================================================
    页面切换
 ===================================================== */
@@ -1039,6 +1265,7 @@ function hideAllPages() {
     chatPage.style.display = "none";
 }
 
+
 function openLoginPage() {
 
     hideAllPages();
@@ -1049,6 +1276,7 @@ function openLoginPage() {
         .getElementById("loginEmail")
         .focus();
 }
+
 
 function openRegisterPage() {
 
@@ -1061,6 +1289,7 @@ function openRegisterPage() {
         .focus();
 }
 
+
 function openProfilePage() {
 
     hideAllPages();
@@ -1068,12 +1297,14 @@ function openProfilePage() {
     profilePage.style.display = "flex";
 }
 
+
 function backToHome() {
 
     hideAllPages();
 
     homePage.style.display = "flex";
 }
+
 
 /* =====================================================
    错误
@@ -1085,8 +1316,10 @@ function showError(id, text) {
         document.getElementById(id);
 
     box.textContent = text;
+
     box.style.display = "block";
 }
+
 
 function hideMessage(id) {
 
@@ -1094,8 +1327,10 @@ function hideMessage(id) {
         document.getElementById(id);
 
     box.style.display = "none";
+
     box.textContent = "";
 }
+
 
 function showSuccess(id, text) {
 
@@ -1103,8 +1338,10 @@ function showSuccess(id, text) {
         document.getElementById(id);
 
     box.textContent = text;
+
     box.style.display = "block";
 }
+
 
 /* =====================================================
    初始化
@@ -1117,7 +1354,10 @@ async function initializeApp() {
     } =
         await supabaseClient.auth.getSession();
 
-    if (data && data.session) {
+    if (
+        data &&
+        data.session
+    ) {
 
         currentUser =
             data.session.user;
@@ -1125,24 +1365,34 @@ async function initializeApp() {
         await loadCurrentProfile();
 
         if (currentProfile) {
-            openChat();
+
+            await openChat();
+
         } else {
+
             openProfilePage();
         }
 
     } else {
 
         hideAllPages();
+
         homePage.style.display = "flex";
     }
+
 
     supabaseClient.auth.onAuthStateChange(
         async function(event, session) {
 
-            if (event === "SIGNED_OUT") {
+            if (
+                event === "SIGNED_OUT"
+            ) {
 
                 currentUser = null;
+
                 currentProfile = null;
+
+                messageSendTimes = [];
 
                 if (realtimeChannel) {
 
@@ -1157,6 +1407,7 @@ async function initializeApp() {
                 backToHome();
             }
 
+
             if (
                 session &&
                 event === "SIGNED_IN"
@@ -1169,6 +1420,7 @@ async function initializeApp() {
         }
     );
 }
+
 
 /* =====================================================
    登录
@@ -1189,6 +1441,7 @@ async function loginUser() {
             .getElementById("loginPassword")
             .value;
 
+
     if (!email) {
 
         showError(
@@ -1198,6 +1451,7 @@ async function loginUser() {
 
         return;
     }
+
 
     if (!password) {
 
@@ -1209,25 +1463,34 @@ async function loginUser() {
         return;
     }
 
+
     const button =
         document.getElementById(
             "loginButton"
         );
 
     button.disabled = true;
+
     button.textContent = "登录中...";
+
 
     const {
         data,
         error
     } =
         await supabaseClient.auth.signInWithPassword({
+
             email: email,
+
             password: password
+
         });
 
+
     button.disabled = false;
+
     button.textContent = "登录";
+
 
     if (error) {
 
@@ -1238,15 +1501,18 @@ async function loginUser() {
 
         showError(
             "loginError",
-            "登录失败：" + error.message
+            "登录失败：" +
+            error.message
         );
 
         return;
     }
 
+
     currentUser = data.user;
 
     await loadCurrentProfile();
+
 
     if (!currentProfile) {
 
@@ -1255,8 +1521,10 @@ async function loginUser() {
         return;
     }
 
-    openChat();
+
+    await openChat();
 }
+
 
 /* =====================================================
    发送验证码
@@ -1265,7 +1533,9 @@ async function loginUser() {
 async function sendRegisterCode() {
 
     hideMessage("registerError");
+
     hideMessage("registerSuccess");
+
 
     if (codeCooldown > 0) {
 
@@ -1279,6 +1549,7 @@ async function sendRegisterCode() {
         return;
     }
 
+
     const email =
         document
             .getElementById("registerEmail")
@@ -1290,6 +1561,7 @@ async function sendRegisterCode() {
             .getElementById("registerPassword")
             .value;
 
+
     if (!email) {
 
         showError(
@@ -1299,6 +1571,7 @@ async function sendRegisterCode() {
 
         return;
     }
+
 
     if (password.length < 6) {
 
@@ -1310,13 +1583,16 @@ async function sendRegisterCode() {
         return;
     }
 
+
     const button =
         document.getElementById(
             "sendCodeButton"
         );
 
     button.disabled = true;
+
     button.textContent = "发送中...";
+
 
     const {
         error
@@ -1331,6 +1607,7 @@ async function sendRegisterCode() {
 
         });
 
+
     if (error) {
 
         console.error(
@@ -1339,7 +1616,9 @@ async function sendRegisterCode() {
         );
 
         button.disabled = false;
-        button.textContent = "获取验证码";
+
+        button.textContent =
+            "获取验证码";
 
         showError(
             "registerError",
@@ -1350,16 +1629,18 @@ async function sendRegisterCode() {
         return;
     }
 
+
     showSuccess(
         "registerSuccess",
-        "8位验证码已经发送到你的 QQ 邮箱，请检查邮箱。"
+        "8位验证码已经发送到你的邮箱，请检查邮箱。"
     );
 
     startCodeCooldown();
 }
 
+
 /* =====================================================
-   60秒倒计时
+   验证码倒计时
 ===================================================== */
 
 function startCodeCooldown() {
@@ -1369,19 +1650,24 @@ function startCodeCooldown() {
             "sendCodeButton"
         );
 
+
     codeCooldown = 60;
 
     button.disabled = true;
 
     button.textContent =
-        codeCooldown + " 秒后重试";
+        codeCooldown +
+        " 秒后重试";
+
 
     clearInterval(codeTimer);
+
 
     codeTimer =
         setInterval(function() {
 
             codeCooldown--;
+
 
             if (codeCooldown <= 0) {
 
@@ -1397,6 +1683,7 @@ function startCodeCooldown() {
                 return;
             }
 
+
             button.textContent =
                 codeCooldown +
                 " 秒后重试";
@@ -1404,13 +1691,15 @@ function startCodeCooldown() {
         }, 1000);
 }
 
+
 /* =====================================================
-   验证8位验证码
+   验证验证码
 ===================================================== */
 
 async function verifyRegisterCode() {
 
     hideMessage("registerError");
+
 
     const email =
         document
@@ -1429,6 +1718,7 @@ async function verifyRegisterCode() {
             .value
             .trim();
 
+
     if (!email) {
 
         showError(
@@ -1438,6 +1728,7 @@ async function verifyRegisterCode() {
 
         return;
     }
+
 
     if (password.length < 6) {
 
@@ -1449,6 +1740,7 @@ async function verifyRegisterCode() {
         return;
     }
 
+
     if (!/^\d{8}$/.test(token)) {
 
         showError(
@@ -1459,13 +1751,16 @@ async function verifyRegisterCode() {
         return;
     }
 
+
     const button =
         document.getElementById(
             "verifyButton"
         );
 
     button.disabled = true;
+
     button.textContent = "验证中...";
+
 
     const {
         data,
@@ -1481,6 +1776,7 @@ async function verifyRegisterCode() {
 
         });
 
+
     if (error) {
 
         console.error(
@@ -1489,33 +1785,37 @@ async function verifyRegisterCode() {
         );
 
         button.disabled = false;
-        button.textContent = "验证并继续";
 
-        /*
-           不直接显示 Supabase 的
-           "expired or invalid" 原始错误，
-           避免用户输入错误时误以为一定是超时。
-        */
+        button.textContent =
+            "验证并继续";
 
         showError(
             "registerError",
-            "验证码错误，请检查你输入的8位验证码是否正确。"
+            "验证码错误，请检查后重新输入。"
         );
 
         return;
     }
 
+
     currentUser = data.user;
+
 
     const {
         error: passwordError
     } =
         await supabaseClient.auth.updateUser({
+
             password: password
+
         });
 
+
     button.disabled = false;
-    button.textContent = "验证并继续";
+
+    button.textContent =
+        "验证并继续";
+
 
     if (passwordError) {
 
@@ -1533,78 +1833,111 @@ async function verifyRegisterCode() {
         return;
     }
 
+
     openProfilePage();
 }
+
 
 /* =====================================================
    头像预览
 ===================================================== */
 
-function previewAvatar(event) {
-
-    const file =
-        event.target.files[0];
+function previewAvatar(file) {
 
     if (!file) {
         return;
     }
 
+
     const allowedTypes = [
+
         "image/jpeg",
         "image/png",
         "image/gif",
         "image/webp"
+
     ];
 
-    if (!allowedTypes.includes(file.type)) {
+
+    if (
+        !allowedTypes.includes(
+            file.type
+        )
+    ) {
 
         alert(
             "头像只支持 JPG、PNG、GIF、WEBP。"
         );
 
-        event.target.value = "";
-
         return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
+
+    if (
+        file.size >
+        MAX_AVATAR_SIZE
+    ) {
 
         alert(
             "头像不能超过 5MB。"
         );
 
-        event.target.value = "";
-
         return;
     }
 
+
     temporaryAvatarFile = file;
+
 
     const url =
         URL.createObjectURL(file);
+
 
     const preview =
         document.getElementById(
             "avatarPreview"
         );
 
+
     const defaultAvatar =
         document.getElementById(
             "avatarDefault"
         );
 
+
     preview.src = url;
-    preview.style.display = "block";
-    defaultAvatar.style.display = "none";
+
+    preview.style.display =
+        "block";
+
+    defaultAvatar.style.display =
+        "none";
 }
 
+
+document
+    .getElementById("avatarInput")
+    .addEventListener(
+        "change",
+        function() {
+
+            const file =
+                this.files[0];
+
+            previewAvatar(file);
+
+        }
+    );
+
+
 /* =====================================================
-   完善资料
+   创建资料
 ===================================================== */
 
 async function finishProfile() {
 
     hideMessage("profileError");
+
 
     if (!currentUser) {
 
@@ -1616,11 +1949,13 @@ async function finishProfile() {
         return;
     }
 
+
     const nickname =
         document
             .getElementById("profileNickname")
             .value
             .trim();
+
 
     if (!nickname) {
 
@@ -1632,15 +1967,32 @@ async function finishProfile() {
         return;
     }
 
+
+    if (nickname.length > 30) {
+
+        showError(
+            "profileError",
+            "昵称不能超过30个字符。"
+        );
+
+        return;
+    }
+
+
     const button =
         document.getElementById(
             "finishProfileButton"
         );
 
-    button.disabled = true;
-    button.textContent = "正在创建资料...";
 
-    let avatarUrl = null;
+    button.disabled = true;
+
+    button.textContent =
+        "正在创建资料...";
+
+
+    let avatarPath = null;
+
 
     try {
 
@@ -1652,12 +2004,14 @@ async function finishProfile() {
                     .pop()
                     .toLowerCase();
 
+
             const fileName =
                 currentUser.id +
                 "_" +
                 Date.now() +
                 "." +
                 extension;
+
 
             const {
                 error: uploadError
@@ -1669,11 +2023,14 @@ async function finishProfile() {
                         temporaryAvatarFile,
                         {
                             cacheControl: "3600",
+
                             upsert: false,
+
                             contentType:
                                 temporaryAvatarFile.type
                         }
                     );
+
 
             if (uploadError) {
 
@@ -1683,18 +2040,10 @@ async function finishProfile() {
                 );
             }
 
-            const {
-                data: publicData
-            } =
-                supabaseClient.storage
-                    .from(AVATAR_BUCKET)
-                    .getPublicUrl(
-                        fileName
-                    );
 
-            avatarUrl =
-                publicData.publicUrl;
+            avatarPath = fileName;
         }
+
 
         const {
             error: profileError
@@ -1703,13 +2052,17 @@ async function finishProfile() {
                 .from(PROFILE_TABLE)
                 .upsert({
 
-                    id: currentUser.id,
+                    id:
+                        currentUser.id,
 
-                    nickname: nickname,
+                    nickname:
+                        nickname,
 
-                    avatar_url: avatarUrl
+                    avatar_url:
+                        avatarPath
 
                 });
+
 
         if (profileError) {
 
@@ -1719,19 +2072,26 @@ async function finishProfile() {
             );
         }
 
+
         currentProfile = {
 
-            id: currentUser.id,
+            id:
+                currentUser.id,
 
-            nickname: nickname,
+            nickname:
+                nickname,
 
-            avatar_url: avatarUrl
+            avatar_url:
+                avatarPath
 
         };
 
+
         temporaryAvatarFile = null;
 
-        openChat();
+
+        await openChat();
+
 
     } catch (error) {
 
@@ -1745,6 +2105,7 @@ async function finishProfile() {
             error.message
         );
 
+
     } finally {
 
         button.disabled = false;
@@ -1753,6 +2114,7 @@ async function finishProfile() {
             "完成注册并进入聊天";
     }
 }
+
 
 /* =====================================================
    获取当前用户资料
@@ -1763,6 +2125,7 @@ async function loadCurrentProfile() {
     if (!currentUser) {
         return null;
     }
+
 
     const {
         data,
@@ -1779,6 +2142,7 @@ async function loadCurrentProfile() {
             )
             .maybeSingle();
 
+
     if (error) {
 
         console.error(
@@ -1789,11 +2153,90 @@ async function loadCurrentProfile() {
         return null;
     }
 
+
     currentProfile =
         data || null;
 
+
     return currentProfile;
 }
+
+
+/* =====================================================
+   创建头像 Signed URL
+===================================================== */
+
+async function getSignedAvatarUrl(path) {
+
+    if (!path) {
+        return null;
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.storage
+            .from(AVATAR_BUCKET)
+            .createSignedUrl(
+                path,
+                3600
+            );
+
+
+    if (error) {
+
+        console.error(
+            "头像URL生成失败：",
+            error
+        );
+
+        return null;
+    }
+
+
+    return data.signedUrl;
+}
+
+
+/* =====================================================
+   创建聊天图片 Signed URL
+===================================================== */
+
+async function getSignedImageUrl(path) {
+
+    if (!path) {
+        return null;
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.storage
+            .from(CHAT_IMAGE_BUCKET)
+            .createSignedUrl(
+                path,
+                3600
+            );
+
+
+    if (error) {
+
+        console.error(
+            "图片URL生成失败：",
+            error
+        );
+
+        return null;
+    }
+
+
+    return data.signedUrl;
+}
+
 
 /* =====================================================
    打开聊天室
@@ -1808,10 +2251,12 @@ async function openChat() {
         return;
     }
 
+
     if (!currentProfile) {
 
         await loadCurrentProfile();
     }
+
 
     if (!currentProfile) {
 
@@ -1820,42 +2265,68 @@ async function openChat() {
         return;
     }
 
+
     hideAllPages();
 
-    chatPage.style.display = "block";
 
-    updateCurrentUserUI();
+    chatPage.style.display =
+        "block";
+
+
+    await updateCurrentUserUI();
 
     await loadMessages();
 
     subscribeToMessages();
 
+
     messageInput.focus();
 }
 
+
 /* =====================================================
-   当前用户
+   当前用户 UI
 ===================================================== */
 
-function updateCurrentUserUI() {
+async function updateCurrentUserUI() {
 
     const name =
         document.getElementById(
             "currentUserName"
         );
 
+
     const avatar =
         document.getElementById(
             "currentUserAvatar"
         );
 
+
     name.textContent =
         currentProfile.nickname;
 
-    if (currentProfile.avatar_url) {
 
-        avatar.src =
-            currentProfile.avatar_url;
+    if (
+        currentProfile.avatar_url
+    ) {
+
+        const url =
+            await getSignedAvatarUrl(
+                currentProfile.avatar_url
+            );
+
+
+        if (url) {
+
+            avatar.src = url;
+
+        } else {
+
+            avatar.src =
+                createDefaultAvatar(
+                    currentProfile.nickname
+                );
+        }
 
     } else {
 
@@ -1865,6 +2336,7 @@ function updateCurrentUserUI() {
             );
     }
 }
+
 
 /* =====================================================
    历史消息
@@ -1879,7 +2351,7 @@ async function loadMessages() {
         await supabaseClient
             .from(MESSAGE_TABLE)
             .select(
-                "id,nickname,message,created_at"
+                "id,user_id,nickname,message,image_url,created_at"
             )
             .order(
                 "created_at",
@@ -1888,6 +2360,7 @@ async function loadMessages() {
                 }
             );
 
+
     if (error) {
 
         console.error(
@@ -1895,25 +2368,36 @@ async function loadMessages() {
             error
         );
 
-        messages.innerHTML = `
-            <div class="empty">
-                读取聊天记录失败
-                <br>
-                ${escapeHtml(error.message)}
-            </div>
-        `;
+        messages.replaceChildren();
+
+        const empty =
+            document.createElement("div");
+
+        empty.className = "empty";
+
+        empty.textContent =
+            "读取聊天记录失败：" +
+            error.message;
+
+        messages.appendChild(empty);
 
         return;
     }
 
-    messages.innerHTML = "";
 
-    if (!data || data.length === 0) {
+    messages.replaceChildren();
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
 
         showEmpty();
 
         return;
     }
+
 
     const {
         data: profiles
@@ -1921,45 +2405,42 @@ async function loadMessages() {
         await supabaseClient
             .from(PROFILE_TABLE)
             .select(
-                "nickname,avatar_url"
+                "id,nickname,avatar_url"
             );
 
-    const profileMap = new Map();
+
+    const profileMap =
+        new Map();
+
 
     if (profiles) {
 
-        profiles.forEach(
-            function(profile) {
+        for (
+            const profile of profiles
+        ) {
 
-                if (
-                    !profileMap.has(
-                        profile.nickname
-                    )
-                ) {
+            profileMap.set(
+                profile.id,
+                profile
+            );
+        }
+    }
 
-                    profileMap.set(
-                        profile.nickname,
-                        profile
-                    );
-                }
 
-            }
+    for (
+        const message of data
+    ) {
+
+        await renderMessage(
+            message,
+            profileMap
         );
     }
 
-    data.forEach(
-        function(message) {
-
-            renderMessage(
-                message,
-                profileMap
-            );
-
-        }
-    );
 
     scrollToBottom();
 }
+
 
 /* =====================================================
    空消息
@@ -1967,18 +2448,41 @@ async function loadMessages() {
 
 function showEmpty() {
 
-    messages.innerHTML = `
-        <div
-            class="empty"
-            id="emptyMessage">
+    messages.replaceChildren();
 
-            暂时还没有消息
-            <br>
-            成为第一个发言的人吧！
 
-        </div>
-    `;
+    const empty =
+        document.createElement("div");
+
+
+    empty.className =
+        "empty";
+
+    empty.id =
+        "emptyMessage";
+
+
+    empty.textContent =
+        "暂时还没有消息";
+
+
+    const br =
+        document.createElement("br");
+
+
+    empty.appendChild(br);
+
+
+    empty.appendChild(
+        document.createTextNode(
+            "成为第一个发言的人吧！"
+        )
+    );
+
+
+    messages.appendChild(empty);
 }
+
 
 function hideEmpty() {
 
@@ -1987,29 +2491,13 @@ function hideEmpty() {
             "emptyMessage"
         );
 
+
     if (empty) {
+
         empty.remove();
     }
 }
 
-/* =====================================================
-   图片判断
-===================================================== */
-
-function isImageUrl(value) {
-
-    if (!value) {
-        return false;
-    }
-
-    const text =
-        String(value).trim();
-
-    return (
-        text.startsWith("http://") ||
-        text.startsWith("https://")
-    );
-}
 
 /* =====================================================
    默认头像
@@ -2022,7 +2510,9 @@ function createDefaultAvatar(name) {
             .charAt(0)
             .toUpperCase();
 
-    const svg = `
+
+    const svg =
+        `
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="80"
@@ -2043,12 +2533,13 @@ function createDefaultAvatar(name) {
                 font-size="32"
                 font-family="Arial">
 
-                ${escapeHtml(letter)}
+                ${escapeXml(letter)}
 
             </text>
 
         </svg>
-    `;
+        `;
+
 
     return (
         "data:image/svg+xml;charset=UTF-8," +
@@ -2056,41 +2547,64 @@ function createDefaultAvatar(name) {
     );
 }
 
+
+function escapeXml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
 /* =====================================================
    显示消息
 ===================================================== */
 
-function renderMessage(
+async function renderMessage(
     message,
     profileMap = null
 ) {
 
     hideEmpty();
 
+
     const row =
         document.createElement("div");
 
-    row.className = "message";
+
+    row.className =
+        "message";
+
 
     const isMine =
-        currentProfile &&
-        message.nickname ===
-        currentProfile.nickname;
+        currentUser &&
+        message.user_id ===
+        currentUser.id;
+
 
     if (isMine) {
 
         row.classList.add("mine");
     }
 
+
     let profile = null;
 
-    if (profileMap) {
+
+    if (
+        profileMap &&
+        message.user_id
+    ) {
 
         profile =
             profileMap.get(
-                message.nickname
+                message.user_id
             );
     }
+
 
     if (
         isMine &&
@@ -2101,19 +2615,42 @@ function renderMessage(
             currentProfile;
     }
 
+
     const avatar =
         document.createElement("img");
 
+
     avatar.className =
         "message-avatar";
+
+
+    avatar.alt =
+        "头像";
+
 
     if (
         profile &&
         profile.avatar_url
     ) {
 
-        avatar.src =
-            profile.avatar_url;
+        const avatarUrl =
+            await getSignedAvatarUrl(
+                profile.avatar_url
+            );
+
+
+        if (avatarUrl) {
+
+            avatar.src =
+                avatarUrl;
+
+        } else {
+
+            avatar.src =
+                createDefaultAvatar(
+                    message.nickname
+                );
+        }
 
     } else {
 
@@ -2123,113 +2660,179 @@ function renderMessage(
             );
     }
 
-    avatar.alt = "头像";
 
     const body =
         document.createElement("div");
 
+
     body.className =
         "message-body";
+
 
     const name =
         document.createElement("div");
 
+
     name.className =
         "nickname";
+
+
+    /*
+       重要安全措施：
+
+       用户昵称永远使用 textContent。
+       不使用 innerHTML。
+    */
 
     name.textContent =
         message.nickname ||
         "匿名";
 
+
     const bubble =
         document.createElement("div");
+
 
     bubble.className =
         "bubble";
 
+
+    /*
+       重要：
+
+       只有 image_url 有值时才显示图片。
+
+       message 字段永远只是文字。
+
+       即使 message 是：
+       https://evil.com/xss
+
+       也只会显示文字。
+    */
+
     if (
-        isImageUrl(
-            message.message
-        )
+        message.image_url
     ) {
 
         bubble.classList.add(
             "image-bubble"
         );
 
+
         const img =
             document.createElement("img");
+
 
         img.className =
             "chat-image";
 
-        img.src =
-            message.message;
 
         img.alt =
             "聊天图片";
 
+
         img.loading =
             "lazy";
 
-        img.onclick =
-            function() {
 
-                openImageViewer(
-                    message.message
-                );
+        const imageUrl =
+            await getSignedImageUrl(
+                message.image_url
+            );
 
-            };
 
-        img.onerror =
-            function() {
+        if (imageUrl) {
 
-                img.alt =
-                    "图片无法加载";
+            img.src =
+                imageUrl;
 
-                img.style.display =
-                    "none";
 
-                const text =
-                    document.createElement("div");
+            img.onclick =
+                function() {
 
-                text.textContent =
-                    message.message;
+                    openImageViewer(
+                        imageUrl
+                    );
 
-                bubble.appendChild(text);
-            };
+                };
 
-        bubble.appendChild(img);
+
+            img.onerror =
+                function() {
+
+                    bubble.replaceChildren();
+
+                    const text =
+                        document.createElement(
+                            "div"
+                        );
+
+                    text.textContent =
+                        "图片无法加载";
+
+                    bubble.appendChild(
+                        text
+                    );
+                };
+
+
+            bubble.appendChild(img);
+
+        } else {
+
+            bubble.textContent =
+                "图片无法加载";
+        }
+
 
     } else {
+
+        /*
+           普通消息：
+
+           永远使用 textContent。
+
+           不使用 innerHTML。
+        */
 
         bubble.textContent =
             message.message ||
             "";
     }
 
+
     const time =
         document.createElement("div");
 
+
     time.className =
         "time";
+
 
     time.textContent =
         formatTime(
             message.created_at
         );
 
+
     body.appendChild(name);
+
     body.appendChild(bubble);
+
     body.appendChild(time);
 
+
     row.appendChild(avatar);
+
     row.appendChild(body);
+
 
     messages.appendChild(row);
 
+
     scrollToBottom();
 }
+
 
 /* =====================================================
    时间
@@ -2241,12 +2844,20 @@ function formatTime(value) {
         return "";
     }
 
+
     const date =
         new Date(value);
 
-    if (isNaN(date.getTime())) {
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
         return "";
     }
+
 
     return date.toLocaleString(
         "zh-CN",
@@ -2258,6 +2869,7 @@ function formatTime(value) {
         }
     );
 }
+
 
 /* =====================================================
    滚动
@@ -2272,9 +2884,50 @@ function scrollToBottom() {
                 messages.scrollHeight;
 
         },
-        50
+        30
     );
 }
+
+
+/* =====================================================
+   发送频率限制
+===================================================== */
+
+function canSendMessage() {
+
+    const now =
+        Date.now();
+
+
+    const oneMinuteAgo =
+        now - 60 * 1000;
+
+
+    messageSendTimes =
+        messageSendTimes.filter(
+            function(time) {
+
+                return time >
+                    oneMinuteAgo;
+            }
+        );
+
+
+    if (
+        messageSendTimes.length >=
+        MAX_MESSAGES_PER_MINUTE
+    ) {
+
+        return false;
+    }
+
+
+    messageSendTimes.push(now);
+
+
+    return true;
+}
+
 
 /* =====================================================
    发送文字
@@ -2292,69 +2945,125 @@ async function sendMessage() {
         return;
     }
 
+
     const text =
         messageInput.value.trim();
 
+
     if (!text) {
+
         return;
     }
 
+
+    /*
+       1500 字限制
+    */
+
+    if (
+        text.length >
+        MAX_MESSAGE_LENGTH
+    ) {
+
+        alert(
+            "消息不能超过 1500 个字符。"
+        );
+
+        return;
+    }
+
+
+    /*
+       每分钟最多40条
+    */
+
+    if (!canSendMessage()) {
+
+        alert(
+            "发送太频繁了，请等待一分钟后再继续发送。"
+        );
+
+        return;
+    }
+
+
     sendButton.disabled = true;
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from(MESSAGE_TABLE)
-            .insert({
 
-                nickname:
-                    currentProfile.nickname,
+    try {
 
-                message:
-                    text
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from(MESSAGE_TABLE)
+                .insert({
 
-            })
-            .select(
-                "id,nickname,message,created_at"
-            )
-            .single();
+                    user_id:
+                        currentUser.id,
 
-    sendButton.disabled = false;
+                    nickname:
+                        currentProfile.nickname,
 
-    if (error) {
+                    message:
+                        text,
+
+                    image_url:
+                        null
+
+                })
+                .select(
+                    "id,user_id,nickname,message,image_url,created_at"
+                )
+                .single();
+
+
+        if (error) {
+
+            throw error;
+        }
+
+
+        messageInput.value = "";
+
+
+        if (data) {
+
+            await renderMessage(
+                data,
+                new Map([
+                    [
+                        currentUser.id,
+                        currentProfile
+                    ]
+                ])
+            );
+        }
+
+
+        messageInput.focus();
+
+
+    } catch (error) {
 
         console.error(
             "发送消息失败：",
             error
         );
 
+
         alert(
             "发送失败：\n" +
             error.message
         );
 
-        return;
+    } finally {
+
+        sendButton.disabled = false;
     }
-
-    messageInput.value = "";
-
-    if (data) {
-
-        renderMessage(
-            data,
-            new Map([
-                [
-                    currentProfile.nickname,
-                    currentProfile
-                ]
-            ])
-        );
-    }
-
-    messageInput.focus();
 }
+
 
 /* =====================================================
    图片选择
@@ -2367,15 +3076,21 @@ imageInput.addEventListener(
         const file =
             this.files[0];
 
+
         if (!file) {
+
             return;
         }
 
+
         await uploadImage(file);
 
+
         this.value = "";
+
     }
 );
+
 
 /* =====================================================
    上传聊天图片
@@ -2393,26 +3108,35 @@ async function uploadImage(file) {
         return;
     }
 
-    const maxSize =
-        10 * 1024 * 1024;
 
-    if (file.size > maxSize) {
+    if (
+        file.size >
+        MAX_IMAGE_SIZE
+    ) {
 
         alert(
-            "图片太大，请选择 10MB 以下的图片。"
+            "图片太大，请选择10MB以下的图片。"
         );
 
         return;
     }
 
+
     const allowedTypes = [
+
         "image/jpeg",
         "image/png",
         "image/gif",
         "image/webp"
+
     ];
 
-    if (!allowedTypes.includes(file.type)) {
+
+    if (
+        !allowedTypes.includes(
+            file.type
+        )
+    ) {
 
         alert(
             "只支持 JPG、PNG、GIF、WEBP 图片。"
@@ -2421,8 +3145,26 @@ async function uploadImage(file) {
         return;
     }
 
+
+    /*
+       图片也使用发送频率限制。
+    */
+
+    if (!canSendMessage()) {
+
+        alert(
+            "发送太频繁了，请稍后再试。"
+        );
+
+        return;
+    }
+
+
     imageButton.disabled = true;
-    imageButton.textContent = "⏳";
+
+    imageButton.textContent =
+        "⏳";
+
 
     try {
 
@@ -2432,14 +3174,24 @@ async function uploadImage(file) {
                 .pop()
                 .toLowerCase();
 
+
+        /*
+           文件名使用当前用户ID。
+
+           避免单纯依靠昵称。
+        */
+
         const fileName =
+            currentUser.id +
+            "_" +
             Date.now() +
             "_" +
             Math.random()
                 .toString(36)
-                .substring(2, 10) +
+                .slice(2, 10) +
             "." +
             extension;
+
 
         const {
             error: uploadError
@@ -2450,28 +3202,31 @@ async function uploadImage(file) {
                     fileName,
                     file,
                     {
-                        cacheControl: "3600",
-                        upsert: false,
+                        cacheControl:
+                            "3600",
+
+                        upsert:
+                            false,
+
                         contentType:
                             file.type
                     }
                 );
 
+
         if (uploadError) {
+
             throw uploadError;
         }
 
-        const {
-            data: urlData
-        } =
-            supabaseClient.storage
-                .from(CHAT_IMAGE_BUCKET)
-                .getPublicUrl(
-                    fileName
-                );
 
-        const imageUrl =
-            urlData.publicUrl;
+        /*
+           注意：
+
+           不把 public URL 保存进数据库。
+
+           只保存 Storage path。
+        */
 
         const {
             data,
@@ -2481,34 +3236,44 @@ async function uploadImage(file) {
                 .from(MESSAGE_TABLE)
                 .insert({
 
+                    user_id:
+                        currentUser.id,
+
                     nickname:
                         currentProfile.nickname,
 
                     message:
-                        imageUrl
+                        null,
+
+                    image_url:
+                        fileName
 
                 })
                 .select(
-                    "id,nickname,message,created_at"
+                    "id,user_id,nickname,message,image_url,created_at"
                 )
                 .single();
 
+
         if (error) {
+
             throw error;
         }
 
+
         if (data) {
 
-            renderMessage(
+            await renderMessage(
                 data,
                 new Map([
                     [
-                        currentProfile.nickname,
+                        currentUser.id,
                         currentProfile
                     ]
                 ])
             );
         }
+
 
     } catch (error) {
 
@@ -2516,6 +3281,7 @@ async function uploadImage(file) {
             "图片发送失败：",
             error
         );
+
 
         alert(
             "图片发送失败：\n" +
@@ -2525,9 +3291,12 @@ async function uploadImage(file) {
     } finally {
 
         imageButton.disabled = false;
-        imageButton.textContent = "📷";
+
+        imageButton.textContent =
+            "📷";
     }
 }
+
 
 /* =====================================================
    Realtime
@@ -2543,6 +3312,7 @@ function subscribeToMessages() {
             );
     }
 
+
     realtimeChannel =
         supabaseClient
 
@@ -2551,64 +3321,78 @@ function subscribeToMessages() {
             )
 
             .on(
+
                 "postgres_changes",
+
                 {
                     event: "INSERT",
+
                     schema: "public",
+
                     table: MESSAGE_TABLE
                 },
 
                 async function(payload) {
 
                     /*
-                       自己的消息已经立即显示，
-                       所以不重复显示。
+                       自己发送的消息已经
+                       立即显示，不重复显示。
                     */
 
                     if (
-                        currentProfile &&
-                        payload.new.nickname ===
-                        currentProfile.nickname
+                        currentUser &&
+                        payload.new.user_id ===
+                        currentUser.id
                     ) {
 
                         return;
                     }
 
+
                     let profileMap =
                         new Map();
 
-                    const {
-                        data
-                    } =
-                        await supabaseClient
-                            .from(PROFILE_TABLE)
-                            .select(
-                                "nickname,avatar_url"
-                            )
-                            .eq(
-                                "nickname",
-                                payload.new.nickname
-                            );
 
-                    if (data) {
+                    if (
+                        payload.new.user_id
+                    ) {
 
-                        data.forEach(
-                            function(profile) {
-
-                                profileMap.set(
-                                    profile.nickname,
-                                    profile
+                        const {
+                            data
+                        } =
+                            await supabaseClient
+                                .from(PROFILE_TABLE)
+                                .select(
+                                    "id,nickname,avatar_url"
+                                )
+                                .eq(
+                                    "id",
+                                    payload.new.user_id
                                 );
 
-                            }
-                        );
+
+                        if (data) {
+
+                            data.forEach(
+                                function(profile) {
+
+                                    profileMap.set(
+                                        profile.id,
+                                        profile
+                                    );
+
+                                }
+                            );
+                        }
                     }
 
-                    renderMessage(
+
+                    await renderMessage(
                         payload.new,
                         profileMap
                     );
                 }
+
             )
 
             .subscribe(
@@ -2622,6 +3406,7 @@ function subscribeToMessages() {
                 }
             );
 }
+
 
 /* =====================================================
    退出
@@ -2639,8 +3424,10 @@ async function logoutUser() {
         realtimeChannel = null;
     }
 
+
     await supabaseClient.auth.signOut();
 }
+
 
 /* =====================================================
    图片查看器
@@ -2653,51 +3440,70 @@ function openImageViewer(url) {
             "imageViewer"
         );
 
+
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
-    viewerImage.src = url;
 
-    viewer.style.display = "flex";
+    viewerImage.src =
+        url;
+
+
+    viewer.style.display =
+        "flex";
 }
+
 
 function closeImageViewer(event) {
 
     if (event) {
+
         event.stopPropagation();
     }
+
 
     const viewer =
         document.getElementById(
             "imageViewer"
         );
 
+
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
-    viewer.style.display = "none";
 
-    viewerImage.src = "";
+    viewer.style.display =
+        "none";
+
+
+    viewerImage.src =
+        "";
 }
 
+
 /* =====================================================
-   HTML 安全
+   HTML / XML 安全
 ===================================================== */
 
 function escapeHtml(value) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.textContent =
         value || "";
 
+
     return div.innerHTML;
 }
+
 
 /* =====================================================
    回车发送
@@ -2720,8 +3526,9 @@ messageInput.addEventListener(
     }
 );
 
+
 /* =====================================================
-   8位验证码输入限制
+   验证码输入限制
 ===================================================== */
 
 document
@@ -2737,6 +3544,7 @@ document
 
         }
     );
+
 
 /* =====================================================
    启动
