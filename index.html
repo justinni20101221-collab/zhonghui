@@ -3,31 +3,64 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>My Chat</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
 
 body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:#0b0d12;
     color:#fff;
-    min-height:100vh
 }
 
-button,input{font:inherit}
-button{cursor:pointer}
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================
+   首页
+========================= */
 
 #homePage{
-    min-height:100vh;
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     padding:20px;
-    background:radial-gradient(circle at top left,rgba(88,101,242,.25),transparent 40%),#0b0d12
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(88,101,242,.25),
+            transparent 40%
+        ),
+        #0b0d12;
 }
 
 .home-card{
@@ -38,31 +71,36 @@ button{cursor:pointer}
     border-radius:18px;
     background:#15171d;
     border:1px solid #252832;
-    box-shadow:0 25px 80px rgba(0,0,0,.45)
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
 .logo{
     width:82px;
     height:82px;
     margin:0 auto 25px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border-radius:22px;
+
     font-size:38px;
+
     background:#5865f2;
-    box-shadow:0 15px 35px rgba(88,101,242,.35)
+
+    box-shadow:0 15px 35px rgba(88,101,242,.35);
 }
 
 .home-card h1{
     font-size:40px;
-    margin-bottom:12px
+    margin-bottom:12px;
 }
 
 .home-card p{
     color:#a6a8b0;
     line-height:1.7;
-    margin-bottom:30px
+    margin-bottom:30px;
 }
 
 .primary-button{
@@ -70,661 +108,1272 @@ button{cursor:pointer}
     border:none;
     border-radius:4px;
     padding:14px 20px;
+
     color:white;
     font-weight:700;
+
     background:#5865f2;
-    transition:.2s
+
+    transition:background .15s;
 }
 
-.primary-button:hover{background:#4752c4}
-.primary-button:disabled{opacity:.55;cursor:not-allowed}
+.primary-button:hover{
+    background:#4752c4;
+}
+
+.primary-button:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+/* =========================
+   登录 / 注册页面
+========================= */
 
 .page{
     position:fixed;
     inset:0;
+
+    width:100%;
+    height:100%;
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
-    background:#0b0d12
+
+    overflow:auto;
+
+    background:#0b0d12;
 }
 
 .auth-card{
     width:100%;
     max-width:430px;
+
     padding:32px;
+
     border-radius:8px;
+
     background:#15171d;
-    box-shadow:0 20px 60px rgba(0,0,0,.45)
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
 }
 
 .auth-card h1{
     text-align:center;
     font-size:25px;
-    margin-bottom:8px
+    margin-bottom:8px;
 }
 
 .auth-subtitle{
     text-align:center;
     color:#a6a8b0;
     font-size:14px;
-    margin-bottom:25px
+    margin-bottom:25px;
 }
 
-.form-group{margin-bottom:18px}
+.form-group{
+    margin-bottom:18px;
+}
 
 .form-group label{
     display:block;
+
     font-size:12px;
     font-weight:700;
+
     color:#b5bac1;
-    margin-bottom:8px
+
+    margin-bottom:8px;
 }
 
 .form-input{
     width:100%;
+
     border:none;
     outline:none;
+
     padding:13px;
+
     border-radius:4px;
+
     color:white;
     background:#0f1116;
-    border:1px solid #252832
+
+    border:1px solid #252832;
 }
 
-.form-input:focus{border-color:#5865f2}
+.form-input:focus{
+    border-color:#5865f2;
+}
 
 .auth-link{
     text-align:center;
+
     margin-top:18px;
+
     font-size:14px;
-    color:#a6a8b0
+
+    color:#a6a8b0;
 }
 
 .auth-link button{
     border:none;
     background:none;
+
     color:#5865f2;
-    font-weight:600
+
+    font-weight:600;
 }
 
-.auth-link button:hover{text-decoration:underline}
+.auth-link button:hover{
+    text-decoration:underline;
+}
 
 .auth-error{
     display:none;
+
     padding:10px;
     margin-bottom:15px;
+
     border-radius:4px;
+
     background:rgba(237,66,69,.12);
+
     color:#f38688;
-    font-size:13px
+
+    font-size:13px;
 }
 
 .auth-success{
     display:none;
+
     padding:10px;
     margin-bottom:15px;
+
     border-radius:4px;
+
     background:rgba(35,165,90,.12);
+
     color:#57d48b;
-    font-size:13px
+
+    font-size:13px;
 }
 
 .code-row{
     display:flex;
-    gap:8px
+    gap:8px;
 }
 
 .code-row .form-input{
     flex:1;
+
     letter-spacing:5px;
+
     text-align:center;
-    font-size:18px
+
+    font-size:18px;
 }
 
 .code-button{
     width:125px;
+
+    flex-shrink:0;
+
     border:none;
+
     border-radius:4px;
+
     background:#4f545c;
+
     color:white;
-    font-size:13px
+
+    font-size:13px;
 }
 
-.code-button:hover{background:#686d75}
-.code-button:disabled{opacity:.5;cursor:not-allowed}
+.code-button:hover{
+    background:#686d75;
+}
+
+.code-button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+/* =========================
+   头像
+========================= */
 
 .avatar-upload{
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-bottom:25px
+
+    margin-bottom:25px;
 }
 
 .avatar-preview{
     width:96px;
     height:96px;
+
     border-radius:50%;
+
     object-fit:cover;
+
     background:#5865f2;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     font-size:38px;
+
     margin-bottom:12px;
-    border:3px solid #2b2e35
+
+    border:3px solid #2b2e35;
 }
 
-.avatar-upload input{display:none}
+.avatar-upload input{
+    display:none;
+}
 
 .avatar-button{
     border:none;
+
     background:#4f545c;
+
     color:white;
+
     padding:8px 14px;
+
     border-radius:4px;
-    font-size:13px
+
+    font-size:13px;
 }
 
+/* =====================================================
+   聊天页面
+   核心：整个页面固定
+===================================================== */
+
 #chatPage{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    height:100dvh;
+
     display:none;
-    height:100vh;
-    background:#111318
+
+    overflow:hidden;
+
+    background:#111318;
 }
 
 .chat-container{
     width:100%;
-    height:100vh;
+    height:100%;
+
+    height:100dvh;
+
     display:flex;
-    flex-direction:column
+    flex-direction:column;
+
+    overflow:hidden;
 }
+
+/* =========================
+   聊天顶部
+========================= */
 
 .chat-header{
     height:64px;
-    flex-shrink:0;
+    min-height:64px;
+
+    flex:0 0 64px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 20px;
+
     background:#15171d;
-    border-bottom:1px solid #252832
+
+    border-bottom:1px solid #252832;
+
+    z-index:10;
 }
 
 .chat-title{
     display:flex;
     align-items:center;
-    gap:12px
+
+    gap:12px;
+
+    min-width:0;
 }
 
 .chat-icon{
     width:38px;
     height:38px;
+
+    flex:0 0 38px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     border-radius:50%;
-    background:#5865f2
+
+    background:#5865f2;
 }
 
-.chat-title h2{font-size:16px}
+.chat-title h2{
+    font-size:16px;
+}
 
 .status{
     font-size:11px;
+
     color:#23a55a;
-    margin-top:2px
+
+    margin-top:2px;
 }
 
 .header-right{
     display:flex;
     align-items:center;
-    gap:12px
+
+    gap:12px;
+
+    flex-shrink:0;
 }
 
 .current-user{
     display:flex;
     align-items:center;
+
     gap:8px;
+
     color:#dbdee1;
-    font-size:13px
+
+    font-size:13px;
 }
 
 .header-avatar{
     width:32px;
     height:32px;
+
+    flex:0 0 32px;
+
     border-radius:50%;
+
     object-fit:cover;
-    background:#5865f2
+
+    background:#5865f2;
 }
 
 .logout-button{
     border:none;
+
     border-radius:4px;
+
     padding:8px 12px;
+
     background:#2b2e35;
+
     color:#dbdee1;
-    font-size:13px
+
+    font-size:13px;
 }
 
-.logout-button:hover{background:#ed4245}
+.logout-button:hover{
+    background:#ed4245;
+}
+
+/* =====================================================
+   消息区域
+   只有这里允许滚动
+===================================================== */
 
 #messages{
-    flex:1;
+    flex:1 1 auto;
+
+    min-height:0;
+
+    width:100%;
+
+    overflow-x:hidden;
     overflow-y:auto;
-    padding:25px
+
+    overscroll-behavior:contain;
+
+    -webkit-overflow-scrolling:touch;
+
+    padding:25px;
+
+    background:#111318;
 }
+
+/* =========================
+   消息
+========================= */
 
 .message{
     display:flex;
+
     gap:12px;
-    margin-bottom:18px
+
+    margin-bottom:18px;
+
+    width:100%;
 }
 
-.message.mine{flex-direction:row-reverse}
+.message.mine{
+    flex-direction:row-reverse;
+}
 
 .message-avatar{
     width:40px;
     height:40px;
-    flex-shrink:0;
+
+    flex:0 0 40px;
+
     border-radius:50%;
+
     object-fit:cover;
-    background:#5865f2
+
+    background:#5865f2;
 }
 
-.message-body{max-width:75%}
+.message-body{
+    max-width:75%;
 
-.message.mine .message-body{text-align:right}
+    min-width:0;
+}
+
+.message.mine .message-body{
+    text-align:right;
+}
 
 .nickname{
     font-size:13px;
+
     color:#b5bac1;
+
     margin-bottom:4px;
-    font-weight:600
+
+    font-weight:600;
 }
 
 .bubble{
     display:inline-block;
+
+    max-width:100%;
+
     padding:9px 13px;
+
     border-radius:8px;
+
     background:#1e2128;
+
     color:#dbdee1;
+
     line-height:1.5;
+
     word-break:break-word;
-    text-align:left
+
+    overflow-wrap:anywhere;
+
+    text-align:left;
 }
 
 .mine .bubble{
     background:#5865f2;
-    color:white
+
+    color:white;
 }
 
 .time{
     font-size:10px;
+
     margin-top:4px;
-    color:#6d717a
+
+    color:#6d717a;
 }
 
 .empty{
-    height:100%;
+    min-height:100%;
+
     display:flex;
+
+    flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
     color:#6d717a;
-    text-align:center
+
+    text-align:center;
+
+    line-height:1.8;
 }
 
-.image-bubble{padding:5px}
+/* =========================
+   图片消息
+========================= */
+
+.image-bubble{
+    padding:5px;
+}
 
 .chat-image{
     display:block;
+
     max-width:320px;
     max-height:400px;
+
     border-radius:8px;
+
     object-fit:contain;
-    cursor:pointer
+
+    cursor:pointer;
 }
 
-.chat-image:hover{opacity:.9}
+.chat-image:hover{
+    opacity:.9;
+}
+
+/* =====================================================
+   底部输入区
+   固定在聊天页面底部
+===================================================== */
 
 .input-area{
+    width:100%;
+
+    min-height:75px;
+
+    flex:0 0 auto;
+
     display:flex;
+
+    align-items:center;
+
     gap:8px;
+
     padding:15px 20px;
+
+    padding-bottom:
+        max(15px, env(safe-area-inset-bottom));
+
     background:#15171d;
-    border-top:1px solid #252832
+
+    border-top:1px solid #252832;
+
+    z-index:10;
 }
 
 #messageInput{
-    flex:1;
+    flex:1 1 auto;
+
     min-width:0;
+
+    height:44px;
+
     border:none;
     outline:none;
+
     padding:12px 14px;
+
     border-radius:6px;
+
     color:white;
-    background:#1e2128
+
+    background:#1e2128;
 }
 
-#messageInput::placeholder{color:#6d717a}
+#messageInput::placeholder{
+    color:#6d717a;
+}
 
-#imageInput{display:none}
+#imageInput{
+    display:none;
+}
 
 #imageButton{
     width:46px;
+    height:44px;
+
+    flex:0 0 46px;
+
     border:none;
+
     border-radius:6px;
+
     background:#2b2e35;
+
     color:white;
-    font-size:18px
+
+    font-size:18px;
 }
 
-#imageButton:hover{background:#40444b}
+#imageButton:hover{
+    background:#40444b;
+}
 
 #sendButton{
     width:75px;
+    height:44px;
+
+    flex:0 0 75px;
+
     border:none;
+
     border-radius:6px;
+
     background:#5865f2;
+
     color:white;
-    font-weight:700
+
+    font-weight:700;
 }
 
-#sendButton:hover{background:#4752c4}
+#sendButton:hover{
+    background:#4752c4;
+}
 
 #sendButton:disabled,
 #imageButton:disabled{
     opacity:.5;
-    cursor:not-allowed
+
+    cursor:not-allowed;
 }
+
+/* =====================================================
+   图片查看器
+===================================================== */
 
 #imageViewer{
     position:fixed;
+
     inset:0;
+
     display:none;
+
     justify-content:center;
     align-items:center;
+
     padding:20px;
+
     background:rgba(0,0,0,.9);
-    z-index:999
+
+    z-index:9999;
 }
 
 #viewerImage{
     max-width:95vw;
     max-height:90vh;
-    border-radius:8px
+
+    border-radius:8px;
+
+    object-fit:contain;
 }
 
 #closeViewer{
     position:absolute;
+
     top:20px;
     right:25px;
+
     width:45px;
     height:45px;
+
     border:none;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.15);
+
     color:white;
-    font-size:28px
+
+    font-size:28px;
 }
 
+/* =====================================================
+   手机适配
+===================================================== */
+
 @media(max-width:600px){
-    .auth-card{padding:25px 20px}
-    #messages{padding:18px 12px}
-    .message-body{max-width:78%}
-    .chat-header{padding:0 12px}
-    .current-user span{display:none}
-    .chat-image{max-width:250px;max-height:350px}
-    .input-area{padding:10px}
-    #sendButton{width:60px}
+
+    .home-card{
+        padding:40px 25px;
+    }
+
+    .home-card h1{
+        font-size:34px;
+    }
+
+    .auth-card{
+        padding:25px 20px;
+    }
+
+    .page{
+        padding:12px;
+    }
+
+    .chat-header{
+        height:58px;
+        min-height:58px;
+        flex-basis:58px;
+
+        padding:0 12px;
+    }
+
+    .chat-icon{
+        width:34px;
+        height:34px;
+        flex-basis:34px;
+    }
+
+    .chat-title h2{
+        font-size:15px;
+    }
+
+    #messages{
+        padding:18px 12px;
+    }
+
+    .message{
+        gap:9px;
+    }
+
+    .message-avatar{
+        width:36px;
+        height:36px;
+        flex-basis:36px;
+    }
+
+    .message-body{
+        max-width:80%;
+    }
+
+    .chat-image{
+        max-width:250px;
+        max-height:350px;
+    }
+
+    .input-area{
+        min-height:64px;
+
+        padding:10px;
+
+        padding-bottom:
+            max(10px, env(safe-area-inset-bottom));
+    }
+
+    #messageInput{
+        height:42px;
+    }
+
+    #imageButton{
+        width:42px;
+        height:42px;
+        flex-basis:42px;
+    }
+
+    #sendButton{
+        width:60px;
+        height:42px;
+        flex-basis:60px;
+    }
+
+    .current-user span{
+        display:none;
+    }
+
+    .logout-button{
+        padding:7px 9px;
+    }
+}
+
+@media(max-width:380px){
+
+    #imageButton{
+        width:38px;
+        flex-basis:38px;
+    }
+
+    #sendButton{
+        width:52px;
+        flex-basis:52px;
+    }
+
+    .message-body{
+        max-width:78%;
+    }
+}
+
+/* =====================================================
+   防止用户选择导致视觉异常
+===================================================== */
+
+.chat-header,
+.input-area,
+.chat-icon,
+.status,
+.logout-button,
+#imageButton,
+#sendButton{
+    user-select:none;
 }
 </style>
 </head>
 
 <body>
 
+<!-- =====================================================
+     首页
+===================================================== -->
+
 <div id="homePage">
+
     <div class="home-card">
-        <div class="logo">💬</div>
+
+        <div class="logo">
+            💬
+        </div>
+
         <h1>My Chat</h1>
+
         <p>
             一个属于你和朋友的私人聊天室。
             <br>
             安全、简单、实时聊天。
         </p>
-        <button class="primary-button" onclick="openLoginPage()">
+
+        <button
+            class="primary-button"
+            onclick="openLoginPage()">
             开始聊天
         </button>
+
     </div>
+
 </div>
+
+
+<!-- =====================================================
+     登录
+===================================================== -->
 
 <div id="loginPage" class="page">
+
     <div class="auth-card">
+
         <h1>欢迎回来</h1>
-        <div class="auth-subtitle">登录 My Chat</div>
 
-        <div id="loginError" class="auth-error"></div>
+        <div class="auth-subtitle">
+            登录 My Chat
+        </div>
+
+        <div
+            id="loginError"
+            class="auth-error">
+        </div>
 
         <div class="form-group">
+
             <label>邮箱</label>
-            <input id="loginEmail"
-                   class="form-input"
-                   type="email"
-                   placeholder="you@example.com"
-                   autocomplete="email">
+
+            <input
+                id="loginEmail"
+                class="form-input"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email">
+
         </div>
 
         <div class="form-group">
+
             <label>密码</label>
-            <input id="loginPassword"
-                   class="form-input"
-                   type="password"
-                   placeholder="输入密码"
-                   autocomplete="current-password">
+
+            <input
+                id="loginPassword"
+                class="form-input"
+                type="password"
+                placeholder="输入密码"
+                autocomplete="current-password">
+
         </div>
 
-        <button id="loginButton"
-                class="primary-button"
-                onclick="loginUser()">
+        <button
+            id="loginButton"
+            class="primary-button"
+            onclick="loginUser()">
+
             登录
+
         </button>
 
         <div class="auth-link">
+
             还没有账号？
-            <button onclick="openRegisterPage()">创建账号</button>
+
+            <button onclick="openRegisterPage()">
+                创建账号
+            </button>
+
         </div>
 
         <div class="auth-link">
-            <button onclick="backToHome()">返回首页</button>
+
+            <button onclick="backToHome()">
+                返回首页
+            </button>
+
         </div>
+
     </div>
+
 </div>
+
+
+<!-- =====================================================
+     注册
+===================================================== -->
 
 <div id="registerPage" class="page">
+
     <div class="auth-card">
+
         <h1>创建账号</h1>
-        <div class="auth-subtitle">注册 My Chat</div>
 
-        <div id="registerError" class="auth-error"></div>
-        <div id="registerSuccess" class="auth-success"></div>
+        <div class="auth-subtitle">
+            注册 My Chat
+        </div>
+
+        <div
+            id="registerError"
+            class="auth-error">
+        </div>
+
+        <div
+            id="registerSuccess"
+            class="auth-success">
+        </div>
 
         <div class="form-group">
+
             <label>邮箱</label>
-            <input id="registerEmail"
-                   class="form-input"
-                   type="email"
-                   placeholder="you@example.com"
-                   autocomplete="email">
+
+            <input
+                id="registerEmail"
+                class="form-input"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email">
+
         </div>
 
         <div class="form-group">
+
             <label>密码</label>
-            <input id="registerPassword"
-                   class="form-input"
-                   type="password"
-                   placeholder="至少 6 个字符"
-                   autocomplete="new-password">
+
+            <input
+                id="registerPassword"
+                class="form-input"
+                type="password"
+                placeholder="至少 6 个字符"
+                autocomplete="new-password">
+
         </div>
 
         <div class="form-group">
-            <label>8位验证码</label>
-            <div class="code-row">
-                <input id="registerCode"
-                       class="form-input"
-                       type="text"
-                       inputmode="numeric"
-                       maxlength="8"
-                       placeholder="8位验证码"
-                       autocomplete="one-time-code">
 
-                <button id="sendCodeButton"
-                        class="code-button"
-                        onclick="sendRegisterCode()">
+            <label>8位验证码</label>
+
+            <div class="code-row">
+
+                <input
+                    id="registerCode"
+                    class="form-input"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="8"
+                    placeholder="8位验证码"
+                    autocomplete="one-time-code">
+
+                <button
+                    id="sendCodeButton"
+                    class="code-button"
+                    onclick="sendRegisterCode()">
+
                     获取验证码
+
                 </button>
+
             </div>
+
         </div>
 
-        <button id="verifyButton"
-                class="primary-button"
-                onclick="verifyRegisterCode()">
+        <button
+            id="verifyButton"
+            class="primary-button"
+            onclick="verifyRegisterCode()">
+
             验证并继续
+
         </button>
 
         <div class="auth-link">
+
             已经有账号？
-            <button onclick="openLoginPage()">登录</button>
+
+            <button onclick="openLoginPage()">
+                登录
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
-<div id="profilePage" class="page">
-    <div class="auth-card">
-        <h1>完善资料</h1>
-        <div class="auth-subtitle">设置你的昵称和头像</div>
 
-        <div id="profileError" class="auth-error"></div>
+<!-- =====================================================
+     完善资料
+===================================================== -->
+
+<div id="profilePage" class="page">
+
+    <div class="auth-card">
+
+        <h1>完善资料</h1>
+
+        <div class="auth-subtitle">
+            设置你的昵称和头像
+        </div>
+
+        <div
+            id="profileError"
+            class="auth-error">
+        </div>
 
         <div class="avatar-upload">
-            <img id="avatarPreview"
-                 class="avatar-preview"
-                 src=""
-                 alt="头像"
-                 style="display:none;">
 
-            <div id="avatarDefault"
-                 class="avatar-preview">
+            <img
+                id="avatarPreview"
+                class="avatar-preview"
+                src=""
+                alt="头像"
+                style="display:none;">
+
+            <div
+                id="avatarDefault"
+                class="avatar-preview">
+
                 👤
+
             </div>
 
-            <input id="avatarInput"
-                   type="file"
-                   accept="image/jpeg,image/png,image/gif,image/webp"
-                   onchange="previewAvatar(event)">
+            <input
+                id="avatarInput"
+                type="file"
+                accept="image/jpeg,image/png,image/gif,image/webp"
+                onchange="previewAvatar(event)">
 
-            <button class="avatar-button"
-                    onclick="document.getElementById('avatarInput').click()">
+            <button
+                class="avatar-button"
+                onclick="document.getElementById('avatarInput').click()">
+
                 选择头像
+
             </button>
+
         </div>
 
         <div class="form-group">
+
             <label>昵称</label>
-            <input id="profileNickname"
-                   class="form-input"
-                   type="text"
-                   maxlength="30"
-                   placeholder="例如：Justin"
-                   autocomplete="off">
+
+            <input
+                id="profileNickname"
+                class="form-input"
+                type="text"
+                maxlength="30"
+                placeholder="例如：Justin"
+                autocomplete="off">
+
         </div>
 
-        <button id="finishProfileButton"
-                class="primary-button"
-                onclick="finishProfile()">
+        <button
+            id="finishProfileButton"
+            class="primary-button"
+            onclick="finishProfile()">
+
             完成注册并进入聊天
+
         </button>
+
     </div>
+
 </div>
 
+
+<!-- =====================================================
+     聊天页面
+===================================================== -->
+
 <div id="chatPage">
+
     <div class="chat-container">
+
+        <!-- 固定顶部 -->
 
         <header class="chat-header">
 
             <div class="chat-title">
-                <div class="chat-icon">💬</div>
+
+                <div class="chat-icon">
+                    💬
+                </div>
 
                 <div>
-                    <h2>My Chat</h2>
-                    <div class="status">● 实时连接</div>
+
+                    <h2>
+                        My Chat
+                    </h2>
+
+                    <div class="status">
+                        ● 实时连接
+                    </div>
+
                 </div>
+
             </div>
+
 
             <div class="header-right">
 
                 <div class="current-user">
-                    <img id="currentUserAvatar"
-                         class="header-avatar"
-                         src=""
-                         alt="头像">
 
-                    <span id="currentUserName">用户</span>
+                    <img
+                        id="currentUserAvatar"
+                        class="header-avatar"
+                        src=""
+                        alt="头像">
+
+                    <span id="currentUserName">
+                        用户
+                    </span>
+
                 </div>
 
-                <button class="logout-button"
-                        onclick="logoutUser()">
+                <button
+                    class="logout-button"
+                    onclick="logoutUser()">
+
                     退出
+
                 </button>
+
             </div>
 
         </header>
 
+
+        <!-- 只有这里滚动 -->
+
         <main id="messages">
-            <div class="empty" id="emptyMessage">
+
+            <div
+                class="empty"
+                id="emptyMessage">
+
                 暂时还没有消息
+
                 <br>
+
                 成为第一个发言的人吧！
+
             </div>
+
         </main>
+
+
+        <!-- 固定底部 -->
 
         <div class="input-area">
 
-            <input id="messageInput"
-                   type="text"
-                   maxlength="1500"
-                   placeholder="输入消息..."
-                   autocomplete="off">
+            <input
+                id="messageInput"
+                type="text"
+                maxlength="1500"
+                placeholder="输入消息..."
+                autocomplete="off">
 
-            <input id="imageInput"
-                   type="file"
-                   accept="image/jpeg,image/png,image/gif,image/webp">
+            <input
+                id="imageInput"
+                type="file"
+                accept="image/jpeg,image/png,image/gif,image/webp">
 
-            <button id="imageButton"
-                    onclick="document.getElementById('imageInput').click()"
-                    title="发送图片">
+            <button
+                id="imageButton"
+                onclick="document.getElementById('imageInput').click()"
+                title="发送图片">
+
                 📷
+
             </button>
 
-            <button id="sendButton"
-                    onclick="sendMessage()">
+            <button
+                id="sendButton"
+                onclick="sendMessage()">
+
                 发送
+
             </button>
 
         </div>
+
     </div>
+
 </div>
 
-<div id="imageViewer"
-     onclick="closeImageViewer()">
 
-    <button id="closeViewer"
-            onclick="closeImageViewer(event)">
+<!-- =====================================================
+     图片查看器
+===================================================== -->
+
+<div
+    id="imageViewer"
+    onclick="closeImageViewer()">
+
+    <button
+        id="closeViewer"
+        onclick="closeImageViewer(event)">
+
         ×
+
     </button>
 
-    <img id="viewerImage"
-         src=""
-         alt="图片"
-         onclick="event.stopPropagation()">
+    <img
+        id="viewerImage"
+        src=""
+        alt="图片"
+        onclick="event.stopPropagation()">
+
 </div>
+
 
 <script>
 
@@ -750,9 +1399,11 @@ const supabaseClient =
 ===================================================== */
 
 const MESSAGE_TABLE = "messages";
+
 const PROFILE_TABLE = "profiles";
 
 const CHAT_IMAGE_BUCKET = "chat-images";
+
 const AVATAR_BUCKET = "avatars";
 
 
@@ -761,14 +1412,17 @@ const AVATAR_BUCKET = "avatars";
 ===================================================== */
 
 let currentUser = null;
+
 let currentProfile = null;
+
 let realtimeChannel = null;
+
 let temporaryAvatarFile = null;
 
 let codeCooldown = 0;
+
 let codeTimer = null;
 
-/* 发送频率限制 */
 let sentMessageTimes = [];
 
 
@@ -814,11 +1468,16 @@ const imageInput =
 function hideAllPages(){
 
     homePage.style.display = "none";
+
     loginPage.style.display = "none";
+
     registerPage.style.display = "none";
+
     profilePage.style.display = "none";
+
     chatPage.style.display = "none";
 }
+
 
 function openLoginPage(){
 
@@ -826,10 +1485,15 @@ function openLoginPage(){
 
     loginPage.style.display = "flex";
 
-    document
-        .getElementById("loginEmail")
-        .focus();
+    setTimeout(function(){
+
+        document
+            .getElementById("loginEmail")
+            .focus();
+
+    },100);
 }
+
 
 function openRegisterPage(){
 
@@ -837,10 +1501,15 @@ function openRegisterPage(){
 
     registerPage.style.display = "flex";
 
-    document
-        .getElementById("registerEmail")
-        .focus();
+    setTimeout(function(){
+
+        document
+            .getElementById("registerEmail")
+            .focus();
+
+    },100);
 }
+
 
 function openProfilePage(){
 
@@ -848,6 +1517,7 @@ function openProfilePage(){
 
     profilePage.style.display = "flex";
 }
+
 
 function backToHome(){
 
@@ -867,8 +1537,10 @@ function showError(id,text){
         document.getElementById(id);
 
     box.textContent = text;
+
     box.style.display = "block";
 }
+
 
 function hideMessage(id){
 
@@ -876,8 +1548,10 @@ function hideMessage(id){
         document.getElementById(id);
 
     box.style.display = "none";
+
     box.textContent = "";
 }
+
 
 function showSuccess(id,text){
 
@@ -885,6 +1559,7 @@ function showSuccess(id,text){
         document.getElementById(id);
 
     box.textContent = text;
+
     box.style.display = "block";
 }
 
@@ -895,30 +1570,46 @@ function showSuccess(id,text){
 
 async function initializeApp(){
 
-    const {data} =
-        await supabaseClient.auth.getSession();
+    try{
 
-    if(data && data.session){
+        const {data} =
+            await supabaseClient.auth.getSession();
 
-        currentUser =
-            data.session.user;
+        if(data && data.session){
 
-        await loadCurrentProfile();
+            currentUser =
+                data.session.user;
 
-        if(currentProfile){
+            await loadCurrentProfile();
 
-            openChat();
+            if(currentProfile){
+
+                await openChat();
+
+            }else{
+
+                openProfilePage();
+            }
 
         }else{
 
-            openProfilePage();
+            hideAllPages();
+
+            homePage.style.display = "flex";
         }
 
-    }else{
+    }catch(error){
+
+        console.error(
+            "初始化失败：",
+            error
+        );
 
         hideAllPages();
+
         homePage.style.display = "flex";
     }
+
 
     supabaseClient.auth.onAuthStateChange(
         async function(event,session){
@@ -926,6 +1617,7 @@ async function initializeApp(){
             if(event === "SIGNED_OUT"){
 
                 currentUser = null;
+
                 currentProfile = null;
 
                 if(realtimeChannel){
@@ -946,6 +1638,7 @@ async function initializeApp(){
                 currentUser =
                     session.user;
             }
+
         }
     );
 }
@@ -991,63 +1684,88 @@ async function loginUser(){
     }
 
     const button =
-        document.getElementById("loginButton");
+        document.getElementById(
+            "loginButton"
+        );
 
     button.disabled = true;
+
     button.textContent = "登录中...";
 
-    const {data,error} =
-        await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-        });
 
-    button.disabled = false;
-    button.textContent = "登录";
+    try{
 
-    if(error){
+        const {data,error} =
+            await supabaseClient.auth.signInWithPassword({
+
+                email,
+
+                password
+
+            });
+
+
+        if(error)
+            throw error;
+
+
+        currentUser = data.user;
+
+        await loadCurrentProfile();
+
+
+        if(!currentProfile){
+
+            openProfilePage();
+
+            return;
+        }
+
+
+        await openChat();
+
+
+    }catch(error){
+
+        console.error(error);
 
         showError(
             "loginError",
-            "登录失败：" + error.message
+            "登录失败：" +
+            error.message
         );
 
-        return;
+    }finally{
+
+        button.disabled = false;
+
+        button.textContent = "登录";
     }
-
-    currentUser = data.user;
-
-    await loadCurrentProfile();
-
-    if(!currentProfile){
-
-        openProfilePage();
-
-        return;
-    }
-
-    openChat();
 }
 
 
 /* =====================================================
-   验证码
+   发送验证码
 ===================================================== */
 
 async function sendRegisterCode(){
 
     hideMessage("registerError");
+
     hideMessage("registerSuccess");
 
     if(codeCooldown > 0){
 
         showError(
             "registerError",
-            "请等待 " + codeCooldown + " 秒。"
+            "请等待 " +
+            codeCooldown +
+            " 秒。"
         );
 
         return;
     }
+
 
     const email =
         document
@@ -1060,6 +1778,7 @@ async function sendRegisterCode(){
             .getElementById("registerPassword")
             .value;
 
+
     if(!email){
 
         showError(
@@ -1069,6 +1788,7 @@ async function sendRegisterCode(){
 
         return;
     }
+
 
     if(password.length < 6){
 
@@ -1080,45 +1800,66 @@ async function sendRegisterCode(){
         return;
     }
 
+
     const button =
         document.getElementById(
             "sendCodeButton"
         );
 
+
     button.disabled = true;
+
     button.textContent = "发送中...";
 
-    const {error} =
-        await supabaseClient.auth.signInWithOtp({
 
-            email,
+    try{
 
-            options:{
-                shouldCreateUser:true
-            }
-        });
+        const {error} =
+            await supabaseClient.auth.signInWithOtp({
 
-    if(error){
+                email,
+
+                options:{
+                    shouldCreateUser:true
+                }
+
+            });
+
+
+        if(error)
+            throw error;
+
+
+        showSuccess(
+            "registerSuccess",
+            "验证码已经发送到你的邮箱。"
+        );
+
+
+        startCodeCooldown();
+
+
+    }catch(error){
+
+        console.error(error);
 
         button.disabled = false;
+
         button.textContent = "获取验证码";
+
 
         showError(
             "registerError",
             "验证码发送失败：" +
             error.message
         );
-
-        return;
     }
-
-    showSuccess(
-        "registerSuccess",
-        "8位验证码已经发送到你的 QQ 邮箱。"
-    );
-
-    startCodeCooldown();
 }
+
+
+/* =====================================================
+   验证码倒计时
+===================================================== */
 
 function startCodeCooldown(){
 
@@ -1132,14 +1873,18 @@ function startCodeCooldown(){
     button.disabled = true;
 
     button.textContent =
-        codeCooldown + " 秒后重试";
+        codeCooldown +
+        " 秒后重试";
+
 
     clearInterval(codeTimer);
+
 
     codeTimer =
         setInterval(function(){
 
             codeCooldown--;
+
 
             if(codeCooldown <= 0){
 
@@ -1155,6 +1900,7 @@ function startCodeCooldown(){
                 return;
             }
 
+
             button.textContent =
                 codeCooldown +
                 " 秒后重试";
@@ -1162,9 +1908,15 @@ function startCodeCooldown(){
         },1000);
 }
 
+
+/* =====================================================
+   验证验证码
+===================================================== */
+
 async function verifyRegisterCode(){
 
     hideMessage("registerError");
+
 
     const email =
         document
@@ -1183,12 +1935,17 @@ async function verifyRegisterCode(){
             .value
             .trim();
 
+
     if(!email){
 
-        showError("registerError","请输入邮箱。");
+        showError(
+            "registerError",
+            "请输入邮箱。"
+        );
 
         return;
     }
+
 
     if(password.length < 6){
 
@@ -1200,6 +1957,7 @@ async function verifyRegisterCode(){
         return;
     }
 
+
     if(!/^\d{8}$/.test(token)){
 
         showError(
@@ -1210,57 +1968,72 @@ async function verifyRegisterCode(){
         return;
     }
 
+
     const button =
         document.getElementById(
             "verifyButton"
         );
 
+
     button.disabled = true;
+
     button.textContent = "验证中...";
 
-    const {data,error} =
-        await supabaseClient.auth.verifyOtp({
 
-            email,
-            token,
-            type:"email"
-        });
+    try{
 
-    if(error){
+        const {data,error} =
+            await supabaseClient.auth.verifyOtp({
+
+                email,
+
+                token,
+
+                type:"email"
+
+            });
+
+
+        if(error)
+            throw error;
+
+
+        currentUser = data.user;
+
+
+        const {error:passwordError} =
+            await supabaseClient.auth.updateUser({
+
+                password
+
+            });
+
+
+        if(passwordError)
+            throw passwordError;
+
+
+        openProfilePage();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        showError(
+            "registerError",
+            "验证码验证失败：" +
+            error.message
+        );
+
+    }finally{
 
         button.disabled = false;
-        button.textContent = "验证并继续";
 
-        showError(
-            "registerError",
-            "验证码错误，请重新检查。"
-        );
-
-        return;
+        button.textContent =
+            "验证并继续";
     }
-
-    currentUser = data.user;
-
-    const {error:passwordError} =
-        await supabaseClient.auth.updateUser({
-            password
-        });
-
-    button.disabled = false;
-    button.textContent = "验证并继续";
-
-    if(passwordError){
-
-        showError(
-            "registerError",
-            "设置密码失败：" +
-            passwordError.message
-        );
-
-        return;
-    }
-
-    openProfilePage();
 }
 
 
@@ -1273,50 +2046,70 @@ function previewAvatar(event){
     const file =
         event.target.files[0];
 
-    if(!file)return;
+    if(!file)
+        return;
+
 
     const allowedTypes = [
+
         "image/jpeg",
+
         "image/png",
+
         "image/gif",
+
         "image/webp"
+
     ];
+
 
     if(!allowedTypes.includes(file.type)){
 
-        alert("头像只支持 JPG、PNG、GIF、WEBP。");
+        alert(
+            "头像只支持 JPG、PNG、GIF、WEBP。"
+        );
 
         event.target.value = "";
 
         return;
     }
+
 
     if(file.size > 5 * 1024 * 1024){
 
-        alert("头像不能超过 5MB。");
+        alert(
+            "头像不能超过 5MB。"
+        );
 
         event.target.value = "";
 
         return;
     }
 
+
     temporaryAvatarFile = file;
+
 
     const url =
         URL.createObjectURL(file);
+
 
     const preview =
         document.getElementById(
             "avatarPreview"
         );
 
+
     const defaultAvatar =
         document.getElementById(
             "avatarDefault"
         );
 
+
     preview.src = url;
+
     preview.style.display = "block";
+
     defaultAvatar.style.display = "none";
 }
 
@@ -1329,6 +2122,7 @@ async function finishProfile(){
 
     hideMessage("profileError");
 
+
     if(!currentUser){
 
         showError(
@@ -1339,11 +2133,13 @@ async function finishProfile(){
         return;
     }
 
+
     const nickname =
         document
             .getElementById("profileNickname")
             .value
             .trim();
+
 
     if(!nickname){
 
@@ -1355,15 +2151,21 @@ async function finishProfile(){
         return;
     }
 
+
     const button =
         document.getElementById(
             "finishProfileButton"
         );
 
+
     button.disabled = true;
-    button.textContent = "正在创建资料...";
+
+    button.textContent =
+        "正在创建资料...";
+
 
     let avatarUrl = null;
+
 
     try{
 
@@ -1375,12 +2177,14 @@ async function finishProfile(){
                     .pop()
                     .toLowerCase();
 
+
             const fileName =
                 currentUser.id +
                 "_" +
                 Date.now() +
                 "." +
                 extension;
+
 
             const {error:uploadError} =
                 await supabaseClient.storage
@@ -1396,50 +2200,65 @@ async function finishProfile(){
                         }
                     );
 
+
             if(uploadError)
                 throw uploadError;
 
-            /*
-             * 注意：
-             * 如果 avatars bucket 是 private，
-             * getPublicUrl 不能用于真正读取。
-             *
-             * 这里保存文件路径。
-             */
+
             avatarUrl = fileName;
         }
+
 
         const {error:profileError} =
             await supabaseClient
                 .from(PROFILE_TABLE)
                 .upsert({
-                    id:currentUser.id,
+
+                    id:
+                        currentUser.id,
+
                     nickname,
-                    avatar_url:avatarUrl
+
+                    avatar_url:
+                        avatarUrl
+
                 });
+
 
         if(profileError)
             throw profileError;
 
+
         currentProfile = {
-            id:currentUser.id,
+
+            id:
+                currentUser.id,
+
             nickname,
-            avatar_url:avatarUrl
+
+            avatar_url:
+                avatarUrl
+
         };
+
 
         temporaryAvatarFile = null;
 
-        openChat();
+
+        await openChat();
+
 
     }catch(error){
 
         console.error(error);
+
 
         showError(
             "profileError",
             "保存资料失败：" +
             error.message
         );
+
 
     }finally{
 
@@ -1452,7 +2271,7 @@ async function finishProfile(){
 
 
 /* =====================================================
-   获取资料
+   获取当前用户资料
 ===================================================== */
 
 async function loadCurrentProfile(){
@@ -1460,12 +2279,19 @@ async function loadCurrentProfile(){
     if(!currentUser)
         return null;
 
+
     const {data,error} =
         await supabaseClient
             .from(PROFILE_TABLE)
-            .select("id,nickname,avatar_url")
-            .eq("id",currentUser.id)
+            .select(
+                "id,nickname,avatar_url"
+            )
+            .eq(
+                "id",
+                currentUser.id
+            )
             .maybeSingle();
+
 
     if(error){
 
@@ -1474,17 +2300,22 @@ async function loadCurrentProfile(){
             error
         );
 
+        currentProfile = null;
+
         return null;
     }
 
-    currentProfile = data || null;
+
+    currentProfile =
+        data || null;
+
 
     return currentProfile;
 }
 
 
 /* =====================================================
-   Storage 图片 URL
+   获取私有图片地址
 ===================================================== */
 
 async function getPrivateImageUrl(
@@ -1495,16 +2326,15 @@ async function getPrivateImageUrl(
     if(!path)
         return null;
 
-    /*
-     * 如果旧资料里保存的是完整 http URL，
-     * 直接使用。
-     */
+
     if(
         path.startsWith("http://") ||
         path.startsWith("https://")
     ){
+
         return path;
     }
+
 
     const {data,error} =
         await supabaseClient.storage
@@ -1514,22 +2344,24 @@ async function getPrivateImageUrl(
                 3600
             );
 
+
     if(error){
 
         console.error(
-            "生成图片访问地址失败：",
+            "生成图片地址失败：",
             error
         );
 
         return null;
     }
 
+
     return data.signedUrl;
 }
 
 
 /* =====================================================
-   打开聊天室
+   打开聊天
 ===================================================== */
 
 async function openChat(){
@@ -1541,8 +2373,10 @@ async function openChat(){
         return;
     }
 
+
     if(!currentProfile)
         await loadCurrentProfile();
+
 
     if(!currentProfile){
 
@@ -1551,17 +2385,37 @@ async function openChat(){
         return;
     }
 
+
     hideAllPages();
+
 
     chatPage.style.display = "block";
 
+
     await updateCurrentUserUI();
+
 
     await loadMessages();
 
+
     subscribeToMessages();
 
-    messageInput.focus();
+
+    /*
+     * 等页面真正显示后再聚焦。
+     * 避免手机浏览器因为 focus 自动滚动页面。
+     */
+    setTimeout(function(){
+
+        if(
+            window.innerWidth > 600
+        ){
+
+            messageInput.focus();
+
+        }
+
+    },100);
 }
 
 
@@ -1576,13 +2430,16 @@ async function updateCurrentUserUI(){
             "currentUserName"
         );
 
+
     const avatar =
         document.getElementById(
             "currentUserAvatar"
         );
 
+
     name.textContent =
         currentProfile.nickname;
+
 
     if(currentProfile.avatar_url){
 
@@ -1592,13 +2449,18 @@ async function updateCurrentUserUI(){
                 currentProfile.avatar_url
             );
 
-        if(url)
+
+        if(url){
+
             avatar.src = url;
-        else
+
+        }else{
+
             avatar.src =
                 createDefaultAvatar(
                     currentProfile.nickname
                 );
+        }
 
     }else{
 
@@ -1611,7 +2473,9 @@ async function updateCurrentUserUI(){
 
 
 /* =====================================================
-   历史消息
+   读取历史消息
+   注意：
+   这里只读取 messages 真实存在的字段
 ===================================================== */
 
 async function loadMessages(){
@@ -1624,8 +2488,11 @@ async function loadMessages(){
             )
             .order(
                 "created_at",
-                {ascending:true}
+                {
+                    ascending:true
+                }
             );
+
 
     if(error){
 
@@ -1634,23 +2501,33 @@ async function loadMessages(){
             error
         );
 
+
         messages.innerHTML = "";
+
 
         const errorBox =
             document.createElement("div");
 
+
         errorBox.className = "empty";
+
 
         errorBox.textContent =
             "读取聊天记录失败：" +
             error.message;
 
-        messages.appendChild(errorBox);
+
+        messages.appendChild(
+            errorBox
+        );
+
 
         return;
     }
 
+
     messages.innerHTML = "";
+
 
     if(!data || data.length === 0){
 
@@ -1659,6 +2536,7 @@ async function loadMessages(){
         return;
     }
 
+
     const {data:profiles} =
         await supabaseClient
             .from(PROFILE_TABLE)
@@ -1666,30 +2544,43 @@ async function loadMessages(){
                 "nickname,avatar_url"
             );
 
+
     const profileMap =
         new Map();
 
+
     if(profiles){
 
-        profiles.forEach(function(profile){
+        profiles.forEach(
+            function(profile){
 
-            if(!profileMap.has(profile.nickname)){
+                if(
+                    !profileMap.has(
+                        profile.nickname
+                    )
+                ){
 
-                profileMap.set(
-                    profile.nickname,
-                    profile
-                );
+                    profileMap.set(
+                        profile.nickname,
+                        profile
+                    );
+                }
+
             }
-        });
+        );
     }
 
-    for(const message of data){
+
+    for(
+        const message of data
+    ){
 
         await renderMessage(
             message,
             profileMap
         );
     }
+
 
     scrollToBottom();
 }
@@ -1703,17 +2594,26 @@ function showEmpty(){
 
     messages.innerHTML = "";
 
+
     const empty =
         document.createElement("div");
 
+
     empty.className = "empty";
+
     empty.id = "emptyMessage";
 
-    empty.innerHTML =
-        "暂时还没有消息<br>成为第一个发言的人吧！";
 
-    messages.appendChild(empty);
+    empty.innerHTML =
+        "暂时还没有消息<br>" +
+        "成为第一个发言的人吧！";
+
+
+    messages.appendChild(
+        empty
+    );
 }
+
 
 function hideEmpty(){
 
@@ -1721,6 +2621,7 @@ function hideEmpty(){
         document.getElementById(
             "emptyMessage"
         );
+
 
     if(empty)
         empty.remove();
@@ -1738,29 +2639,34 @@ function createDefaultAvatar(name){
             .charAt(0)
             .toUpperCase();
 
+
     const svg =
-        `
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="80"
-             height="80">
 
-            <rect width="80"
-                  height="80"
-                  rx="40"
-                  fill="#5865f2"/>
+        `<svg xmlns="http://www.w3.org/2000/svg"
+              width="80"
+              height="80">
 
-            <text x="50%"
-                  y="55%"
-                  text-anchor="middle"
-                  dominant-baseline="middle"
-                  fill="white"
-                  font-size="32"
-                  font-family="Arial">
+            <rect
+                width="80"
+                height="80"
+                rx="40"
+                fill="#5865f2"/>
+
+            <text
+                x="50%"
+                y="55%"
+                text-anchor="middle"
+                dominant-baseline="middle"
+                fill="white"
+                font-size="32"
+                font-family="Arial">
+
                 ${letter}
+
             </text>
 
-        </svg>
-        `;
+        </svg>`;
+
 
     return (
         "data:image/svg+xml;charset=UTF-8," +
@@ -1771,9 +2677,6 @@ function createDefaultAvatar(name){
 
 /* =====================================================
    显示消息
-   重要安全修改：
-   message.message 永远只作为纯文本
-   image_url 才是图片
 ===================================================== */
 
 async function renderMessage(
@@ -1783,20 +2686,27 @@ async function renderMessage(
 
     hideEmpty();
 
+
     const row =
         document.createElement("div");
 
-    row.className = "message";
+
+    row.className =
+        "message";
+
 
     const isMine =
         currentProfile &&
         message.nickname ===
         currentProfile.nickname;
 
+
     if(isMine)
         row.classList.add("mine");
 
+
     let profile = null;
+
 
     if(profileMap){
 
@@ -1806,16 +2716,29 @@ async function renderMessage(
             );
     }
 
-    if(isMine && currentProfile)
-        profile = currentProfile;
+
+    if(
+        isMine &&
+        currentProfile
+    ){
+
+        profile =
+            currentProfile;
+    }
+
 
     const avatar =
         document.createElement("img");
 
+
     avatar.className =
         "message-avatar";
 
-    if(profile && profile.avatar_url){
+
+    if(
+        profile &&
+        profile.avatar_url
+    ){
 
         const avatarUrl =
             await getPrivateImageUrl(
@@ -1823,9 +2746,11 @@ async function renderMessage(
                 profile.avatar_url
             );
 
+
         if(avatarUrl){
 
-            avatar.src = avatarUrl;
+            avatar.src =
+                avatarUrl;
 
         }else{
 
@@ -1843,48 +2768,53 @@ async function renderMessage(
             );
     }
 
+
     avatar.alt = "头像";
+
 
     const body =
         document.createElement("div");
 
+
     body.className =
         "message-body";
+
 
     const name =
         document.createElement("div");
 
+
     name.className =
         "nickname";
 
-    /*
-     * 永远使用 textContent。
-     * 用户发送 HTML / JS / URL 都只会显示文字。
-     */
+
     name.textContent =
-        message.nickname || "匿名";
+        message.nickname ||
+        "匿名";
+
 
     const bubble =
         document.createElement("div");
 
-    bubble.className = "bubble";
 
-    /*
-     * 只有 image_url 存在时才创建 img。
-     *
-     * message.message 不参与图片判断。
-     */
+    bubble.className =
+        "bubble";
+
+
     if(message.image_url){
 
         bubble.classList.add(
             "image-bubble"
         );
 
+
         const img =
             document.createElement("img");
 
+
         img.className =
             "chat-image";
+
 
         const imageUrl =
             await getPrivateImageUrl(
@@ -1892,13 +2822,18 @@ async function renderMessage(
                 message.image_url
             );
 
+
         if(imageUrl){
 
-            img.src = imageUrl;
+            img.src =
+                imageUrl;
 
-            img.alt = "聊天图片";
+            img.alt =
+                "聊天图片";
 
-            img.loading = "lazy";
+            img.loading =
+                "lazy";
+
 
             img.onclick =
                 function(){
@@ -1906,9 +2841,13 @@ async function renderMessage(
                     openImageViewer(
                         imageUrl
                     );
+
                 };
 
-            bubble.appendChild(img);
+
+            bubble.appendChild(
+                img
+            );
 
         }else{
 
@@ -1919,29 +2858,41 @@ async function renderMessage(
     }else{
 
         /*
-         * 最关键的 XSS 防护：
-         * 不使用 innerHTML。
+         * 这里故意使用 textContent。
+         * 用户输入 <script> 或 HTML
+         * 只会作为普通文字显示。
          */
+
         bubble.textContent =
             message.message || "";
     }
 
+
     const time =
         document.createElement("div");
 
-    time.className = "time";
+
+    time.className =
+        "time";
+
 
     time.textContent =
         formatTime(
             message.created_at
         );
 
+
     body.appendChild(name);
+
     body.appendChild(bubble);
+
     body.appendChild(time);
 
+
     row.appendChild(avatar);
+
     row.appendChild(body);
+
 
     messages.appendChild(row);
 }
@@ -1956,11 +2907,14 @@ function formatTime(value){
     if(!value)
         return "";
 
+
     const date =
         new Date(value);
 
+
     if(isNaN(date.getTime()))
         return "";
+
 
     return date.toLocaleString(
         "zh-CN",
@@ -1975,45 +2929,54 @@ function formatTime(value){
 
 
 /* =====================================================
-   滚动
+   滚动到底部
 ===================================================== */
 
 function scrollToBottom(){
 
-    setTimeout(function(){
+    requestAnimationFrame(
+        function(){
 
-        messages.scrollTop =
-            messages.scrollHeight;
+            messages.scrollTop =
+                messages.scrollHeight;
 
-    },50);
+        }
+    );
 }
 
 
 /* =====================================================
-   40条/分钟限制
+   发送限制
 ===================================================== */
 
 function checkRateLimit(){
 
-    const now = Date.now();
+    const now =
+        Date.now();
 
-    /*
-     * 删除一分钟以前的记录
-     */
+
     sentMessageTimes =
         sentMessageTimes.filter(
             function(time){
 
-                return now - time < 60000;
+                return (
+                    now - time < 60000
+                );
+
             }
         );
 
-    if(sentMessageTimes.length >= 40){
+
+    if(
+        sentMessageTimes.length >= 40
+    ){
 
         return false;
     }
 
+
     sentMessageTimes.push(now);
+
 
     return true;
 }
@@ -2025,22 +2988,25 @@ function checkRateLimit(){
 
 async function sendMessage(){
 
-    if(!currentUser || !currentProfile){
+    if(
+        !currentUser ||
+        !currentProfile
+    ){
 
         openLoginPage();
 
         return;
     }
 
+
     const text =
         messageInput.value.trim();
+
 
     if(!text)
         return;
 
-    /*
-     * 最多 1500 字符
-     */
+
     if(text.length > 1500){
 
         alert(
@@ -2050,9 +3016,7 @@ async function sendMessage(){
         return;
     }
 
-    /*
-     * 每分钟最多40条
-     */
+
     if(!checkRateLimit()){
 
         alert(
@@ -2062,61 +3026,87 @@ async function sendMessage(){
         return;
     }
 
+
     sendButton.disabled = true;
 
-    const {data,error} =
-        await supabaseClient
-            .from(MESSAGE_TABLE)
-            .insert({
 
-                nickname:
-                    currentProfile.nickname,
+    try{
 
-                message:
-                    text,
+        const {data,error} =
+            await supabaseClient
+                .from(MESSAGE_TABLE)
+                .insert({
 
-                image_url:
-                    null
+                    nickname:
+                        currentProfile.nickname,
 
-            })
-            .select(
-                "id,nickname,message,created_at,image_url"
-            )
-            .single();
+                    message:
+                        text,
 
-    sendButton.disabled = false;
+                    image_url:
+                        null
 
-    if(error){
+                })
+                .select(
+                    "id,nickname,message,created_at,image_url"
+                )
+                .single();
+
+
+        if(error)
+            throw error;
+
+
+        messageInput.value = "";
+
+
+        if(data){
+
+            await renderMessage(
+                data,
+                new Map([
+                    [
+                        currentProfile.nickname,
+                        currentProfile
+                    ]
+                ])
+            );
+
+
+            scrollToBottom();
+        }
+
+
+    }catch(error){
 
         console.error(
             "发送消息失败：",
             error
         );
 
+
         alert(
             "发送失败：\n" +
             error.message
         );
 
-        return;
+
+    }finally{
+
+        sendButton.disabled = false;
+
+        /*
+         * 手机不要自动 focus。
+         * 否则键盘可能再次弹出并让页面产生跳动。
+         */
+
+        if(
+            window.innerWidth > 600
+        ){
+
+            messageInput.focus();
+        }
     }
-
-    messageInput.value = "";
-
-    if(data){
-
-        await renderMessage(
-            data,
-            new Map([
-                [
-                    currentProfile.nickname,
-                    currentProfile
-                ]
-            ])
-        );
-    }
-
-    messageInput.focus();
 }
 
 
@@ -2131,10 +3121,13 @@ imageInput.addEventListener(
         const file =
             this.files[0];
 
+
         if(!file)
             return;
 
+
         await uploadImage(file);
+
 
         this.value = "";
     }
@@ -2147,16 +3140,17 @@ imageInput.addEventListener(
 
 async function uploadImage(file){
 
-    if(!currentUser || !currentProfile){
+    if(
+        !currentUser ||
+        !currentProfile
+    ){
 
         openLoginPage();
 
         return;
     }
 
-    /*
-     * 图片也使用相同的发送频率限制。
-     */
+
     if(!checkRateLimit()){
 
         alert(
@@ -2166,8 +3160,10 @@ async function uploadImage(file){
         return;
     }
 
+
     const maxSize =
         10 * 1024 * 1024;
+
 
     if(file.size > maxSize){
 
@@ -2178,14 +3174,25 @@ async function uploadImage(file){
         return;
     }
 
+
     const allowedTypes = [
+
         "image/jpeg",
+
         "image/png",
+
         "image/gif",
+
         "image/webp"
+
     ];
 
-    if(!allowedTypes.includes(file.type)){
+
+    if(
+        !allowedTypes.includes(
+            file.type
+        )
+    ){
 
         alert(
             "只支持 JPG、PNG、GIF、WEBP。"
@@ -2194,8 +3201,11 @@ async function uploadImage(file){
         return;
     }
 
+
     imageButton.disabled = true;
+
     imageButton.textContent = "⏳";
+
 
     try{
 
@@ -2204,6 +3214,7 @@ async function uploadImage(file){
                 .split(".")
                 .pop()
                 .toLowerCase();
+
 
         const fileName =
             currentUser.id +
@@ -2216,6 +3227,7 @@ async function uploadImage(file){
             "." +
             extension;
 
+
         const {error:uploadError} =
             await supabaseClient.storage
                 .from(CHAT_IMAGE_BUCKET)
@@ -2224,19 +3236,19 @@ async function uploadImage(file){
                     file,
                     {
                         cacheControl:"3600",
+
                         upsert:false,
-                        contentType:file.type
+
+                        contentType:
+                            file.type
                     }
                 );
+
 
         if(uploadError)
             throw uploadError;
 
-        /*
-         * 不再使用 getPublicUrl。
-         *
-         * 只把 Storage 路径写入数据库。
-         */
+
         const {data,error} =
             await supabaseClient
                 .from(MESSAGE_TABLE)
@@ -2256,8 +3268,10 @@ async function uploadImage(file){
                 )
                 .single();
 
+
         if(error)
             throw error;
+
 
         if(data){
 
@@ -2270,7 +3284,11 @@ async function uploadImage(file){
                     ]
                 ])
             );
+
+
+            scrollToBottom();
         }
+
 
     }catch(error){
 
@@ -2279,14 +3297,17 @@ async function uploadImage(file){
             error
         );
 
+
         alert(
             "图片发送失败：\n" +
             error.message
         );
 
+
     }finally{
 
         imageButton.disabled = false;
+
         imageButton.textContent = "📷";
     }
 }
@@ -2306,24 +3327,34 @@ function subscribeToMessages(){
             );
     }
 
+
     realtimeChannel =
         supabaseClient
             .channel(
                 "messages-realtime"
             )
             .on(
+
                 "postgres_changes",
+
                 {
+
                     event:"INSERT",
+
                     schema:"public",
+
                     table:MESSAGE_TABLE
+
                 },
+
                 async function(payload){
 
                     /*
-                     * 自己发送的消息已经在发送函数
-                     * 里显示，所以不要重复。
+                     * 自己发送的消息已经
+                     * 在 sendMessage /
+                     * uploadImage 里显示。
                      */
+
                     if(
                         currentProfile &&
                         payload.new.nickname ===
@@ -2333,8 +3364,10 @@ function subscribeToMessages(){
                         return;
                     }
 
+
                     let profileMap =
                         new Map();
+
 
                     const {data} =
                         await supabaseClient
@@ -2347,6 +3380,7 @@ function subscribeToMessages(){
                                 payload.new.nickname
                             );
 
+
                     if(data){
 
                         data.forEach(
@@ -2356,24 +3390,33 @@ function subscribeToMessages(){
                                     profile.nickname,
                                     profile
                                 );
+
                             }
                         );
                     }
+
 
                     await renderMessage(
                         payload.new,
                         profileMap
                     );
+
+
+                    scrollToBottom();
                 }
+
             )
             .subscribe(
+
                 function(status){
 
                     console.log(
                         "Realtime:",
                         status
                     );
+
                 }
+
             );
 }
 
@@ -2394,6 +3437,7 @@ async function logoutUser(){
         realtimeChannel = null;
     }
 
+
     await supabaseClient.auth.signOut();
 }
 
@@ -2409,32 +3453,42 @@ function openImageViewer(url){
             "imageViewer"
         );
 
+
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
+
     viewerImage.src = url;
 
-    viewer.style.display = "flex";
+
+    viewer.style.display =
+        "flex";
 }
+
 
 function closeImageViewer(event){
 
     if(event)
         event.stopPropagation();
 
+
     const viewer =
         document.getElementById(
             "imageViewer"
         );
+
 
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
-    viewer.style.display = "none";
+
+    viewer.style.display =
+        "none";
+
 
     viewerImage.src = "";
 }
@@ -2457,12 +3511,13 @@ messageInput.addEventListener(
 
             sendMessage();
         }
+
     }
 );
 
 
 /* =====================================================
-   验证码输入限制
+   验证码只能输入数字
 ===================================================== */
 
 document
@@ -2475,6 +3530,7 @@ document
                 this.value
                     .replace(/\D/g,"")
                     .slice(0,8);
+
         }
     );
 
