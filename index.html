@@ -36,9 +36,9 @@ button{
     cursor:pointer;
 }
 
-/* =====================================================
+/* =========================
    首页
-===================================================== */
+========================= */
 
 #homePage{
     position:fixed;
@@ -125,9 +125,9 @@ button{
     cursor:not-allowed;
 }
 
-/* =====================================================
-   登录 / 注册 / 资料页面
-===================================================== */
+/* =========================
+   登录 / 注册
+========================= */
 
 .page{
     position:fixed;
@@ -302,9 +302,9 @@ button{
     cursor:not-allowed;
 }
 
-/* =====================================================
+/* =========================
    头像
-===================================================== */
+========================= */
 
 .avatar-upload{
     display:flex;
@@ -353,9 +353,9 @@ button{
     font-size:13px;
 }
 
-/* =====================================================
+/* =========================
    聊天页面
-===================================================== */
+========================= */
 
 #chatPage{
     position:fixed;
@@ -383,9 +383,9 @@ button{
     overflow:hidden;
 }
 
-/* =====================================================
+/* =========================
    顶部
-===================================================== */
+========================= */
 
 .chat-header{
     height:64px;
@@ -493,9 +493,9 @@ button{
     background:#ed4245;
 }
 
-/* =====================================================
+/* =========================
    消息区域
-===================================================== */
+========================= */
 
 #messages{
     flex:1 1 auto;
@@ -516,9 +516,9 @@ button{
     background:#111318;
 }
 
-/* =====================================================
+/* =========================
    消息
-===================================================== */
+========================= */
 
 .message{
     display:flex;
@@ -595,40 +595,36 @@ button{
     color:white;
 }
 
-/* =====================================================
-   图片消息
-   重点修改：
-   图片不再拥有紫色气泡背景
-===================================================== */
+/*
+   关键修改：
+   图片消息不再有紫色气泡背景。
+   图片本身就是完整的一块。
+*/
 
 .bubble.image-bubble{
     padding:0;
 
-    background:transparent;
+    background:transparent !important;
 
-    border:none;
+    border-radius:8px;
 
-    border-radius:0;
-
-    overflow:visible;
+    overflow:hidden;
 
     line-height:0;
 }
 
 .mine .bubble.image-bubble{
-    background:transparent;
-
-    padding:0;
+    background:transparent !important;
 }
 
 .chat-image{
     display:block;
 
-    width:auto;
-    height:auto;
-
     max-width:320px;
     max-height:400px;
+
+    width:auto;
+    height:auto;
 
     border-radius:8px;
 
@@ -637,10 +633,6 @@ button{
     cursor:pointer;
 
     background:transparent;
-
-    border:none;
-
-    box-shadow:none;
 }
 
 .chat-image:hover{
@@ -673,9 +665,9 @@ button{
     line-height:1.8;
 }
 
-/* =====================================================
-   底部输入区
-===================================================== */
+/* =========================
+   输入区
+========================= */
 
 .input-area{
     width:100%;
@@ -778,9 +770,9 @@ button{
     cursor:not-allowed;
 }
 
-/* =====================================================
+/* =========================
    图片查看器
-===================================================== */
+========================= */
 
 #imageViewer{
     position:fixed;
@@ -828,9 +820,9 @@ button{
     font-size:28px;
 }
 
-/* =====================================================
+/* =========================
    手机
-===================================================== */
+========================= */
 
 @media(max-width:600px){
 
@@ -956,9 +948,9 @@ button{
 
 <body>
 
-<!-- =====================================================
-   首页
-===================================================== -->
+<!-- =========================
+     首页
+========================= -->
 
 <div id="homePage">
 
@@ -987,9 +979,9 @@ button{
 </div>
 
 
-<!-- =====================================================
-   登录
-===================================================== -->
+<!-- =========================
+     登录
+========================= -->
 
 <div id="loginPage" class="page">
 
@@ -1061,9 +1053,9 @@ button{
 </div>
 
 
-<!-- =====================================================
-   注册
-===================================================== -->
+<!-- =========================
+     注册
+========================= -->
 
 <div id="registerPage" class="page">
 
@@ -1157,9 +1149,9 @@ button{
 </div>
 
 
-<!-- =====================================================
-   完善资料
-===================================================== -->
+<!-- =========================
+     完善资料
+========================= -->
 
 <div id="profilePage" class="page">
 
@@ -1234,9 +1226,9 @@ button{
 </div>
 
 
-<!-- =====================================================
-   聊天页面
-===================================================== -->
+<!-- =========================
+     聊天
+========================= -->
 
 <div id="chatPage">
 
@@ -1252,7 +1244,9 @@ button{
 
                 <div>
 
-                    <h2>My Chat</h2>
+                    <h2>
+                        My Chat
+                    </h2>
 
                     <div class="status">
                         ● 实时连接
@@ -1290,23 +1284,17 @@ button{
 
         </header>
 
-
         <main id="messages">
 
             <div
                 class="empty"
                 id="emptyMessage">
 
-                暂时还没有消息
-
-                <br>
-
-                成为第一个发言的人吧！
+                正在加载聊天记录...
 
             </div>
 
         </main>
-
 
         <div class="input-area">
 
@@ -1346,9 +1334,9 @@ button{
 </div>
 
 
-<!-- =====================================================
-   图片查看器
-===================================================== -->
+<!-- =========================
+     图片查看器
+========================= -->
 
 <div
     id="imageViewer"
@@ -1420,25 +1408,6 @@ let codeCooldown = 0;
 let codeTimer = null;
 
 let sentMessageTimes = [];
-
-
-/*
- * 图片 / 头像 URL 缓存
- *
- * 原来的代码每显示一次头像，
- * 都重新向 Supabase 请求 signed URL。
- *
- * 现在缓存下来，减少大量请求。
- */
-
-const signedUrlCache = new Map();
-
-
-/*
- * 防止重复加载消息
- */
-
-let loadingMessages = false;
 
 
 /* =====================================================
@@ -1595,15 +1564,14 @@ async function initializeApp(){
             currentUser =
                 data.session.user;
 
-            /*
-             * 先显示聊天页面，
-             * 不要等所有数据加载完。
-             */
-
             await loadCurrentProfile();
 
             if(currentProfile){
 
+                /*
+                 * 先显示聊天页面。
+                 * 不再等历史消息全部加载完成。
+                 */
                 await openChat();
 
             }else{
@@ -1639,8 +1607,6 @@ async function initializeApp(){
                 currentUser = null;
 
                 currentProfile = null;
-
-                signedUrlCache.clear();
 
                 if(realtimeChannel){
 
@@ -1743,10 +1709,6 @@ async function loginUser(){
             return;
         }
 
-
-        /*
-         * openChat 内部现在会立即显示聊天界面。
-         */
 
         await openChat();
 
@@ -2204,10 +2166,18 @@ async function finishProfile(){
                     .toLowerCase();
 
 
+            /*
+             * 新头像放进自己的 UID 文件夹。
+             */
+
             const fileName =
                 currentUser.id +
-                "_" +
+                "/" +
                 Date.now() +
+                "_" +
+                Math.random()
+                    .toString(36)
+                    .substring(2,10) +
                 "." +
                 extension;
 
@@ -2341,8 +2311,7 @@ async function loadCurrentProfile(){
 
 
 /* =====================================================
-   私有图片地址
-   加缓存，减少重复请求
+   获取私有图片地址
 ===================================================== */
 
 async function getPrivateImageUrl(
@@ -2360,34 +2329,6 @@ async function getPrivateImageUrl(
     ){
 
         return path;
-    }
-
-
-    const cacheKey =
-        bucket + ":" + path;
-
-
-    if(
-        signedUrlCache.has(cacheKey)
-    ){
-
-        const cached =
-            signedUrlCache.get(cacheKey);
-
-        /*
-         * signed URL 本身会过期。
-         * 这里缓存 50 分钟。
-         */
-
-        if(
-            Date.now() - cached.time <
-            50 * 60 * 1000
-        ){
-
-            return cached.url;
-        }
-
-        signedUrlCache.delete(cacheKey);
     }
 
 
@@ -2411,23 +2352,14 @@ async function getPrivateImageUrl(
     }
 
 
-    signedUrlCache.set(
-        cacheKey,
-        {
-            url:data.signedUrl,
-            time:Date.now()
-        }
-    );
-
-
     return data.signedUrl;
 }
 
 
 /* =====================================================
    打开聊天
-   重点：
-   先显示聊天页面，再加载数据
+   关键修改：
+   先显示聊天界面，再加载历史消息
 ===================================================== */
 
 async function openChat(){
@@ -2440,10 +2372,8 @@ async function openChat(){
     }
 
 
-    if(!currentProfile){
-
+    if(!currentProfile)
         await loadCurrentProfile();
-    }
 
 
     if(!currentProfile){
@@ -2455,9 +2385,8 @@ async function openChat(){
 
 
     /*
-     * 最重要的修改：
-     *
-     * 不再等待历史消息加载完才显示聊天页面。
+     * 这里先显示聊天页面。
+     * 不等待历史消息。
      */
 
     hideAllPages();
@@ -2466,21 +2395,15 @@ async function openChat(){
 
 
     /*
-     * 立即显示当前用户基本信息
+     * 先把当前用户头像和昵称显示出来。
      */
 
     updateCurrentUserUI();
 
 
     /*
-     * 先显示一个加载状态
-     */
-
-    showLoadingMessages();
-
-
-    /*
-     * Realtime 立即建立。
+     * 先建立 Realtime。
+     * 防止历史消息加载过程中漏掉新消息。
      */
 
     subscribeToMessages();
@@ -2488,16 +2411,13 @@ async function openChat(){
 
     /*
      * 历史消息异步加载。
-     *
-     * 不阻塞聊天页面显示。
      */
 
     loadMessages();
 
 
     /*
-     * 桌面端自动聚焦。
-     * 手机端不自动弹键盘。
+     * 电脑端自动聚焦。
      */
 
     setTimeout(function(){
@@ -2510,7 +2430,7 @@ async function openChat(){
 
         }
 
-    },150);
+    },100);
 }
 
 
@@ -2538,17 +2458,6 @@ async function updateCurrentUserUI(){
 
     if(currentProfile.avatar_url){
 
-        /*
-         * 先显示默认头像，
-         * 不等待网络。
-         */
-
-        avatar.src =
-            createDefaultAvatar(
-                currentProfile.nickname
-            );
-
-
         const url =
             await getPrivateImageUrl(
                 AVATAR_BUCKET,
@@ -2560,6 +2469,12 @@ async function updateCurrentUserUI(){
 
             avatar.src = url;
 
+        }else{
+
+            avatar.src =
+                createDefaultAvatar(
+                    currentProfile.nickname
+                );
         }
 
     }else{
@@ -2573,174 +2488,26 @@ async function updateCurrentUserUI(){
 
 
 /* =====================================================
-   加载提示
-===================================================== */
-
-function showLoadingMessages(){
-
-    messages.innerHTML = "";
-
-
-    const loading =
-        document.createElement("div");
-
-
-    loading.className = "empty";
-
-
-    loading.innerHTML =
-        "正在加载聊天记录…";
-
-
-    messages.appendChild(
-        loading
-    );
-}
-
-
-/* =====================================================
    读取历史消息
-   重点优化：
-   1. 只查询一次 profiles
-   2. 不逐条等待 render
-   3. Promise.all 并行
 ===================================================== */
 
 async function loadMessages(){
 
-    if(loadingMessages)
-        return;
-
-
-    loadingMessages = true;
-
-
-    try{
-
-        const [
-            messageResult,
-            profileResult
-        ] = await Promise.all([
-
-            supabaseClient
-                .from(MESSAGE_TABLE)
-                .select(
-                    "id,nickname,message,created_at,image_url"
-                )
-                .order(
-                    "created_at",
-                    {
-                        ascending:true
-                    }
-                ),
-
-            supabaseClient
-                .from(PROFILE_TABLE)
-                .select(
-                    "id,nickname,avatar_url"
-                )
-
-        ]);
-
-
-        const {data,error} =
-            messageResult;
-
-
-        if(error)
-            throw error;
-
-
-        const profiles =
-            profileResult.data || [];
-
-
-        const profileMap =
-            new Map();
-
-
-        profiles.forEach(
-            function(profile){
-
-                /*
-                 * nickname 只是为了兼容你现在的数据库。
-                 *
-                 * 后面如果 messages 增加 user_id，
-                 * 可以彻底改成 UID 绑定。
-                 */
-
-                if(
-                    profile.nickname &&
-                    !profileMap.has(
-                        profile.nickname
-                    )
-                ){
-
-                    profileMap.set(
-                        profile.nickname,
-                        profile
-                    );
+    const {data,error} =
+        await supabaseClient
+            .from(MESSAGE_TABLE)
+            .select(
+                "id,user_id,nickname,message,created_at,image_url"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending:true
                 }
-
-            }
-        );
-
-
-        messages.innerHTML = "";
-
-
-        if(!data || data.length === 0){
-
-            showEmpty();
-
-            return;
-        }
-
-
-        /*
-         * 所有消息并行生成 DOM。
-         */
-
-        const rendered =
-            await Promise.all(
-
-                data.map(
-                    function(message){
-
-                        return createMessageElement(
-                            message,
-                            profileMap
-                        );
-
-                    }
-                )
-
             );
 
 
-        rendered.forEach(
-            function(element){
-
-                if(element){
-
-                    messages.appendChild(
-                        element
-                    );
-
-                }
-
-            }
-        );
-
-
-        /*
-         * 自动跳到最新消息。
-         */
-
-        scrollToBottomInstant();
-
-
-    }catch(error){
+    if(error){
 
         console.error(
             "读取历史消息失败：",
@@ -2755,8 +2522,7 @@ async function loadMessages(){
             document.createElement("div");
 
 
-        errorBox.className =
-            "empty";
+        errorBox.className = "empty";
 
 
         errorBox.textContent =
@@ -2769,10 +2535,83 @@ async function loadMessages(){
         );
 
 
-    }finally{
-
-        loadingMessages = false;
+        return;
     }
+
+
+    messages.innerHTML = "";
+
+
+    if(!data || data.length === 0){
+
+        showEmpty();
+
+        return;
+    }
+
+
+    /*
+     * profiles 用 id 建立 Map。
+     * 不再使用 nickname 作为用户唯一身份。
+     */
+
+    const {data:profiles,error:profileError} =
+        await supabaseClient
+            .from(PROFILE_TABLE)
+            .select(
+                "id,nickname,avatar_url"
+            );
+
+
+    if(profileError){
+
+        console.error(
+            "读取用户资料失败：",
+            profileError
+        );
+    }
+
+
+    const profileMap =
+        new Map();
+
+
+    if(profiles){
+
+        profiles.forEach(
+            function(profile){
+
+                profileMap.set(
+                    profile.id,
+                    profile
+                );
+
+            }
+        );
+    }
+
+
+    /*
+     * 分批渲染，避免大量图片历史消息
+     * 一次性阻塞页面。
+     */
+
+    for(
+        const message of data
+    ){
+
+        await renderMessage(
+            message,
+            profileMap
+        );
+    }
+
+
+    /*
+     * 历史消息完成后立刻滚到底部。
+     */
+
+    scrollToBottom(true);
 }
 
 
@@ -2822,24 +2661,18 @@ function hideEmpty(){
    默认头像
 ===================================================== */
 
-function escapeXml(text){
-
-    return String(text || "?")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&apos;");
-}
-
-
 function createDefaultAvatar(name){
 
     const letter =
-        escapeXml(
-            (name || "?")
-                .charAt(0)
-                .toUpperCase()
+        (name || "?")
+            .charAt(0)
+            .toUpperCase();
+
+
+    const safeLetter =
+        letter.replace(
+            /[<>&"']/g,
+            ""
         );
 
 
@@ -2864,7 +2697,7 @@ function createDefaultAvatar(name){
                 font-size="32"
                 font-family="Arial">
 
-                ${letter}
+                ${safeLetter}
 
             </text>
 
@@ -2879,14 +2712,16 @@ function createDefaultAvatar(name){
 
 
 /* =====================================================
-   创建消息 DOM
-   注意：不再直接 append 到页面
+   显示消息
 ===================================================== */
 
-async function createMessageElement(
+async function renderMessage(
     message,
     profileMap = null
 ){
+
+    hideEmpty();
+
 
     const row =
         document.createElement("div");
@@ -2897,14 +2732,14 @@ async function createMessageElement(
 
 
     /*
-     * 由于当前 messages 表没有 user_id，
-     * 暂时只能使用 nickname 判断自己。
+     * 关键修改：
+     * 使用 user_id 判断自己的消息。
      */
 
     const isMine =
-        currentProfile &&
-        message.nickname ===
-        currentProfile.nickname;
+        currentUser &&
+        message.user_id ===
+        currentUser.id;
 
 
     if(isMine)
@@ -2918,10 +2753,14 @@ async function createMessageElement(
 
         profile =
             profileMap.get(
-                message.nickname
+                message.user_id
             );
     }
 
+
+    /*
+     * 当前用户直接使用当前资料。
+     */
 
     if(
         isMine &&
@@ -2941,15 +2780,40 @@ async function createMessageElement(
         "message-avatar";
 
 
-    /*
-     * 先放默认头像，
-     * 页面不会因为头像网络请求卡住。
-     */
+    if(
+        profile &&
+        profile.avatar_url
+    ){
 
-    avatar.src =
-        createDefaultAvatar(
-            message.nickname
-        );
+        const avatarUrl =
+            await getPrivateImageUrl(
+                AVATAR_BUCKET,
+                profile.avatar_url
+            );
+
+
+        if(avatarUrl){
+
+            avatar.src =
+                avatarUrl;
+
+        }else{
+
+            avatar.src =
+                createDefaultAvatar(
+                    profile.nickname ||
+                    message.nickname
+                );
+        }
+
+    }else{
+
+        avatar.src =
+            createDefaultAvatar(
+                profile?.nickname ||
+                message.nickname
+            );
+    }
 
 
     avatar.alt = "头像";
@@ -2972,8 +2836,12 @@ async function createMessageElement(
 
 
     name.textContent =
+        (
+            profile &&
+            profile.nickname
+        ) ||
         message.nickname ||
-        "匿名";
+        "用户";
 
 
     const bubble =
@@ -2985,6 +2853,10 @@ async function createMessageElement(
 
 
     if(message.image_url){
+
+        /*
+         * 图片消息使用透明气泡。
+         */
 
         bubble.classList.add(
             "image-bubble"
@@ -2999,18 +2871,6 @@ async function createMessageElement(
             "chat-image";
 
 
-        img.alt =
-            "聊天图片";
-
-
-        img.loading =
-            "lazy";
-
-
-        /*
-         * 图片地址异步获取。
-         */
-
         const imageUrl =
             await getPrivateImageUrl(
                 CHAT_IMAGE_BUCKET,
@@ -3022,6 +2882,12 @@ async function createMessageElement(
 
             img.src =
                 imageUrl;
+
+            img.alt =
+                "聊天图片";
+
+            img.loading =
+                "lazy";
 
 
             img.onclick =
@@ -3047,7 +2913,7 @@ async function createMessageElement(
     }else{
 
         /*
-         * textContent 防止 XSS。
+         * textContent 防止 HTML/XSS。
          */
 
         bubble.textContent =
@@ -3081,64 +2947,7 @@ async function createMessageElement(
     row.appendChild(body);
 
 
-    /*
-     * 头像异步加载，
-     * 不阻塞消息 DOM。
-     */
-
-    if(
-        profile &&
-        profile.avatar_url
-    ){
-
-        getPrivateImageUrl(
-            AVATAR_BUCKET,
-            profile.avatar_url
-        ).then(
-            function(url){
-
-                if(url){
-
-                    avatar.src = url;
-
-                }
-
-            }
-        );
-
-    }
-
-
-    return row;
-}
-
-
-/* =====================================================
-   兼容旧函数名称
-===================================================== */
-
-async function renderMessage(
-    message,
-    profileMap = null
-){
-
-    hideEmpty();
-
-
-    const element =
-        await createMessageElement(
-            message,
-            profileMap
-        );
-
-
-    if(element){
-
-        messages.appendChild(
-            element
-        );
-
-    }
+    messages.appendChild(row);
 }
 
 
@@ -3173,31 +2982,25 @@ function formatTime(value){
 
 
 /* =====================================================
-   滚动
+   滚动到底部
 ===================================================== */
 
-function scrollToBottom(){
+function scrollToBottom(immediate = false){
 
     requestAnimationFrame(
         function(){
 
             messages.scrollTo({
-                top:messages.scrollHeight,
-                behavior:"smooth"
+
+                top:
+                    messages.scrollHeight,
+
+                behavior:
+                    immediate
+                    ? "auto"
+                    : "smooth"
+
             });
-
-        }
-    );
-}
-
-
-function scrollToBottomInstant(){
-
-    requestAnimationFrame(
-        function(){
-
-            messages.scrollTop =
-                messages.scrollHeight;
 
         }
     );
@@ -3296,6 +3099,14 @@ async function sendMessage(){
                 .from(MESSAGE_TABLE)
                 .insert({
 
+                    /*
+                     * 关键：
+                     * 写入真实 Auth UID。
+                     */
+
+                    user_id:
+                        currentUser.id,
+
                     nickname:
                         currentProfile.nickname,
 
@@ -3307,7 +3118,7 @@ async function sendMessage(){
 
                 })
                 .select(
-                    "id,nickname,message,created_at,image_url"
+                    "id,user_id,nickname,message,created_at,image_url"
                 )
                 .single();
 
@@ -3319,30 +3130,26 @@ async function sendMessage(){
         messageInput.value = "";
 
 
+        /*
+         * 这里仍然立即显示。
+         * Realtime 收到自己的消息时会跳过，
+         * 因此不会重复。
+         */
+
         if(data){
 
-            const element =
-                await createMessageElement(
-                    data,
-                    new Map([
-                        [
-                            currentProfile.nickname,
-                            currentProfile
-                        ]
-                    ])
-                );
+            await renderMessage(
+                data,
+                new Map([
+                    [
+                        currentUser.id,
+                        currentProfile
+                    ]
+                ])
+            );
 
 
-            if(element){
-
-                hideEmpty();
-
-                messages.appendChild(
-                    element
-                );
-
-                scrollToBottom();
-            }
+            scrollToBottom();
         }
 
 
@@ -3427,7 +3234,7 @@ async function uploadImage(file){
 
 
     /*
-     * 与 Supabase chat-images bucket
+     * 与 Supabase chat-images Bucket
      * 的 5MB 限制保持一致。
      */
 
@@ -3486,9 +3293,13 @@ async function uploadImage(file){
                 .toLowerCase();
 
 
+        /*
+         * 新聊天图片放到自己的 UID 文件夹。
+         */
+
         const fileName =
             currentUser.id +
-            "_" +
+            "/" +
             Date.now() +
             "_" +
             Math.random()
@@ -3524,6 +3335,14 @@ async function uploadImage(file){
                 .from(MESSAGE_TABLE)
                 .insert({
 
+                    /*
+                     * 关键：
+                     * 图片消息也绑定 UID。
+                     */
+
+                    user_id:
+                        currentUser.id,
+
                     nickname:
                         currentProfile.nickname,
 
@@ -3534,7 +3353,7 @@ async function uploadImage(file){
 
                 })
                 .select(
-                    "id,nickname,message,created_at,image_url"
+                    "id,user_id,nickname,message,created_at,image_url"
                 )
                 .single();
 
@@ -3545,28 +3364,18 @@ async function uploadImage(file){
 
         if(data){
 
-            const element =
-                await createMessageElement(
-                    data,
-                    new Map([
-                        [
-                            currentProfile.nickname,
-                            currentProfile
-                        ]
-                    ])
-                );
+            await renderMessage(
+                data,
+                new Map([
+                    [
+                        currentUser.id,
+                        currentProfile
+                    ]
+                ])
+            );
 
 
-            if(element){
-
-                hideEmpty();
-
-                messages.appendChild(
-                    element
-                );
-
-                scrollToBottom();
-            }
+            scrollToBottom();
         }
 
 
@@ -3605,6 +3414,8 @@ function subscribeToMessages(){
             .removeChannel(
                 realtimeChannel
             );
+
+        realtimeChannel = null;
     }
 
 
@@ -3630,46 +3441,43 @@ function subscribeToMessages(){
                 async function(payload){
 
                     /*
-                     * 自己的消息已经本地显示，
-                     * 避免重复。
-                     *
-                     * 注意：
-                     * 目前只能根据 nickname 判断。
+                     * 使用 user_id 判断自己的消息。
+                     * 不再使用 nickname。
                      */
 
                     if(
-                        currentProfile &&
-                        payload.new.nickname ===
-                        currentProfile.nickname
+                        currentUser &&
+                        payload.new.user_id ===
+                        currentUser.id
                     ){
 
                         return;
                     }
 
 
-                    let profileMap =
+                    const profileMap =
                         new Map();
 
 
-                    const {data} =
+                    const {data,error} =
                         await supabaseClient
                             .from(PROFILE_TABLE)
                             .select(
-                                "nickname,avatar_url"
+                                "id,nickname,avatar_url"
                             )
                             .eq(
-                                "nickname",
-                                payload.new.nickname
+                                "id",
+                                payload.new.user_id
                             );
 
 
-                    if(data){
+                    if(!error && data){
 
                         data.forEach(
                             function(profile){
 
                                 profileMap.set(
-                                    profile.nickname,
+                                    profile.id,
                                     profile
                                 );
 
@@ -3678,24 +3486,13 @@ function subscribeToMessages(){
                     }
 
 
-                    const element =
-                        await createMessageElement(
-                            payload.new,
-                            profileMap
-                        );
+                    await renderMessage(
+                        payload.new,
+                        profileMap
+                    );
 
 
-                    if(element){
-
-                        hideEmpty();
-
-                        messages.appendChild(
-                            element
-                        );
-
-                        scrollToBottom();
-                    }
-
+                    scrollToBottom();
                 }
 
             )
@@ -3729,9 +3526,6 @@ async function logoutUser(){
 
         realtimeChannel = null;
     }
-
-
-    signedUrlCache.clear();
 
 
     await supabaseClient.auth.signOut();
