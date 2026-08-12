@@ -14,7 +14,8 @@
     padding:0;
 }
 
-html,body{
+html,
+body{
     width:100%;
     height:100%;
     overflow:hidden;
@@ -26,7 +27,8 @@ body{
     color:#fff;
 }
 
-button,input{
+button,
+input{
     font:inherit;
 }
 
@@ -46,8 +48,13 @@ button{
     align-items:center;
     padding:20px;
     overflow:auto;
+
     background:
-        radial-gradient(circle at top left,rgba(88,101,242,.25),transparent 40%),
+        radial-gradient(
+            circle at top left,
+            rgba(88,101,242,.25),
+            transparent 40%
+        ),
         #0b0d12;
 }
 
@@ -89,7 +96,7 @@ button{
 .primary-button{
     width:100%;
     border:none;
-    border-radius:4px;
+    border-radius:5px;
     padding:14px 20px;
     color:white;
     font-weight:700;
@@ -298,12 +305,16 @@ button{
     height:64px;
     min-height:64px;
     flex:0 0 64px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 20px;
+
     background:#15171d;
     border-bottom:1px solid #252832;
+
     z-index:10;
 }
 
@@ -318,9 +329,11 @@ button{
     width:38px;
     height:38px;
     flex:0 0 38px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     border-radius:50%;
     background:#5865f2;
 }
@@ -380,12 +393,17 @@ button{
     flex:1 1 auto;
     min-height:0;
     width:100%;
+
     overflow-x:hidden;
     overflow-y:auto;
+
     overscroll-behavior:contain;
     -webkit-overflow-scrolling:touch;
+
     padding:25px;
+
     background:#111318;
+
     overflow-anchor:none;
 }
 
@@ -457,12 +475,17 @@ button{
 
 .chat-image{
     display:block;
+
     max-width:320px;
     max-height:400px;
+
     width:auto;
     height:auto;
+
     border-radius:8px;
+
     object-fit:contain;
+
     cursor:pointer;
 }
 
@@ -492,34 +515,37 @@ button{
 ========================= */
 
 .input-area{
+    position:relative;
+
     width:100%;
-    min-height:78px;
+    min-height:82px;
     flex:0 0 auto;
 
     display:flex;
     align-items:center;
 
-    padding:12px 20px;
+    padding:14px 20px;
 
     background:#15171d;
     border-top:1px solid #252832;
 
-    z-index:10;
+    z-index:20;
 }
 
 /*
-   整个输入栏
+   整个输入框
 */
-.message-composer{
+
+.composer{
     width:100%;
-    min-height:48px;
+    min-height:52px;
 
     display:flex;
     align-items:center;
 
-    padding:0 8px;
+    padding:6px 8px;
 
-    border-radius:9px;
+    border-radius:10px;
 
     background:#1e2128;
 
@@ -528,93 +554,103 @@ button{
         box-shadow .15s ease;
 }
 
-.message-composer:focus-within{
-    background:#20242c;
-    box-shadow:0 0 0 1px rgba(88,101,242,.18);
+.composer:focus-within{
+    background:#20232b;
+    box-shadow:0 0 0 1px rgba(88,101,242,.15);
 }
 
 /*
    左边 +
 */
-.composer-add{
-    width:38px;
-    height:38px;
 
-    flex:0 0 38px;
+.composer-left{
+    width:40px;
+    min-width:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.plus-button{
+    width:34px;
+    height:34px;
+
+    border:none;
+    border-radius:50%;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border:none;
-    border-radius:50%;
+    background:#b5bac1;
+    color:#1e2128;
 
-    background:transparent;
-    color:#b5bac1;
-
-    font-size:28px;
+    font-size:25px;
     font-weight:300;
     line-height:1;
 
-    transition:
-        background .15s ease,
-        color .15s ease;
+    transition:.15s ease;
 }
 
-.composer-add:hover{
-    background:#5865f2;
-    color:#fff;
+.plus-button:hover{
+    background:#ffffff;
+    transform:scale(1.05);
 }
 
 /*
    中间输入框
 */
+
 #messageInput{
     flex:1 1 auto;
     min-width:0;
-    height:48px;
+
+    height:40px;
 
     border:none;
     outline:none;
 
     padding:0 10px;
 
-    color:#fff;
+    color:white;
     background:transparent;
 
     font-size:15px;
 }
 
 #messageInput::placeholder{
-    color:#72767d;
+    color:#6d717a;
 }
 
 /*
-   右侧按钮区域
+   右边功能区
 */
-.composer-actions{
-    display:flex;
-    align-items:center;
-    gap:2px;
 
-    flex:0 0 auto;
-}
-
-/*
-   Emoji / 麦克风
-*/
-.composer-icon-button{
-    width:38px;
-    height:38px;
-
-    flex:0 0 38px;
-
+.composer-right{
     display:flex;
     align-items:center;
     justify-content:center;
 
+    gap:4px;
+
+    min-width:84px;
+}
+
+/*
+   表情和麦克风
+*/
+
+.tool-button{
+    width:38px;
+    height:38px;
+
     border:none;
     border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:transparent;
     color:#b5bac1;
@@ -623,103 +659,105 @@ button{
 
     transition:
         background .15s ease,
-        color .15s ease;
+        color .15s ease,
+        transform .15s ease;
 }
 
-.composer-icon-button:hover{
+.tool-button:hover{
     background:#2b2e35;
-    color:#fff;
+    color:#ffffff;
+    transform:scale(1.05);
 }
 
 /*
-   纸飞机发送按钮
+   发送纸飞机
 */
+
 #sendButton{
-    width:38px;
-    height:38px;
-
-    flex:0 0 38px;
-
     display:none;
-    align-items:center;
-    justify-content:center;
+
+    width:40px;
+    height:40px;
 
     border:none;
     border-radius:50%;
 
-    background:#5865f2;
-    color:#fff;
+    align-items:center;
+    justify-content:center;
 
-    font-size:18px;
+    background:#5865f2;
+    color:white;
+
+    font-size:20px;
 
     transition:
         background .15s ease,
-        transform .1s ease;
+        transform .15s ease;
 }
 
 #sendButton:hover{
     background:#4752c4;
-}
-
-#sendButton:active{
-    transform:scale(.92);
+    transform:scale(1.05);
 }
 
 #sendButton:disabled{
     opacity:.5;
+    cursor:not-allowed;
 }
 
 /*
-   有文字时：
-   隐藏 Emoji + 麦克风
+   输入文字后：
+   隐藏 emoji / microphone
    显示纸飞机
 */
-.message-composer.has-text .normal-actions{
+
+.composer.has-text .normal-tools{
     display:none;
 }
 
-.message-composer.has-text #sendButton{
+.composer.has-text #sendButton{
     display:flex;
 }
 
 /*
-   图片文件输入隐藏
+   图片选择隐藏
 */
+
 #imageInput{
     display:none;
 }
 
 /* =========================
-   Emoji 菜单
+   Emoji 面板
 ========================= */
 
 #emojiPicker{
     position:absolute;
 
     right:20px;
-    bottom:86px;
+    bottom:76px;
 
     width:310px;
-    max-height:300px;
+    max-width:calc(100vw - 30px);
 
     display:none;
 
     padding:12px;
 
-    overflow-y:auto;
-
-    border:1px solid #2b2e35;
     border-radius:10px;
 
-    background:#181a20;
+    background:#181a1f;
+    border:1px solid #2b2e35;
 
-    box-shadow:0 15px 45px rgba(0,0,0,.45);
+    box-shadow:0 15px 50px rgba(0,0,0,.5);
 
     z-index:100;
 }
 
-#emojiPicker.show{
-    display:block;
+.emoji-title{
+    color:#b5bac1;
+    font-size:12px;
+    margin-bottom:8px;
 }
 
 .emoji-grid{
@@ -732,16 +770,16 @@ button{
     width:32px;
     height:32px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
     border:none;
     border-radius:5px;
 
     background:transparent;
 
     font-size:21px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .emoji-item:hover{
@@ -771,7 +809,9 @@ button{
 #viewerImage{
     max-width:95vw;
     max-height:90vh;
+
     border-radius:8px;
+
     object-fit:contain;
 }
 
@@ -855,28 +895,37 @@ button{
     }
 
     .input-area{
-        min-height:68px;
+        min-height:70px;
         padding:9px 10px;
         padding-bottom:max(9px,env(safe-area-inset-bottom));
     }
 
-    .message-composer{
-        min-height:46px;
-        padding:0 5px;
+    .composer{
+        min-height:50px;
+        padding:5px 6px;
     }
 
-    #messageInput{
-        height:46px;
-        padding:0 7px;
-        font-size:15px;
+    .composer-left{
+        width:38px;
+        min-width:38px;
     }
 
-    .composer-add,
-    .composer-icon-button,
+    .plus-button{
+        width:32px;
+        height:32px;
+        font-size:23px;
+    }
+
+    .tool-button{
+        width:36px;
+        height:36px;
+        font-size:20px;
+    }
+
     #sendButton{
         width:36px;
         height:36px;
-        flex-basis:36px;
+        font-size:18px;
     }
 
     .current-user span{
@@ -889,27 +938,23 @@ button{
 
     #emojiPicker{
         right:10px;
-        bottom:75px;
-        width:290px;
+        bottom:69px;
     }
 }
 
 @media(max-width:380px){
 
-    .composer-add,
-    .composer-icon-button,
-    #sendButton{
-        width:34px;
-        height:34px;
-        flex-basis:34px;
-    }
-
-    #messageInput{
-        padding:0 4px;
-    }
-
     .message-body{
         max-width:78%;
+    }
+
+    .composer-right{
+        min-width:76px;
+    }
+
+    .tool-button{
+        width:34px;
+        height:34px;
     }
 }
 
@@ -918,8 +963,8 @@ button{
 .chat-icon,
 .status,
 .logout-button,
-.composer-add,
-.composer-icon-button,
+.plus-button,
+.tool-button,
 #sendButton{
     user-select:none;
 }
@@ -955,6 +1000,7 @@ button{
     </div>
 
 </div>
+
 
 <!-- =========================
      登录
@@ -1021,6 +1067,7 @@ button{
     </div>
 
 </div>
+
 
 <!-- =========================
      注册
@@ -1110,6 +1157,7 @@ button{
 
 </div>
 
+
 <!-- =========================
      完善资料
 ========================= -->
@@ -1180,6 +1228,7 @@ button{
 
 </div>
 
+
 <!-- =========================
      聊天
 ========================= -->
@@ -1234,6 +1283,7 @@ button{
 
         </header>
 
+
         <main id="messages">
 
             <div
@@ -1250,24 +1300,29 @@ button{
 
         </main>
 
-        <!-- Discord 风格输入栏 -->
+
+        <!-- Discord 风格输入区 -->
 
         <div class="input-area">
 
-            <div
-                id="messageComposer"
-                class="message-composer">
+            <div class="composer" id="composer">
 
                 <!-- 左边 + -->
 
-                <button
-                    id="addButton"
-                    class="composer-add"
-                    title="添加图片">
-                    +
-                </button>
+                <div class="composer-left">
 
-                <!-- 输入框 -->
+                    <button
+                        class="plus-button"
+                        id="plusButton"
+                        onclick="document.getElementById('imageInput').click()"
+                        title="发送图片">
+                        +
+                    </button>
+
+                </div>
+
+
+                <!-- 中间输入框 -->
 
                 <input
                     id="messageInput"
@@ -1276,35 +1331,110 @@ button{
                     placeholder="输入消息..."
                     autocomplete="off">
 
+
                 <!-- 右边 -->
 
-                <div class="composer-actions">
+                <div class="composer-right">
 
-                    <div class="normal-actions">
+                    <!-- 没输入文字时显示 -->
+
+                    <div
+                        class="normal-tools"
+                        id="normalTools">
 
                         <button
+                            class="tool-button"
                             id="emojiButton"
-                            class="composer-icon-button"
-                            title="Emoji">
-                            😀
+                            title="表情">
+                            😊
                         </button>
 
                         <button
+                            class="tool-button"
                             id="voiceButton"
-                            class="composer-icon-button"
                             title="语音">
-                            🎙️
+                            🎤
                         </button>
 
                     </div>
 
-                    <!-- 有文字以后才显示 -->
+
+                    <!-- 输入文字后显示 -->
 
                     <button
                         id="sendButton"
+                        onclick="sendMessage()"
                         title="发送">
                         ➤
                     </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 图片上传 -->
+
+            <input
+                id="imageInput"
+                type="file"
+                accept="image/jpeg,image/png,image/gif,image/webp">
+
+            
+            <!-- Emoji -->
+
+            <div id="emojiPicker">
+
+                <div class="emoji-title">
+                    表情
+                </div>
+
+                <div class="emoji-grid">
+
+                    <button class="emoji-item">😀</button>
+                    <button class="emoji-item">😃</button>
+                    <button class="emoji-item">😄</button>
+                    <button class="emoji-item">😁</button>
+                    <button class="emoji-item">😆</button>
+                    <button class="emoji-item">😅</button>
+                    <button class="emoji-item">😂</button>
+                    <button class="emoji-item">🤣</button>
+
+                    <button class="emoji-item">😊</button>
+                    <button class="emoji-item">😇</button>
+                    <button class="emoji-item">🙂</button>
+                    <button class="emoji-item">🙃</button>
+                    <button class="emoji-item">😉</button>
+                    <button class="emoji-item">😌</button>
+                    <button class="emoji-item">😍</button>
+                    <button class="emoji-item">🥰</button>
+
+                    <button class="emoji-item">😘</button>
+                    <button class="emoji-item">😎</button>
+                    <button class="emoji-item">🤔</button>
+                    <button class="emoji-item">😐</button>
+                    <button class="emoji-item">😑</button>
+                    <button class="emoji-item">🙄</button>
+                    <button class="emoji-item">😮</button>
+                    <button class="emoji-item">😢</button>
+
+                    <button class="emoji-item">😭</button>
+                    <button class="emoji-item">😡</button>
+                    <button class="emoji-item">🤬</button>
+                    <button class="emoji-item">👍</button>
+                    <button class="emoji-item">👎</button>
+                    <button class="emoji-item">👏</button>
+                    <button class="emoji-item">🙏</button>
+                    <button class="emoji-item">❤️</button>
+
+                    <button class="emoji-item">🔥</button>
+                    <button class="emoji-item">💯</button>
+                    <button class="emoji-item">🎉</button>
+                    <button class="emoji-item">😂</button>
+                    <button class="emoji-item">💀</button>
+                    <button class="emoji-item">👀</button>
+                    <button class="emoji-item">✨</button>
+                    <button class="emoji-item">💔</button>
 
                 </div>
 
@@ -1316,80 +1446,6 @@ button{
 
 </div>
 
-<!-- =========================
-     Emoji
-========================= -->
-
-<div id="emojiPicker">
-
-    <div class="emoji-grid">
-
-        <button class="emoji-item">😀</button>
-        <button class="emoji-item">😃</button>
-        <button class="emoji-item">😄</button>
-        <button class="emoji-item">😁</button>
-        <button class="emoji-item">😆</button>
-        <button class="emoji-item">😅</button>
-        <button class="emoji-item">😂</button>
-        <button class="emoji-item">🤣</button>
-
-        <button class="emoji-item">😊</button>
-        <button class="emoji-item">😇</button>
-        <button class="emoji-item">🙂</button>
-        <button class="emoji-item">🙃</button>
-        <button class="emoji-item">😉</button>
-        <button class="emoji-item">😌</button>
-        <button class="emoji-item">😍</button>
-        <button class="emoji-item">🥰</button>
-
-        <button class="emoji-item">😘</button>
-        <button class="emoji-item">😎</button>
-        <button class="emoji-item">🤩</button>
-        <button class="emoji-item">🤔</button>
-        <button class="emoji-item">😐</button>
-        <button class="emoji-item">😑</button>
-        <button class="emoji-item">🙄</button>
-        <button class="emoji-item">😏</button>
-
-        <button class="emoji-item">😢</button>
-        <button class="emoji-item">😭</button>
-        <button class="emoji-item">😤</button>
-        <button class="emoji-item">😡</button>
-        <button class="emoji-item">🤬</button>
-        <button class="emoji-item">😱</button>
-        <button class="emoji-item">😴</button>
-        <button class="emoji-item">🤯</button>
-
-        <button class="emoji-item">👍</button>
-        <button class="emoji-item">👎</button>
-        <button class="emoji-item">👏</button>
-        <button class="emoji-item">🙌</button>
-        <button class="emoji-item">🙏</button>
-        <button class="emoji-item">❤️</button>
-        <button class="emoji-item">🔥</button>
-        <button class="emoji-item">💯</button>
-
-        <button class="emoji-item">🎉</button>
-        <button class="emoji-item">🎊</button>
-        <button class="emoji-item">💀</button>
-        <button class="emoji-item">👀</button>
-        <button class="emoji-item">💔</button>
-        <button class="emoji-item">✨</button>
-        <button class="emoji-item">⭐</button>
-        <button class="emoji-item">🚀</button>
-
-    </div>
-
-</div>
-
-<!-- =========================
-     图片输入
-========================= -->
-
-<input
-    id="imageInput"
-    type="file"
-    accept="image/jpeg,image/png,image/gif,image/webp">
 
 <!-- =========================
      图片查看器
@@ -1412,6 +1468,7 @@ button{
         onclick="event.stopPropagation()">
 
 </div>
+
 
 <script>
 
@@ -1493,20 +1550,17 @@ const sendButton =
 const imageInput =
     document.getElementById("imageInput");
 
-const addButton =
-    document.getElementById("addButton");
+const composer =
+    document.getElementById("composer");
 
 const emojiButton =
     document.getElementById("emojiButton");
 
-const voiceButton =
-    document.getElementById("voiceButton");
-
-const messageComposer =
-    document.getElementById("messageComposer");
-
 const emojiPicker =
     document.getElementById("emojiPicker");
+
+const voiceButton =
+    document.getElementById("voiceButton");
 
 
 /* =====================================================
@@ -1737,6 +1791,7 @@ async function loginUser(){
     button.disabled = true;
     button.textContent = "登录中...";
 
+
     try{
 
         const {data,error} =
@@ -1748,12 +1803,15 @@ async function loginUser(){
 
                 });
 
+
         if(error)
             throw error;
+
 
         currentUser = data.user;
 
         await loadCurrentProfile();
+
 
         if(!currentProfile){
 
@@ -1762,7 +1820,9 @@ async function loginUser(){
             return;
         }
 
+
         await openChat();
+
 
     }catch(error){
 
@@ -1803,6 +1863,7 @@ async function sendRegisterCode(){
         return;
     }
 
+
     const email =
         document
             .getElementById("registerEmail")
@@ -1814,6 +1875,7 @@ async function sendRegisterCode(){
             .getElementById("registerPassword")
             .value;
 
+
     if(!email){
 
         showError(
@@ -1823,6 +1885,7 @@ async function sendRegisterCode(){
 
         return;
     }
+
 
     if(password.length < 6){
 
@@ -1834,13 +1897,16 @@ async function sendRegisterCode(){
         return;
     }
 
+
     const button =
         document.getElementById(
             "sendCodeButton"
         );
 
+
     button.disabled = true;
     button.textContent = "发送中...";
+
 
     try{
 
@@ -1856,15 +1922,19 @@ async function sendRegisterCode(){
 
                 });
 
+
         if(error)
             throw error;
+
 
         showSuccess(
             "registerSuccess",
             "验证码已经发送到你的邮箱。"
         );
 
+
         startCodeCooldown();
+
 
     }catch(error){
 
@@ -1872,6 +1942,7 @@ async function sendRegisterCode(){
 
         button.disabled = false;
         button.textContent = "获取验证码";
+
 
         showError(
             "registerError",
@@ -1897,12 +1968,15 @@ function startCodeCooldown(){
         codeCooldown +
         " 秒后重试";
 
+
     clearInterval(codeTimer);
+
 
     codeTimer =
         setInterval(function(){
 
             codeCooldown--;
+
 
             if(codeCooldown <= 0){
 
@@ -1918,6 +1992,7 @@ function startCodeCooldown(){
                 return;
             }
 
+
             button.textContent =
                 codeCooldown +
                 " 秒后重试";
@@ -1929,6 +2004,7 @@ function startCodeCooldown(){
 async function verifyRegisterCode(){
 
     hideMessage("registerError");
+
 
     const email =
         document
@@ -1947,6 +2023,7 @@ async function verifyRegisterCode(){
             .value
             .trim();
 
+
     if(!email){
 
         showError(
@@ -1956,6 +2033,7 @@ async function verifyRegisterCode(){
 
         return;
     }
+
 
     if(password.length < 6){
 
@@ -1967,6 +2045,7 @@ async function verifyRegisterCode(){
         return;
     }
 
+
     if(!/^\d{8}$/.test(token)){
 
         showError(
@@ -1977,13 +2056,16 @@ async function verifyRegisterCode(){
         return;
     }
 
+
     const button =
         document.getElementById(
             "verifyButton"
         );
 
+
     button.disabled = true;
     button.textContent = "验证中...";
+
 
     try{
 
@@ -1997,10 +2079,13 @@ async function verifyRegisterCode(){
 
                 });
 
+
         if(error)
             throw error;
 
+
         currentUser = data.user;
+
 
         const {error:passwordError} =
             await supabaseClient.auth
@@ -2010,10 +2095,13 @@ async function verifyRegisterCode(){
 
                 });
 
+
         if(passwordError)
             throw passwordError;
 
+
         openProfilePage();
+
 
     }catch(error){
 
@@ -2046,12 +2134,14 @@ function previewAvatar(event){
     if(!file)
         return;
 
+
     const allowedTypes = [
         "image/jpeg",
         "image/png",
         "image/gif",
         "image/webp"
     ];
+
 
     if(!allowedTypes.includes(file.type)){
 
@@ -2064,6 +2154,7 @@ function previewAvatar(event){
         return;
     }
 
+
     if(file.size > 5 * 1024 * 1024){
 
         alert(
@@ -2075,20 +2166,25 @@ function previewAvatar(event){
         return;
     }
 
+
     temporaryAvatarFile = file;
+
 
     const url =
         URL.createObjectURL(file);
+
 
     const preview =
         document.getElementById(
             "avatarPreview"
         );
 
+
     const defaultAvatar =
         document.getElementById(
             "avatarDefault"
         );
+
 
     preview.src = url;
 
@@ -2106,6 +2202,7 @@ async function finishProfile(){
 
     hideMessage("profileError");
 
+
     if(!currentUser){
 
         showError(
@@ -2116,11 +2213,13 @@ async function finishProfile(){
         return;
     }
 
+
     const nickname =
         document
             .getElementById("profileNickname")
             .value
             .trim();
+
 
     if(!nickname){
 
@@ -2132,16 +2231,20 @@ async function finishProfile(){
         return;
     }
 
+
     const button =
         document.getElementById(
             "finishProfileButton"
         );
 
+
     button.disabled = true;
     button.textContent =
         "正在创建资料...";
 
+
     let avatarUrl = null;
+
 
     try{
 
@@ -2153,12 +2256,14 @@ async function finishProfile(){
                     .pop()
                     .toLowerCase();
 
+
             const fileName =
                 currentUser.id +
                 "_" +
                 Date.now() +
                 "." +
                 extension;
+
 
             const {error:uploadError} =
                 await supabaseClient.storage
@@ -2174,11 +2279,14 @@ async function finishProfile(){
                         }
                     );
 
+
             if(uploadError)
                 throw uploadError;
 
+
             avatarUrl = fileName;
         }
+
 
         const {error:profileError} =
             await supabaseClient
@@ -2191,8 +2299,10 @@ async function finishProfile(){
 
                 });
 
+
         if(profileError)
             throw profileError;
+
 
         currentProfile = {
 
@@ -2202,9 +2312,12 @@ async function finishProfile(){
 
         };
 
+
         temporaryAvatarFile = null;
 
+
         await openChat();
+
 
     }catch(error){
 
@@ -2235,6 +2348,7 @@ async function loadCurrentProfile(){
     if(!currentUser)
         return null;
 
+
     const {data,error} =
         await supabaseClient
             .from(PROFILE_TABLE)
@@ -2246,6 +2360,7 @@ async function loadCurrentProfile(){
                 currentUser.id
             )
             .maybeSingle();
+
 
     if(error){
 
@@ -2259,8 +2374,10 @@ async function loadCurrentProfile(){
         return null;
     }
 
+
     currentProfile =
         data || null;
+
 
     return currentProfile;
 }
@@ -2278,6 +2395,7 @@ async function getPrivateImageUrl(
     if(!path)
         return null;
 
+
     if(
         path.startsWith("http://") ||
         path.startsWith("https://")
@@ -2286,8 +2404,10 @@ async function getPrivateImageUrl(
         return path;
     }
 
+
     const cacheKey =
         bucket + ":" + path;
+
 
     if(imageUrlCache.has(cacheKey)){
 
@@ -2303,6 +2423,7 @@ async function getPrivateImageUrl(
         }
     }
 
+
     const {data,error} =
         await supabaseClient.storage
             .from(bucket)
@@ -2310,6 +2431,7 @@ async function getPrivateImageUrl(
                 path,
                 3600
             );
+
 
     if(error){
 
@@ -2321,6 +2443,7 @@ async function getPrivateImageUrl(
         return null;
     }
 
+
     imageUrlCache.set(
         cacheKey,
         {
@@ -2328,6 +2451,7 @@ async function getPrivateImageUrl(
             expires:Date.now() + 3500000
         }
     );
+
 
     return data.signedUrl;
 }
@@ -2346,10 +2470,12 @@ async function openChat(){
         return;
     }
 
+
     if(!currentProfile){
 
         await loadCurrentProfile();
     }
+
 
     if(!currentProfile){
 
@@ -2358,20 +2484,27 @@ async function openChat(){
         return;
     }
 
+
     hideAllPages();
 
     chatPage.style.display = "block";
 
+
     messages.scrollTop =
         messages.scrollHeight;
 
+
     await updateCurrentUserUI();
+
 
     await loadMessages();
 
+
     forceScrollToBottom();
 
+
     subscribeToMessages();
+
 
     setTimeout(function(){
 
@@ -2401,8 +2534,10 @@ async function updateCurrentUserUI(){
             "currentUserAvatar"
         );
 
+
     name.textContent =
         currentProfile.nickname;
+
 
     if(currentProfile.avatar_url){
 
@@ -2411,6 +2546,7 @@ async function updateCurrentUserUI(){
                 AVATAR_BUCKET,
                 currentProfile.avatar_url
             );
+
 
         avatar.src =
             url ||
@@ -2447,6 +2583,7 @@ async function loadMessages(){
                 }
             );
 
+
     if(error){
 
         console.error(
@@ -2454,23 +2591,30 @@ async function loadMessages(){
             error
         );
 
+
         messages.innerHTML = "";
+
 
         const errorBox =
             document.createElement("div");
 
+
         errorBox.className = "empty";
+
 
         errorBox.textContent =
             "读取聊天记录失败：" +
             error.message;
+
 
         messages.appendChild(errorBox);
 
         return;
     }
 
+
     messages.innerHTML = "";
+
 
     if(!data || data.length === 0){
 
@@ -2479,15 +2623,14 @@ async function loadMessages(){
         return;
     }
 
-    const {
-        data:profiles,
-        error:profileError
-    } =
+
+    const {data:profiles,error:profileError} =
         await supabaseClient
             .from(PROFILE_TABLE)
             .select(
                 "id,nickname,avatar_url"
             );
+
 
     if(profileError){
 
@@ -2497,11 +2640,13 @@ async function loadMessages(){
         );
     }
 
+
     const profileById =
         new Map();
 
     const profileByNickname =
         new Map();
+
 
     if(profiles){
 
@@ -2515,6 +2660,7 @@ async function loadMessages(){
                         profile
                     );
                 }
+
 
                 if(
                     profile.nickname &&
@@ -2533,6 +2679,7 @@ async function loadMessages(){
         );
     }
 
+
     for(
         const message of data
     ){
@@ -2544,7 +2691,9 @@ async function loadMessages(){
         );
     }
 
+
     forceScrollToBottom();
+
 
     setTimeout(
         forceScrollToBottom,
@@ -2603,6 +2752,7 @@ function createDefaultAvatar(name){
             .charAt(0)
             .toUpperCase();
 
+
     const svg =
         `<svg xmlns="http://www.w3.org/2000/svg"
               width="80"
@@ -2629,6 +2779,7 @@ function createDefaultAvatar(name){
 
         </svg>`;
 
+
     return(
         "data:image/svg+xml;charset=UTF-8," +
         encodeURIComponent(svg)
@@ -2648,10 +2799,13 @@ async function renderMessage(
 
     hideEmpty();
 
+
     const row =
         document.createElement("div");
 
+
     row.className = "message";
+
 
     const isMine =
         currentUser &&
@@ -2667,10 +2821,13 @@ async function renderMessage(
             )
         );
 
+
     if(isMine)
         row.classList.add("mine");
 
+
     let profile = null;
+
 
     if(
         message.user_id &&
@@ -2683,6 +2840,7 @@ async function renderMessage(
             ) || null;
     }
 
+
     if(
         !profile &&
         profileByNickname
@@ -2694,6 +2852,7 @@ async function renderMessage(
             ) || null;
     }
 
+
     if(
         isMine &&
         currentProfile
@@ -2703,13 +2862,17 @@ async function renderMessage(
             currentProfile;
     }
 
+
     const avatar =
         document.createElement("img");
+
 
     avatar.className =
         "message-avatar";
 
+
     avatar.alt = "头像";
+
 
     if(
         profile &&
@@ -2721,6 +2884,7 @@ async function renderMessage(
                 AVATAR_BUCKET,
                 profile.avatar_url
             );
+
 
         avatar.src =
             avatarUrl ||
@@ -2736,27 +2900,35 @@ async function renderMessage(
             );
     }
 
+
     const body =
         document.createElement("div");
+
 
     body.className =
         "message-body";
 
+
     const name =
         document.createElement("div");
 
+
     name.className =
         "nickname";
+
 
     name.textContent =
         message.nickname ||
         "匿名";
 
+
     const bubble =
         document.createElement("div");
 
+
     bubble.className =
         "bubble";
+
 
     if(message.image_url){
 
@@ -2764,17 +2936,21 @@ async function renderMessage(
             "image-bubble"
         );
 
+
         const img =
             document.createElement("img");
 
+
         img.className =
             "chat-image";
+
 
         const imageUrl =
             await getPrivateImageUrl(
                 CHAT_IMAGE_BUCKET,
                 message.image_url
             );
+
 
         if(imageUrl){
 
@@ -2787,6 +2963,7 @@ async function renderMessage(
             img.loading =
                 "lazy";
 
+
             img.onclick =
                 function(){
 
@@ -2796,7 +2973,9 @@ async function renderMessage(
 
                 };
 
+
             bubble.appendChild(img);
+
 
             img.addEventListener(
                 "load",
@@ -2813,21 +2992,26 @@ async function renderMessage(
                 "[图片无法加载]";
         }
 
+
     }else{
 
         bubble.textContent =
             message.message || "";
     }
 
+
     const time =
         document.createElement("div");
 
+
     time.className = "time";
+
 
     time.textContent =
         formatTime(
             message.created_at
         );
+
 
     body.appendChild(name);
     body.appendChild(bubble);
@@ -2849,11 +3033,14 @@ function formatTime(value){
     if(!value)
         return "";
 
+
     const date =
         new Date(value);
 
+
     if(isNaN(date.getTime()))
         return "";
+
 
     return date.toLocaleString(
         "zh-CN",
@@ -2893,6 +3080,7 @@ function checkRateLimit(){
     const now =
         Date.now();
 
+
     sentMessageTimes =
         sentMessageTimes.filter(
             function(time){
@@ -2904,6 +3092,7 @@ function checkRateLimit(){
             }
         );
 
+
     if(
         sentMessageTimes.length >= 40
     ){
@@ -2911,10 +3100,42 @@ function checkRateLimit(){
         return false;
     }
 
+
     sentMessageTimes.push(now);
 
     return true;
 }
+
+
+/* =====================================================
+   文字输入状态
+===================================================== */
+
+function updateComposerState(){
+
+    const hasText =
+        messageInput.value.trim().length > 0;
+
+
+    if(hasText){
+
+        composer.classList.add(
+            "has-text"
+        );
+
+    }else{
+
+        composer.classList.remove(
+            "has-text"
+        );
+    }
+}
+
+
+messageInput.addEventListener(
+    "input",
+    updateComposerState
+);
 
 
 /* =====================================================
@@ -2933,11 +3154,14 @@ async function sendMessage(){
         return;
     }
 
+
     const text =
         messageInput.value.trim();
 
+
     if(!text)
         return;
+
 
     if(text.length > 1500){
 
@@ -2948,6 +3172,7 @@ async function sendMessage(){
         return;
     }
 
+
     if(!checkRateLimit()){
 
         alert(
@@ -2957,7 +3182,9 @@ async function sendMessage(){
         return;
     }
 
+
     sendButton.disabled = true;
+
 
     try{
 
@@ -2984,12 +3211,15 @@ async function sendMessage(){
                 )
                 .single();
 
+
         if(error)
             throw error;
+
 
         messageInput.value = "";
 
         updateComposerState();
+
 
         if(data){
 
@@ -3011,8 +3241,10 @@ async function sendMessage(){
                 ])
             );
 
+
             forceScrollToBottom();
         }
+
 
     }catch(error){
 
@@ -3021,14 +3253,17 @@ async function sendMessage(){
             error
         );
 
+
         alert(
             "发送失败：\n" +
             error.message
         );
 
+
     }finally{
 
         sendButton.disabled = false;
+
 
         if(window.innerWidth > 600){
 
@@ -3043,16 +3278,6 @@ async function sendMessage(){
    图片选择
 ===================================================== */
 
-addButton.addEventListener(
-    "click",
-    function(){
-
-        imageInput.click();
-
-    }
-);
-
-
 imageInput.addEventListener(
     "change",
     async function(){
@@ -3060,10 +3285,13 @@ imageInput.addEventListener(
         const file =
             this.files[0];
 
+
         if(!file)
             return;
 
+
         await uploadImage(file);
+
 
         this.value = "";
     }
@@ -3086,6 +3314,7 @@ async function uploadImage(file){
         return;
     }
 
+
     if(!checkRateLimit()){
 
         alert(
@@ -3095,8 +3324,10 @@ async function uploadImage(file){
         return;
     }
 
+
     const maxSize =
         5 * 1024 * 1024;
+
 
     if(file.size > maxSize){
 
@@ -3107,12 +3338,16 @@ async function uploadImage(file){
         return;
     }
 
+
     const allowedTypes = [
+
         "image/jpeg",
         "image/png",
         "image/gif",
         "image/webp"
+
     ];
+
 
     if(
         !allowedTypes.includes(
@@ -3127,8 +3362,16 @@ async function uploadImage(file){
         return;
     }
 
-    addButton.disabled = true;
-    addButton.textContent = "⏳";
+
+    const plusButton =
+        document.getElementById(
+            "plusButton"
+        );
+
+
+    plusButton.disabled = true;
+    plusButton.textContent = "…";
+
 
     try{
 
@@ -3137,6 +3380,7 @@ async function uploadImage(file){
                 .split(".")
                 .pop()
                 .toLowerCase();
+
 
         const fileName =
             currentUser.id +
@@ -3148,6 +3392,7 @@ async function uploadImage(file){
                 .substring(2,10) +
             "." +
             extension;
+
 
         const {error:uploadError} =
             await supabaseClient.storage
@@ -3162,8 +3407,10 @@ async function uploadImage(file){
                     }
                 );
 
+
         if(uploadError)
             throw uploadError;
+
 
         const {data,error} =
             await supabaseClient
@@ -3187,8 +3434,10 @@ async function uploadImage(file){
                 )
                 .single();
 
+
         if(error)
             throw error;
+
 
         if(data){
 
@@ -3210,8 +3459,10 @@ async function uploadImage(file){
                 ])
             );
 
+
             forceScrollToBottom();
         }
+
 
     }catch(error){
 
@@ -3220,15 +3471,17 @@ async function uploadImage(file){
             error
         );
 
+
         alert(
             "图片发送失败：\n" +
             error.message
         );
 
+
     }finally{
 
-        addButton.disabled = false;
-        addButton.textContent = "+";
+        plusButton.disabled = false;
+        plusButton.textContent = "+";
     }
 }
 
@@ -3247,18 +3500,22 @@ function subscribeToMessages(){
             );
     }
 
+
     realtimeChannel =
         supabaseClient
             .channel(
                 "messages-realtime"
             )
             .on(
+
                 "postgres_changes",
+
                 {
                     event:"INSERT",
                     schema:"public",
                     table:MESSAGE_TABLE
                 },
+
                 async function(payload){
 
                     if(
@@ -3270,11 +3527,13 @@ function subscribeToMessages(){
                         return;
                     }
 
+
                     let profileMap =
                         new Map();
 
                     let nicknameMap =
                         new Map();
+
 
                     if(payload.new.user_id){
 
@@ -3289,6 +3548,7 @@ function subscribeToMessages(){
                                     payload.new.user_id
                                 )
                                 .maybeSingle();
+
 
                         if(data){
 
@@ -3317,6 +3577,7 @@ function subscribeToMessages(){
                                 )
                                 .maybeSingle();
 
+
                         if(data){
 
                             profileMap.set(
@@ -3331,16 +3592,20 @@ function subscribeToMessages(){
                         }
                     }
 
+
                     await renderMessage(
                         payload.new,
                         profileMap,
                         nicknameMap
                     );
 
+
                     forceScrollToBottom();
                 }
+
             )
             .subscribe(
+
                 function(status){
 
                     console.log(
@@ -3349,8 +3614,110 @@ function subscribeToMessages(){
                     );
 
                 }
+
             );
 }
+
+
+/* =====================================================
+   Emoji
+===================================================== */
+
+emojiButton.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        if(
+            emojiPicker.style.display === "block"
+        ){
+
+            emojiPicker.style.display = "none";
+
+        }else{
+
+            emojiPicker.style.display = "block";
+        }
+    }
+);
+
+
+document
+    .querySelectorAll(".emoji-item")
+    .forEach(
+        function(button){
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    const emoji =
+                        this.textContent;
+
+                    const start =
+                        messageInput.selectionStart;
+
+                    const end =
+                        messageInput.selectionEnd;
+
+                    const value =
+                        messageInput.value;
+
+                    messageInput.value =
+                        value.substring(0,start) +
+                        emoji +
+                        value.substring(end);
+
+                    messageInput.focus();
+
+                    const position =
+                        start + emoji.length;
+
+                    messageInput.setSelectionRange(
+                        position,
+                        position
+                    );
+
+                    updateComposerState();
+                }
+            );
+
+        }
+    );
+
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            !emojiPicker.contains(event.target) &&
+            event.target !== emojiButton
+        ){
+
+            emojiPicker.style.display = "none";
+        }
+
+    }
+);
+
+
+/* =====================================================
+   麦克风按钮
+===================================================== */
+
+voiceButton.addEventListener(
+    "click",
+    function(){
+
+        alert(
+            "语音功能界面已经准备好。\n\n" +
+            "下一步可以单独给聊天室加入真正的语音消息上传和播放功能。"
+        );
+
+    }
+);
 
 
 /* =====================================================
@@ -3369,6 +3736,7 @@ async function logoutUser(){
         realtimeChannel = null;
     }
 
+
     await supabaseClient.auth.signOut();
 }
 
@@ -3384,10 +3752,12 @@ function openImageViewer(url){
             "imageViewer"
         );
 
+
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
+
 
     viewerImage.src = url;
 
@@ -3400,50 +3770,23 @@ function closeImageViewer(event){
     if(event)
         event.stopPropagation();
 
+
     const viewer =
         document.getElementById(
             "imageViewer"
         );
+
 
     const viewerImage =
         document.getElementById(
             "viewerImage"
         );
 
+
     viewer.style.display = "none";
 
     viewerImage.src = "";
 }
-
-
-/* =====================================================
-   输入框状态
-===================================================== */
-
-function updateComposerState(){
-
-    const hasText =
-        messageInput.value.trim().length > 0;
-
-    if(hasText){
-
-        messageComposer.classList.add(
-            "has-text"
-        );
-
-    }else{
-
-        messageComposer.classList.remove(
-            "has-text"
-        );
-    }
-}
-
-
-messageInput.addEventListener(
-    "input",
-    updateComposerState
-);
 
 
 /* =====================================================
@@ -3463,97 +3806,6 @@ messageInput.addEventListener(
 
             sendMessage();
         }
-
-    }
-);
-
-
-/* =====================================================
-   发送按钮
-===================================================== */
-
-sendButton.addEventListener(
-    "click",
-    function(){
-
-        sendMessage();
-
-    }
-);
-
-
-/* =====================================================
-   Emoji
-===================================================== */
-
-emojiButton.addEventListener(
-    "click",
-    function(event){
-
-        event.stopPropagation();
-
-        emojiPicker.classList.toggle(
-            "show"
-        );
-    }
-);
-
-
-document
-    .querySelectorAll(".emoji-item")
-    .forEach(
-        function(button){
-
-            button.addEventListener(
-                "click",
-                function(){
-
-                    const emoji =
-                        this.textContent;
-
-                    messageInput.value +=
-                        emoji;
-
-                    updateComposerState();
-
-                    messageInput.focus();
-
-                }
-            );
-
-        }
-    );
-
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            !emojiPicker.contains(event.target) &&
-            event.target !== emojiButton
-        ){
-
-            emojiPicker.classList.remove(
-                "show"
-            );
-        }
-
-    }
-);
-
-
-/* =====================================================
-   麦克风
-===================================================== */
-
-voiceButton.addEventListener(
-    "click",
-    function(){
-
-        alert(
-            "语音消息功能已经预留，下一步可以继续接入录音和发送语音。"
-        );
 
     }
 );
