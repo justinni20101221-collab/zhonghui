@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
 <title>My Chat</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -25,14 +23,7 @@ body{
 }
 
 body{
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:#0b0d12;
     color:#fff;
 }
@@ -47,25 +38,15 @@ button{
     -webkit-tap-highlight-color:transparent;
 }
 
-
-/* =========================================================
-   首页
-========================================================= */
-
 #homePage,
 .page{
     position:fixed;
     inset:0;
-
     display:flex;
-
     justify-content:center;
     align-items:center;
-
     padding:20px;
-
     overflow:auto;
-
     background:#0b0d12;
 }
 
@@ -83,35 +64,23 @@ button{
 .auth-card{
     width:100%;
     max-width:460px;
-
     padding:40px 32px;
-
     text-align:center;
-
     border-radius:18px;
-
     background:#15171d;
-
     border:1px solid #252832;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.45);
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
 .logo{
     width:82px;
     height:82px;
-
     margin:0 auto 25px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:22px;
-
     font-size:38px;
-
     background:#5865f2;
 }
 
@@ -128,16 +97,11 @@ button{
 
 .primary-button{
     width:100%;
-
     border:0;
     border-radius:6px;
-
     padding:14px 20px;
-
     color:#fff;
-
     font-weight:700;
-
     background:#5865f2;
 }
 
@@ -148,11 +112,6 @@ button{
 .page{
     display:none;
 }
-
-
-/* =========================================================
-   登录 / 注册
-========================================================= */
 
 .auth-card{
     max-width:430px;
@@ -178,29 +137,20 @@ button{
 
 .form-group label{
     display:block;
-
     font-size:12px;
     font-weight:700;
-
     color:#b5bac1;
-
     margin-bottom:8px;
 }
 
 .form-input{
     width:100%;
-
     border:0;
     outline:0;
-
     padding:13px;
-
     border-radius:4px;
-
     color:#fff;
-
     background:#0f1116;
-
     border:1px solid #252832;
 }
 
@@ -210,33 +160,24 @@ button{
 
 .auth-link{
     text-align:center;
-
     margin-top:18px;
-
     font-size:14px;
-
     color:#a6a8b0;
 }
 
 .auth-link button{
     border:0;
     background:none;
-
     color:#5865f2;
-
     font-weight:600;
 }
 
 .auth-error,
 .auth-success{
     display:none;
-
     padding:10px;
-
     margin-bottom:15px;
-
     border-radius:4px;
-
     font-size:13px;
 }
 
@@ -257,61 +198,38 @@ button{
 
 .code-row .form-input{
     flex:1;
-
     letter-spacing:5px;
-
     text-align:center;
 }
 
 .code-button{
     width:125px;
-
     flex-shrink:0;
-
     border:0;
     border-radius:4px;
-
     background:#4f545c;
-
     color:#fff;
-
     font-size:13px;
 }
 
-
-/* =========================================================
-   头像
-========================================================= */
-
 .avatar-upload{
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     margin-bottom:25px;
 }
 
 .avatar-preview{
     width:96px;
     height:96px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     background:#5865f2;
-
     display:flex;
-
     justify-content:center;
     align-items:center;
-
     font-size:38px;
-
     margin-bottom:12px;
-
     border:3px solid #2b2e35;
 }
 
@@ -321,18 +239,12 @@ button{
 
 .avatar-button{
     border:0;
-
     background:#4f545c;
-
     color:#fff;
-
     padding:8px 14px;
-
     border-radius:4px;
-
     font-size:13px;
 }
-
 
 /* =========================================================
    CHAT
@@ -341,54 +253,39 @@ button{
 #chatPage{
     position:fixed;
     inset:0;
-
     width:100%;
     height:100%;
     height:100dvh;
-
     display:none;
-
     overflow:hidden;
-
     background:#111318;
 }
 
 .chat-container{
     position:fixed;
     inset:0;
-
     width:100%;
     height:100%;
     height:100dvh;
-
     display:flex;
-
     flex-direction:column;
-
     overflow:hidden;
 }
 
-
-/* =========================================================
-   顶部
-========================================================= */
+/* 顶部 */
 
 .chat-header{
     height:64px;
     min-height:64px;
-
     flex:0 0 64px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 20px;
 
     background:#15171d;
-
     border-bottom:1px solid #252832;
 
     z-index:100;
@@ -396,11 +293,8 @@ button{
 
 .chat-title{
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
     min-width:0;
 }
 
@@ -409,12 +303,10 @@ button{
     height:38px;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
     border-radius:50%;
-
     background:#5865f2;
 }
 
@@ -424,54 +316,38 @@ button{
 
 .status{
     font-size:11px;
-
     color:#23a55a;
-
     margin-top:2px;
 }
 
 .header-right{
     display:flex;
-
     align-items:center;
-
     gap:12px;
 }
 
 .current-user{
     display:flex;
-
     align-items:center;
-
     gap:8px;
-
     color:#dbdee1;
-
     font-size:13px;
 }
 
 .header-avatar{
     width:32px;
     height:32px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     background:#5865f2;
 }
 
 .logout-button{
     border:0;
-
     border-radius:4px;
-
     padding:8px 12px;
-
     background:#2b2e35;
-
     color:#dbdee1;
-
     font-size:13px;
 }
 
@@ -479,24 +355,20 @@ button{
     background:#ed4245;
 }
 
-
 /* =========================================================
    消息
 ========================================================= */
 
 #messages{
     flex:1 1 auto;
-
     min-height:0;
 
     width:100%;
 
     overflow-x:hidden;
-
     overflow-y:auto;
 
     overscroll-behavior:contain;
-
     -webkit-overflow-scrolling:touch;
 
     padding:25px;
@@ -508,11 +380,8 @@ button{
 
 .message{
     display:flex;
-
     gap:12px;
-
     margin-bottom:18px;
-
     width:100%;
 }
 
@@ -527,7 +396,6 @@ button{
     flex:0 0 40px;
 
     border-radius:50%;
-
     object-fit:cover;
 
     background:#5865f2;
@@ -535,7 +403,6 @@ button{
 
 .message-body{
     max-width:75%;
-
     min-width:0;
 }
 
@@ -545,11 +412,8 @@ button{
 
 .nickname{
     font-size:13px;
-
     color:#b5bac1;
-
     margin-bottom:4px;
-
     font-weight:600;
 }
 
@@ -563,13 +427,11 @@ button{
     border-radius:8px;
 
     background:#1e2128;
-
     color:#dbdee1;
 
     line-height:1.5;
 
     word-break:break-word;
-
     overflow-wrap:anywhere;
 
     text-align:left;
@@ -577,19 +439,14 @@ button{
 
 .mine .bubble{
     background:#5865f2;
-
     color:#fff;
 }
 
 .bubble.image-bubble{
     padding:0!important;
-
     background:transparent!important;
-
     border-radius:8px;
-
     overflow:hidden;
-
     line-height:0;
 }
 
@@ -611,9 +468,7 @@ button{
 
 .time{
     font-size:10px;
-
     margin-top:4px;
-
     color:#6d717a;
 }
 
@@ -621,20 +476,16 @@ button{
     min-height:100%;
 
     display:flex;
-
     flex-direction:column;
 
     justify-content:center;
-
     align-items:center;
 
     color:#6d717a;
 
     text-align:center;
-
     line-height:1.8;
 }
-
 
 /* =========================================================
    输入区域
@@ -646,12 +497,11 @@ button{
     width:100%;
 
     min-height:75px;
-
     flex:0 0 auto;
 
     display:flex;
-
-    align-items:center;
+    flex-direction:column;
+    align-items:stretch;
 
     padding:
         12px
@@ -667,11 +517,9 @@ button{
 
 .composer{
     width:100%;
-
     min-height:48px;
 
     display:flex;
-
     align-items:center;
 
     background:#1e2128;
@@ -685,19 +533,14 @@ button{
 
 .composer-left{
     display:flex;
-
     align-items:center;
-
     flex:0 0 auto;
 }
 
 .composer-right{
     display:flex;
-
     align-items:center;
-
     flex:0 0 auto;
-
     margin-left:auto;
 }
 
@@ -714,7 +557,6 @@ button{
     border-radius:50%;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -726,7 +568,6 @@ button{
 
 .composer button:hover{
     background:#2b2e35;
-
     color:#fff;
 }
 
@@ -736,16 +577,13 @@ button{
 
 .plus-btn{
     font-size:28px;
-
     font-weight:300;
-
     line-height:1;
 }
 
 .icon-btn svg{
     width:21px;
     height:21px;
-
     display:block;
 }
 
@@ -765,7 +603,6 @@ button{
     height:46px;
 
     border:0;
-
     outline:0;
 
     background:transparent;
@@ -779,7 +616,6 @@ button{
     line-height:46px;
 
     -webkit-appearance:none;
-
     appearance:none;
 }
 
@@ -787,137 +623,63 @@ button{
     color:#777c86;
 }
 
-
 /* =========================================================
-   微信式语音面板
+   微信风格：表情区域
 ========================================================= */
 
-.voice-panel{
-    position:absolute;
-
-    left:50%;
-
-    bottom:82px;
-
-    transform:translateX(-50%);
-
-    width:260px;
-
-    min-height:72px;
-
-    padding:10px;
-
+.emoji-under-input{
     display:none;
 
+    width:100%;
+
+    margin-top:8px;
+
     align-items:center;
-
-    justify-content:center;
-
-    background:#1b1e24;
-
-    border:1px solid #30343d;
-
-    border-radius:14px;
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.5);
-
-    z-index:500;
 }
 
-.voice-panel.open{
+.emoji-under-input.open{
     display:flex;
 }
 
-.voice-hold-button{
-    width:100%;
-
-    height:52px;
+.emoji-under-button{
+    width:40px;
+    height:40px;
 
     border:0;
+    border-radius:50%;
 
-    border-radius:10px;
+    background:#1e2128;
 
+    color:#b5bac1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.emoji-under-button:hover{
     background:#2b2e35;
-
-    color:#dbdee1;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    user-select:none;
-
-    -webkit-user-select:none;
-
-    touch-action:none;
-
-    -webkit-touch-callout:none;
-}
-
-.voice-hold-button:active{
-    background:#3a3e48;
-}
-
-.voice-hold-button.recording{
-    background:#ed4245;
-
     color:#fff;
 }
 
-.voice-hold-button.recording .voice-dot{
-    display:inline-block;
+.emoji-under-button svg{
+    width:21px;
+    height:21px;
 }
-
-.voice-dot{
-    display:none;
-
-    width:8px;
-    height:8px;
-
-    margin-right:7px;
-
-    vertical-align:middle;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    animation:recordPulse 1s infinite;
-}
-
-@keyframes recordPulse{
-
-    0%{
-        opacity:1;
-        transform:scale(1);
-    }
-
-    50%{
-        opacity:.4;
-        transform:scale(.8);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-    }
-
-}
-
 
 /* =========================================================
-   Emoji
+   Emoji 面板
 ========================================================= */
 
 .emoji-panel{
     position:absolute;
 
+    left:20px;
     right:20px;
 
-    bottom:76px;
+    bottom:78px;
 
-    width:330px;
+    width:auto;
     height:300px;
 
     display:none;
@@ -947,7 +709,6 @@ button{
     height:100%;
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
     -webkit-overflow-scrolling:touch;
@@ -979,9 +740,7 @@ button{
     cursor:pointer;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 }
 
@@ -989,6 +748,86 @@ button{
     background:#2b2e35;
 }
 
+/* =========================================================
+   微信风格录音按钮
+========================================================= */
+
+.voice-area{
+    display:none;
+
+    width:100%;
+
+    margin-top:8px;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.voice-area.open{
+    display:flex;
+}
+
+.voice-hold-button{
+    width:100%;
+    height:48px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#1e2128;
+
+    color:#dbdee1;
+
+    font-size:15px;
+    font-weight:600;
+
+    user-select:none;
+    -webkit-user-select:none;
+
+    touch-action:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:
+        background .15s ease,
+        transform .1s ease;
+}
+
+.voice-hold-button:hover{
+    background:#2b2e35;
+}
+
+.voice-hold-button.recording{
+    background:#ed4245;
+    color:#fff;
+}
+
+.voice-hold-button.recording::before{
+    content:"●";
+    margin-right:7px;
+    animation:recordPulse 1s infinite;
+}
+
+.voice-hold-button.cancel{
+    background:#4f545c;
+}
+
+@keyframes recordPulse{
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
 
 /* =========================================================
    图片查看
@@ -1000,13 +839,11 @@ button{
 
 #imageViewer{
     position:fixed;
-
     inset:0;
 
     display:none;
 
     justify-content:center;
-
     align-items:center;
 
     padding:20px;
@@ -1018,7 +855,6 @@ button{
 
 #viewerImage{
     max-width:95vw;
-
     max-height:90vh;
 
     border-radius:8px;
@@ -1030,11 +866,9 @@ button{
     position:absolute;
 
     top:20px;
-
     right:25px;
 
     width:45px;
-
     height:45px;
 
     border:0;
@@ -1047,7 +881,6 @@ button{
 
     font-size:28px;
 }
-
 
 /* =========================================================
    手机
@@ -1073,9 +906,7 @@ button{
 
     .chat-header{
         height:58px;
-
         min-height:58px;
-
         flex-basis:58px;
 
         padding:0 12px;
@@ -1083,9 +914,7 @@ button{
 
     .chat-icon{
         width:34px;
-
         height:34px;
-
         flex-basis:34px;
     }
 
@@ -1103,9 +932,7 @@ button{
 
     .message-avatar{
         width:36px;
-
         height:36px;
-
         flex-basis:36px;
     }
 
@@ -1115,7 +942,6 @@ button{
 
     .chat-image{
         max-width:250px;
-
         max-height:350px;
     }
 
@@ -1130,21 +956,17 @@ button{
 
     .composer{
         min-height:48px;
-
         border-radius:12px;
     }
 
     .composer-input{
         height:46px;
-
         line-height:46px;
-
         font-size:16px;
     }
 
     .composer button{
         width:38px;
-
         height:38px;
     }
 
@@ -1158,12 +980,9 @@ button{
 
     .emoji-panel{
         left:8px;
-
         right:8px;
 
-        bottom:68px;
-
-        width:auto;
+        bottom:116px;
 
         height:285px;
     }
@@ -1177,16 +996,8 @@ button{
         font-size:20px;
     }
 
-    .voice-panel{
-        left:8px;
-
-        right:8px;
-
-        bottom:68px;
-
-        width:auto;
-
-        transform:none;
+    .voice-hold-button{
+        height:48px;
     }
 }
 
@@ -1199,46 +1010,32 @@ button{
     .emoji-panel{
         height:270px;
     }
-
 }
-
-
-/* 防止聊天界面被选择 */
 
 .chat-header,
 .input-area,
 .chat-icon,
 .status,
 .logout-button,
-.composer button{
+.composer button,
+.voice-hold-button{
     user-select:none;
 }
-
-
-/* 输入框 */
 
 input,
 textarea{
     touch-action:manipulation;
 }
 
-
-/* 聊天页面固定 */
-
 body.chat-open{
     overflow:hidden!important;
-
     position:fixed;
-
     width:100%;
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      首页
@@ -1264,9 +1061,7 @@ body.chat-open{
         <button
             class="primary-button"
             onclick="openLoginPage()">
-
             开始聊天
-
         </button>
 
     </div>
@@ -1329,9 +1124,7 @@ body.chat-open{
             id="loginButton"
             class="primary-button"
             onclick="loginUser()">
-
             登录
-
         </button>
 
         <div class="auth-link">
@@ -1557,9 +1350,6 @@ body.chat-open{
 
     <div class="chat-container">
 
-
-        <!-- 顶部 -->
-
         <header class="chat-header">
 
             <div class="chat-title">
@@ -1581,7 +1371,6 @@ body.chat-open{
                 </div>
 
             </div>
-
 
             <div class="header-right">
 
@@ -1612,8 +1401,6 @@ body.chat-open{
         </header>
 
 
-        <!-- 消息 -->
-
         <main id="messages">
 
             <div
@@ -1621,7 +1408,6 @@ body.chat-open{
                 id="emptyMessage">
 
                 暂时还没有消息<br>
-
                 成为第一个发言的人吧！
 
             </div>
@@ -1629,37 +1415,15 @@ body.chat-open{
         </main>
 
 
-        <!-- 输入区域 -->
+        <!-- 输入区 -->
 
         <div class="input-area">
 
-
-            <!-- 微信式语音面板 -->
+            <!-- 正常输入框 -->
 
             <div
-                id="voicePanel"
-                class="voice-panel">
-
-                <button
-                    id="voiceHoldButton"
-                    class="voice-hold-button"
-                    type="button">
-
-                    <span class="voice-dot"></span>
-
-                    <span id="voiceButtonText">
-                        按住说话
-                    </span>
-
-                </button>
-
-            </div>
-
-
-            <div class="composer">
-
-
-                <!-- 左边 + -->
+                class="composer"
+                id="composer">
 
                 <div class="composer-left">
 
@@ -1676,8 +1440,6 @@ body.chat-open{
                 </div>
 
 
-                <!-- 输入框 -->
-
                 <input
                     id="messageInput"
                     class="composer-input"
@@ -1690,18 +1452,12 @@ body.chat-open{
                     spellcheck="false">
 
 
-                <!-- 右边 -->
-
                 <div class="composer-right">
-
-
-                    <!-- Emoji -->
 
                     <button
                         class="icon-btn"
                         id="emojiButton"
-                        title="表情"
-                        onclick="toggleEmojiPanel()">
+                        title="表情">
 
                         <svg
                             viewBox="0 0 24 24"
@@ -1737,8 +1493,6 @@ body.chat-open{
 
                     </button>
 
-
-                    <!-- 麦克风 -->
 
                     <button
                         class="icon-btn"
@@ -1778,8 +1532,6 @@ body.chat-open{
                     </button>
 
 
-                    <!-- 发送 -->
-
                     <button
                         class="icon-btn send-btn"
                         id="sendButton"
@@ -1812,6 +1564,72 @@ body.chat-open{
             </div>
 
 
+            <!-- 表情按钮：输入框下面 -->
+
+            <div
+                class="emoji-under-input"
+                id="emojiUnderInput">
+
+                <button
+                    class="emoji-under-button"
+                    id="emojiUnderButton"
+                    title="表情">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9">
+                        </circle>
+
+                        <path
+                            d="M8 14s1.5 2 4 2 4-2 4-2">
+                        </path>
+
+                        <circle
+                            cx="9"
+                            cy="9"
+                            r=".5"
+                            fill="currentColor">
+                        </circle>
+
+                        <circle
+                            cx="15"
+                            cy="9"
+                            r=".5"
+                            fill="currentColor">
+                        </circle>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <!-- 微信风格按住说话 -->
+
+            <div
+                class="voice-area"
+                id="voiceArea">
+
+                <button
+                    type="button"
+                    class="voice-hold-button"
+                    id="voiceHoldButton">
+
+                    按住说话
+
+                </button>
+
+            </div>
+
+
             <!-- 图片 -->
 
             <input
@@ -1822,7 +1640,7 @@ body.chat-open{
         </div>
 
 
-        <!-- Emoji -->
+        <!-- Emoji 面板 -->
 
         <div
             id="emojiPanel"
@@ -1867,7 +1685,6 @@ body.chat-open{
 
 <script>
 
-
 /* =========================================================
    Supabase
 ========================================================= */
@@ -1907,30 +1724,24 @@ const AVATAR_BUCKET =
 ========================================================= */
 
 let currentUser = null;
-
 let currentProfile = null;
-
 let realtimeChannel = null;
 
 let temporaryAvatarFile = null;
 
 let codeCooldown = 0;
-
 let codeTimer = null;
 
 let sentMessageTimes = [];
 
 let mediaRecorder = null;
-
 let audioChunks = [];
-
 let recording = false;
 
 let recordingStream = null;
 
-let recordingMimeType = "";
-
-const imageUrlCache = new Map();
+const imageUrlCache =
+    new Map();
 
 
 /* =========================================================
@@ -1970,20 +1781,23 @@ const imageInput =
 const emojiButton =
     document.getElementById("emojiButton");
 
+const emojiUnderButton =
+    document.getElementById("emojiUnderButton");
+
+const emojiUnderInput =
+    document.getElementById("emojiUnderInput");
+
 const micButton =
     document.getElementById("micButton");
 
 const emojiPanel =
     document.getElementById("emojiPanel");
 
-const voicePanel =
-    document.getElementById("voicePanel");
+const voiceArea =
+    document.getElementById("voiceArea");
 
 const voiceHoldButton =
     document.getElementById("voiceHoldButton");
-
-const voiceButtonText =
-    document.getElementById("voiceButtonText");
 
 
 /* =========================================================
@@ -1993,13 +1807,9 @@ const voiceButtonText =
 function hideAllPages(){
 
     homePage.style.display = "none";
-
     loginPage.style.display = "none";
-
     registerPage.style.display = "none";
-
     profilePage.style.display = "none";
-
     chatPage.style.display = "none";
 
 }
@@ -2128,12 +1938,7 @@ async function initializeApp(){
             if(event === "SIGNED_OUT"){
 
                 currentUser = null;
-
                 currentProfile = null;
-
-                stopRecordingImmediately();
-
-                closeVoicePanel();
 
                 if(realtimeChannel){
 
@@ -2144,6 +1949,8 @@ async function initializeApp(){
                     realtimeChannel = null;
 
                 }
+
+                stopRecordingSilently();
 
                 document.body.classList.remove(
                     "chat-open"
@@ -2203,7 +2010,6 @@ async function loginUser(){
         );
 
     button.disabled = true;
-
     button.textContent = "登录中...";
 
 
@@ -2247,7 +2053,6 @@ async function loginUser(){
     }finally{
 
         button.disabled = false;
-
         button.textContent = "登录";
 
     }
@@ -2295,7 +2100,6 @@ async function sendRegisterCode(){
         );
 
     button.disabled = true;
-
     button.textContent = "发送中...";
 
 
@@ -2305,13 +2109,10 @@ async function sendRegisterCode(){
             error
         } =
             await supabaseClient.auth.signInWithOtp({
-
                 email,
-
                 options:{
                     shouldCreateUser:true
                 }
-
             });
 
         if(error)
@@ -2327,7 +2128,6 @@ async function sendRegisterCode(){
     }catch(e){
 
         button.disabled = false;
-
         button.textContent = "获取验证码";
 
         showError(
@@ -2437,7 +2237,6 @@ async function verifyRegisterCode(){
         );
 
     button.disabled = true;
-
     button.textContent = "验证中...";
 
 
@@ -2448,13 +2247,9 @@ async function verifyRegisterCode(){
             error
         } =
             await supabaseClient.auth.verifyOtp({
-
                 email,
-
                 token,
-
                 type:"email"
-
             });
 
         if(error)
@@ -2486,9 +2281,7 @@ async function verifyRegisterCode(){
     }finally{
 
         button.disabled = false;
-
-        button.textContent =
-            "验证并继续";
+        button.textContent = "验证并继续";
 
     }
 
@@ -2588,9 +2381,7 @@ async function finishProfile(){
         );
 
     button.disabled = true;
-
-    button.textContent =
-        "正在创建资料...";
+    button.textContent = "正在创建资料...";
 
 
     try{
@@ -2642,26 +2433,18 @@ async function finishProfile(){
             await supabaseClient
                 .from(PROFILE_TABLE)
                 .upsert({
-
                     id:currentUser.id,
-
                     nickname,
-
                     avatar_url:avatarUrl
-
                 });
 
         if(error)
             throw error;
 
         currentProfile = {
-
             id:currentUser.id,
-
             nickname,
-
             avatar_url:avatarUrl
-
         };
 
         temporaryAvatarFile = null;
@@ -2731,7 +2514,7 @@ async function loadCurrentProfile(){
 
 
 /* =========================================================
-   图片 URL
+   私有图片 URL
 ========================================================= */
 
 async function getPrivateImageUrl(
@@ -2780,10 +2563,7 @@ async function getPrivateImageUrl(
         key,
         {
             url:data.signedUrl,
-
-            expires:
-                Date.now() +
-                3500000
+            expires:Date.now() + 3500000
         }
     );
 
@@ -3017,19 +2797,13 @@ async function loadMessages(){
 
 function showEmpty(){
 
-    messages.innerHTML = `
-
-        <div
-            class="empty"
-            id="emptyMessage">
-
+    messages.innerHTML =
+        `
+        <div class="empty" id="emptyMessage">
             暂时还没有消息<br>
-
             成为第一个发言的人吧！
-
         </div>
-
-    `;
+        `;
 
 }
 
@@ -3058,8 +2832,8 @@ function createDefaultAvatar(name){
             .charAt(0)
             .toUpperCase();
 
-    const svg = `
-
+    const svg =
+        `
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="80"
@@ -3085,8 +2859,7 @@ function createDefaultAvatar(name){
             </text>
 
         </svg>
-
-    `;
+        `;
 
     return (
         "data:image/svg+xml;charset=UTF-8," +
@@ -3121,9 +2894,7 @@ async function renderMessage(
         (
             message.user_id ===
                 currentUser.id
-
             ||
-
             (
                 !message.user_id &&
                 currentProfile &&
@@ -3135,7 +2906,9 @@ async function renderMessage(
 
     if(mine){
 
-        row.classList.add("mine");
+        row.classList.add(
+            "mine"
+        );
 
     }
 
@@ -3252,7 +3025,9 @@ async function renderMessage(
 
     if(
         message.message &&
-        message.message.startsWith("[voice]")
+        message.message.startsWith(
+            "[voice]"
+        )
     ){
 
         const voicePath =
@@ -3261,13 +3036,11 @@ async function renderMessage(
                 ""
             );
 
-
         const audioUrl =
             await getPrivateImageUrl(
                 CHAT_IMAGE_BUCKET,
                 voicePath
             );
-
 
         if(audioUrl){
 
@@ -3300,13 +3073,7 @@ async function renderMessage(
         }
 
 
-    }
-
-    /* =====================================================
-       图片消息
-    ===================================================== */
-
-    else if(message.image_url){
+    }else if(message.image_url){
 
         bubble.classList.add(
             "image-bubble"
@@ -3330,11 +3097,14 @@ async function renderMessage(
 
         if(imageUrl){
 
-            img.src = imageUrl;
+            img.src =
+                imageUrl;
 
-            img.alt = "聊天图片";
+            img.alt =
+                "聊天图片";
 
-            img.loading = "lazy";
+            img.loading =
+                "lazy";
 
             img.onclick =
                 () =>
@@ -3358,13 +3128,7 @@ async function renderMessage(
 
         }
 
-    }
-
-    /* =====================================================
-       文字消息
-    ===================================================== */
-
-    else{
+    }else{
 
         bubble.textContent =
             message.message ||
@@ -3378,7 +3142,8 @@ async function renderMessage(
             "div"
         );
 
-    time.className = "time";
+    time.className =
+        "time";
 
     time.textContent =
         formatTime(
@@ -3581,7 +3346,6 @@ async function sendMessage(){
         if(data){
 
             await renderMessage(
-
                 data,
 
                 new Map([
@@ -3597,7 +3361,6 @@ async function sendMessage(){
                         currentProfile
                     ]
                 ])
-
             );
 
             forceScrollToBottom();
@@ -3750,9 +3513,11 @@ async function uploadImage(file){
                     nickname:
                         currentProfile.nickname,
 
-                    message:"",
+                    message:
+                        "",
 
-                    image_url:name
+                    image_url:
+                        name
 
                 })
                 .select(
@@ -3768,7 +3533,6 @@ async function uploadImage(file){
         if(data){
 
             await renderMessage(
-
                 data,
 
                 new Map([
@@ -3784,7 +3548,6 @@ async function uploadImage(file){
                         currentProfile
                     ]
                 ])
-
             );
 
             forceScrollToBottom();
@@ -3809,27 +3572,19 @@ async function uploadImage(file){
 
 
 /* =========================================================
-   选择录音格式
+   查找浏览器支持的录音格式
 ========================================================= */
 
-/*
-   关键修复：
-
-   原来的代码：
-
-   audio/webm
-   ↓
-   audio/mp4
-
-   如果浏览器不支持 MP4 MediaRecorder，
-   就会出现：
-
-   不支持 audio/mp4
-
-   现在完全取消 audio/mp4。
-*/
-
 function getSupportedAudioMimeType(){
+
+    if(
+        typeof MediaRecorder ===
+        "undefined"
+    ){
+
+        return "";
+
+    }
 
     const types = [
 
@@ -3839,7 +3594,9 @@ function getSupportedAudioMimeType(){
 
         "audio/ogg;codecs=opus",
 
-        "audio/ogg"
+        "audio/ogg",
+
+        "audio/mp4"
 
     ];
 
@@ -3851,9 +3608,8 @@ function getSupportedAudioMimeType(){
         try{
 
             if(
-                MediaRecorder.isTypeSupported(
-                    type
-                )
+                MediaRecorder.isTypeSupported &&
+                MediaRecorder.isTypeSupported(type)
             ){
 
                 return type;
@@ -3863,7 +3619,7 @@ function getSupportedAudioMimeType(){
         }catch(e){
 
             console.warn(
-                "检测音频格式失败：",
+                "检测录音格式失败:",
                 type,
                 e
             );
@@ -3879,10 +3635,72 @@ function getSupportedAudioMimeType(){
 
 
 /* =========================================================
+   获取文件扩展名
+========================================================= */
+
+function getAudioExtension(mimeType){
+
+    const type =
+        (mimeType || "")
+            .toLowerCase();
+
+
+    if(
+        type.includes("webm")
+    ){
+
+        return "webm";
+
+    }
+
+    if(
+        type.includes("ogg")
+    ){
+
+        return "ogg";
+
+    }
+
+    if(
+        type.includes("mp4") ||
+        type.includes("m4a")
+    ){
+
+        return "mp4";
+
+    }
+
+    return "webm";
+
+}
+
+
+/* =========================================================
+   检查浏览器录音
+========================================================= */
+
+function browserSupportsRecording(){
+
+    return !!(
+        navigator.mediaDevices &&
+        typeof navigator.mediaDevices.getUserMedia ===
+            "function" &&
+        typeof MediaRecorder !==
+            "undefined"
+    );
+
+}
+
+
+/* =========================================================
    开始录音
 ========================================================= */
 
 async function startRecording(){
+
+    if(recording)
+        return;
+
 
     if(
         !currentUser ||
@@ -3891,88 +3709,61 @@ async function startRecording(){
 
         openLoginPage();
 
-        return false;
+        return;
 
     }
 
 
-    if(recording)
-        return true;
-
-
-    if(
-        !navigator.mediaDevices ||
-        !navigator.mediaDevices.getUserMedia
-    ){
+    if(!browserSupportsRecording()){
 
         alert(
-            "你的浏览器不支持麦克风录音。"
+            "当前浏览器不支持网页语音录音。\n\n请使用最新版 Chrome、Edge 或 Firefox，并通过 HTTPS 网站访问。"
         );
 
-        return false;
+        return;
 
     }
 
 
-    if(
-        typeof MediaRecorder ===
-        "undefined"
-    ){
+    const mimeType =
+        getSupportedAudioMimeType();
+
+
+    if(!mimeType){
 
         alert(
-            "你的浏览器不支持语音录音。"
+            "当前浏览器没有可用的网页录音格式。\n\n请使用最新版 Chrome、Edge 或 Firefox。"
         );
 
-        return false;
+        return;
 
     }
 
 
     try{
 
-        const mimeType =
-            getSupportedAudioMimeType();
-
-
-        /*
-           如果浏览器连 WebM / OGG
-           都不支持，就不要再尝试 MP4。
-        */
-
-        if(!mimeType){
-
-            alert(
-                "当前浏览器不支持网页语音录音，请使用最新版 Chrome、Edge 或 Firefox。"
-            );
-
-            return false;
-
-        }
-
-
         recordingStream =
             await navigator.mediaDevices.getUserMedia({
-
                 audio:true
-
             });
 
 
         audioChunks = [];
 
-        recordingMimeType =
-            mimeType;
 
+        /*
+         * 关键修复：
+         *
+         * 不再强制 audio/mp4。
+         * 只有浏览器明确支持的格式才使用。
+         */
 
         mediaRecorder =
             new MediaRecorder(
-
                 recordingStream,
-
                 {
                     mimeType:mimeType
                 }
-
             );
 
 
@@ -4007,11 +3798,25 @@ async function startRecording(){
         mediaRecorder.onstop =
             async function(){
 
-                /*
-                   停止麦克风硬件
-                */
+                const actualMimeType =
+                    mediaRecorder.mimeType ||
+                    mimeType ||
+                    "audio/webm";
 
-                if(recordingStream){
+
+                const blob =
+                    new Blob(
+                        audioChunks,
+                        {
+                            type:
+                                actualMimeType
+                        }
+                    );
+
+
+                if(
+                    recordingStream
+                ){
 
                     recordingStream
                         .getTracks()
@@ -4020,55 +3825,43 @@ async function startRecording(){
                                 track.stop()
                         );
 
-                    recordingStream =
-                        null;
-
                 }
 
-
-                if(
-                    audioChunks.length === 0
-                ){
-
-                    return;
-
-                }
-
-
-                const blob =
-                    new Blob(
-                        audioChunks,
-                        {
-                            type:
-                                recordingMimeType
-                        }
-                    );
+                recordingStream = null;
 
 
                 /*
-                   防止出现空文件
-                */
+                 * 清除录音状态后上传
+                 */
 
-                if(blob.size === 0){
+                recording = false;
 
-                    alert(
-                        "录音内容为空，请重新录制。"
+                voiceHoldButton.classList.remove(
+                    "recording"
+                );
+
+                voiceHoldButton.textContent =
+                    "按住说话";
+
+
+                if(blob.size > 0){
+
+                    await uploadVoice(
+                        blob,
+                        actualMimeType
                     );
 
-                    return;
-
                 }
-
-
-                await uploadVoice(blob);
 
             };
 
 
-        mediaRecorder.start(
-            100
-        );
+        /*
+         * 每 100ms 收一次数据，
+         * 防止部分浏览器最后没有完整数据。
+         */
 
+        mediaRecorder.start(100);
 
         recording = true;
 
@@ -4077,18 +3870,14 @@ async function startRecording(){
             "recording"
         );
 
-
-        voiceButtonText.textContent =
-            "正在录音，松开结束";
-
-
-        return true;
+        voiceHoldButton.textContent =
+            "松开结束并发送";
 
 
     }catch(e){
 
         console.error(
-            "开始录音失败：",
+            "开始录音失败:",
             e
         );
 
@@ -4102,22 +3891,39 @@ async function startRecording(){
                         track.stop()
                 );
 
-            recordingStream =
-                null;
-
         }
 
+        recordingStream = null;
 
         recording = false;
 
 
-        alert(
-            "无法使用麦克风：\n" +
-            e.message
-        );
+        if(
+            e.name ===
+            "NotAllowedError"
+        ){
 
+            alert(
+                "麦克风权限被拒绝。\n\n请允许浏览器使用麦克风，然后重新按住「按住说话」。"
+            );
 
-        return false;
+        }else if(
+            e.name ===
+            "NotFoundError"
+        ){
+
+            alert(
+                "没有找到麦克风设备。"
+            );
+
+        }else{
+
+            alert(
+                "无法开始录音：\n" +
+                e.message
+            );
+
+        }
 
     }
 
@@ -4130,20 +3936,52 @@ async function startRecording(){
 
 function stopRecording(){
 
-    if(!recording)
+    if(
+        !mediaRecorder ||
+        !recording
+    ){
+
         return;
 
+    }
+
+
+    try{
+
+        if(
+            mediaRecorder.state !==
+            "inactive"
+        ){
+
+            mediaRecorder.stop();
+
+        }else{
+
+            recording = false;
+
+        }
+
+    }catch(e){
+
+        console.error(
+            "停止录音失败:",
+            e
+        );
+
+        recording = false;
+
+    }
+
+}
+
+
+/* =========================================================
+   静默停止
+========================================================= */
+
+function stopRecordingSilently(){
 
     recording = false;
-
-
-    voiceHoldButton.classList.remove(
-        "recording"
-    );
-
-
-    voiceButtonText.textContent =
-        "按住说话";
 
 
     if(
@@ -4152,40 +3990,11 @@ function stopRecording(){
         "inactive"
     ){
 
-        mediaRecorder.stop();
-
-    }
-
-}
-
-
-/* =========================================================
-   强制停止录音
-========================================================= */
-
-function stopRecordingImmediately(){
-
-    recording = false;
-
-
-    if(mediaRecorder){
-
         try{
 
-            if(
-                mediaRecorder.state !==
-                "inactive"
-            ){
+            mediaRecorder.stop();
 
-                mediaRecorder.stop();
-
-            }
-
-        }catch(e){
-
-            console.warn(e);
-
-        }
+        }catch(e){}
 
     }
 
@@ -4199,12 +4008,10 @@ function stopRecordingImmediately(){
                     track.stop()
             );
 
-        recordingStream = null;
-
     }
 
 
-    mediaRecorder = null;
+    recordingStream = null;
 
     audioChunks = [];
 
@@ -4212,17 +4019,20 @@ function stopRecordingImmediately(){
         "recording"
     );
 
-    voiceButtonText.textContent =
+    voiceHoldButton.textContent =
         "按住说话";
 
 }
 
 
 /* =========================================================
-   语音上传
+   上传语音
 ========================================================= */
 
-async function uploadVoice(blob){
+async function uploadVoice(
+    blob,
+    mimeType
+){
 
     if(
         !currentUser ||
@@ -4230,6 +4040,15 @@ async function uploadVoice(blob){
     ){
 
         return;
+
+    }
+
+
+    if(!blob || blob.size === 0){
+
+        return alert(
+            "没有录到有效的语音。"
+        );
 
     }
 
@@ -4246,45 +4065,20 @@ async function uploadVoice(blob){
     try{
 
         /*
-           根据实际 blob MIME 类型
-           决定文件后缀。
-        */
+         * 使用实际 MIME 类型。
+         * 不再把 WebM 强行写成 MP4。
+         */
 
-        let extension = "webm";
-
-        let contentType =
+        const realMimeType =
+            mimeType ||
             blob.type ||
             "audio/webm";
 
 
-        if(
-            contentType.includes(
-                "ogg"
-            )
-        ){
-
-            extension = "ogg";
-
-        }
-
-        else if(
-            contentType.includes(
-                "webm"
-            )
-        ){
-
-            extension = "webm";
-
-        }
-
-        /*
-           注意：
-
-           这里绝对不会主动使用 mp4。
-
-           因为现在已经解决了
-           audio/mp4 不支持的问题。
-        */
+        const extension =
+            getAudioExtension(
+                realMimeType
+            );
 
 
         const fileName =
@@ -4299,13 +4093,6 @@ async function uploadVoice(blob){
             extension;
 
 
-        /*
-           上传到你原来的
-           chat-images bucket
-
-           不需要创建新 bucket。
-        */
-
         const {
             error:uploadError
         } =
@@ -4316,11 +4103,9 @@ async function uploadVoice(blob){
                     blob,
                     {
                         cacheControl:"3600",
-
                         upsert:false,
-
                         contentType:
-                            contentType
+                            realMimeType
                     }
                 );
 
@@ -4328,16 +4113,6 @@ async function uploadVoice(blob){
         if(uploadError)
             throw uploadError;
 
-
-        /*
-           写入原来的 messages 表
-
-           message:
-           [voice]文件路径
-
-           image_url:
-           null
-        */
 
         const {
             data,
@@ -4374,7 +4149,6 @@ async function uploadVoice(blob){
         if(data){
 
             await renderMessage(
-
                 data,
 
                 new Map([
@@ -4390,7 +4164,6 @@ async function uploadVoice(blob){
                         currentProfile
                     ]
                 ])
-
             );
 
             forceScrollToBottom();
@@ -4401,10 +4174,9 @@ async function uploadVoice(blob){
     }catch(e){
 
         console.error(
-            "语音发送失败：",
+            "语音发送失败:",
             e
         );
-
 
         alert(
             "语音发送失败：\n" +
@@ -4417,104 +4189,16 @@ async function uploadVoice(blob){
 
 
 /* =========================================================
-   打开 / 关闭语音面板
+   微信式按住说话
 ========================================================= */
 
-function openVoicePanel(){
-
-    /*
-       Emoji 打开时先关闭 Emoji
-    */
-
-    emojiPanel.classList.remove(
-        "open"
-    );
-
-
-    voicePanel.classList.add(
-        "open"
-    );
-
-}
-
-
-function closeVoicePanel(){
-
-    /*
-       如果正在录音，
-       关闭面板之前先停止。
-    */
-
-    if(recording){
-
-        stopRecording();
-
-    }
-
-
-    voicePanel.classList.remove(
-        "open"
-    );
-
-}
-
-
-/* =========================================================
-   麦克风按钮
-========================================================= */
-
-/*
-   注意：
-
-   麦克风原来的位置不变。
-
-   第一次点击：
-   ↓
-   打开微信式小长方形
-
-   再点击麦克风：
-   ↓
-   关闭小长方形
-
-   真正开始录音：
-   ↓
-   必须按住「按住说话」
-*/
-
-micButton.addEventListener(
-    "click",
-    function(event){
-
-        event.preventDefault();
-
-        if(
-            voicePanel.classList.contains(
-                "open"
-            )
-        ){
-
-            closeVoicePanel();
-
-        }else{
-
-            openVoicePanel();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   微信式「按住说话」
-========================================================= */
-
-let voicePointerDown = false;
+let voicePointerActive = false;
 
 
 /*
-   按下
-*/
+ * pointerdown：
+ * 鼠标按下 / 手机手指按下
+ */
 
 voiceHoldButton.addEventListener(
     "pointerdown",
@@ -4522,13 +4206,16 @@ voiceHoldButton.addEventListener(
 
         event.preventDefault();
 
-        voicePointerDown = true;
+        if(
+            voicePointerActive ||
+            recording
+        ){
 
-        /*
-           捕获 pointer，
-           防止手机手指稍微移动后
-           pointerup 丢失。
-        */
+            return;
+
+        }
+
+        voicePointerActive = true;
 
         try{
 
@@ -4536,11 +4223,7 @@ voiceHoldButton.addEventListener(
                 event.pointerId
             );
 
-        }catch(e){
-
-            console.warn(e);
-
-        }
+        }catch(e){}
 
 
         await startRecording();
@@ -4550,8 +4233,9 @@ voiceHoldButton.addEventListener(
 
 
 /*
-   松开
-*/
+ * pointerup：
+ * 鼠标松开 / 手指松开
+ */
 
 voiceHoldButton.addEventListener(
     "pointerup",
@@ -4559,10 +4243,10 @@ voiceHoldButton.addEventListener(
 
         event.preventDefault();
 
-        if(!voicePointerDown)
+        if(!voicePointerActive)
             return;
 
-        voicePointerDown = false;
+        voicePointerActive = false;
 
         stopRecording();
 
@@ -4571,8 +4255,9 @@ voiceHoldButton.addEventListener(
 
 
 /*
-   手指离开按钮区域
-*/
+ * pointercancel：
+ * 手机滑出按钮区域、系统打断等
+ */
 
 voiceHoldButton.addEventListener(
     "pointercancel",
@@ -4580,10 +4265,7 @@ voiceHoldButton.addEventListener(
 
         event.preventDefault();
 
-        if(!voicePointerDown)
-            return;
-
-        voicePointerDown = false;
+        voicePointerActive = false;
 
         stopRecording();
 
@@ -4592,22 +4274,24 @@ voiceHoldButton.addEventListener(
 
 
 /*
-   某些浏览器 pointer capture
-   结束时会触发这个。
-*/
+ * pointerleave：
+ * 桌面鼠标拖出按钮。
+ * 手机一般不会走这里。
+ */
 
 voiceHoldButton.addEventListener(
-    "lostpointercapture",
+    "pointerleave",
     function(){
 
         if(
-            voicePointerDown &&
+            voicePointerActive &&
             recording
         ){
 
-            voicePointerDown = false;
-
-            stopRecording();
+            /*
+             * 不立即结束。
+             * 因为微信式操作需要允许手指稍微移动。
+             */
 
         }
 
@@ -4615,18 +4299,434 @@ voiceHoldButton.addEventListener(
 );
 
 
-/*
-   防止右键菜单
-*/
+/* =========================================================
+   麦克风按钮
+========================================================= */
 
-voiceHoldButton.addEventListener(
-    "contextmenu",
-    function(event){
+micButton.addEventListener(
+    "click",
+    function(){
 
-        event.preventDefault();
+        /*
+         * 点击麦克风：
+         * 打开/关闭微信式「按住说话」区域。
+         *
+         * 真正录音必须按住下面的按钮。
+         */
+
+        const opened =
+            voiceArea.classList.contains(
+                "open"
+            );
+
+
+        if(opened){
+
+            closeVoiceArea();
+
+        }else{
+
+            openVoiceArea();
+
+        }
 
     }
 );
+
+
+/* =========================================================
+   打开语音区域
+========================================================= */
+
+function openVoiceArea(){
+
+    /*
+     * 关闭 Emoji
+     */
+
+    emojiPanel.classList.remove(
+        "open"
+    );
+
+
+    /*
+     * 隐藏普通输入内容
+     */
+
+    messageInput.style.display =
+        "none";
+
+    /*
+     * 隐藏 + 号
+     */
+
+    imageButton.style.display =
+        "none";
+
+
+    /*
+     * 隐藏发送按钮
+     */
+
+    sendButton.style.display =
+        "none";
+
+
+    /*
+     * 隐藏顶部 Emoji / 麦克风
+     */
+
+    emojiButton.style.display =
+        "none";
+
+    micButton.style.display =
+        "none";
+
+
+    /*
+     * 显示底部按住说话
+     */
+
+    voiceArea.classList.add(
+        "open"
+    );
+
+
+    /*
+     * 显示输入框下面的 Emoji
+     */
+
+    emojiUnderInput.classList.add(
+        "open"
+    );
+
+}
+
+
+/* =========================================================
+   关闭语音区域
+========================================================= */
+
+function closeVoiceArea(){
+
+    if(recording){
+
+        stopRecording();
+
+    }
+
+
+    voiceArea.classList.remove(
+        "open"
+    );
+
+
+    emojiUnderInput.classList.remove(
+        "open"
+    );
+
+
+    messageInput.style.display =
+        "block";
+
+
+    imageButton.style.display =
+        "flex";
+
+
+    updateComposerState();
+
+}
+
+
+/* =========================================================
+   输入状态
+========================================================= */
+
+function updateComposerState(){
+
+    /*
+     * 如果正在录音模式，
+     * 不改变底部布局。
+     */
+
+    if(
+        voiceArea.classList.contains(
+            "open"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const hasText =
+        messageInput.value
+            .trim()
+            .length > 0;
+
+
+    emojiButton.style.display =
+        hasText
+            ? "none"
+            : "flex";
+
+
+    micButton.style.display =
+        hasText
+            ? "none"
+            : "flex";
+
+
+    sendButton.style.display =
+        hasText
+            ? "flex"
+            : "none";
+
+
+    sendButton.disabled =
+        !hasText;
+
+
+    imageButton.style.display =
+        "flex";
+
+}
+
+
+/* =========================================================
+   输入
+========================================================= */
+
+messageInput.addEventListener(
+    "input",
+    updateComposerState
+);
+
+
+messageInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            !event.shiftKey
+        ){
+
+            event.preventDefault();
+
+            if(
+                messageInput.value.trim()
+            ){
+
+                sendMessage();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   表情
+========================================================= */
+
+const emojis =
+`
+😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚
+😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁 ☹️
+😣 😖 😫 😩 🥺 😢 😭 😤 😠 😡 🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥
+😓 🤗 🤔 🫡 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🥱 😴
+🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕
+❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎 💔 ❣️ 💕 💞 💓 💗 💖 💘 💝 💟
+👍 👎 👌 ✌️ 🤞 🤟 🤘 🤙 👋 🫶 👏 🙌 👐 🤝 💪 🙏
+🔥 ⭐ 🌟 ✨ 💯 ✅ ❌ ⚡ 🚀 💡 🎵 🎶 🎉 🎊 🎁
+😈 👿 👀 🗿 🤡 💀 ☠️ 👻 👽 🤖
+🍎 🍔 🍕 🍟 🌭 🍿 🍩 🍪 ☕ 🥤
+⚽ 🏀 🏈 ⚾ 🎮 🎯
+`;
+
+
+const emojiList =
+    emojis
+        .trim()
+        .split(/\s+/);
+
+
+document.getElementById(
+    "emojiScroll"
+).innerHTML =
+
+    emojiList
+        .map(
+            emoji =>
+                `
+                <button
+                    class="emoji-item"
+                    type="button">
+
+                    ${emoji}
+
+                </button>
+                `
+        )
+        .join("");
+
+
+document.getElementById(
+    "emojiScroll"
+).addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target.classList.contains(
+                "emoji-item"
+            )
+        ){
+
+            messageInput.value +=
+                event.target.textContent.trim();
+
+            updateComposerState();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   Emoji 开关
+========================================================= */
+
+function toggleEmojiPanel(){
+
+    emojiPanel.classList.toggle(
+        "open"
+    );
+
+}
+
+
+emojiButton.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        toggleEmojiPanel();
+
+    }
+);
+
+
+emojiUnderButton.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        toggleEmojiPanel();
+
+    }
+);
+
+
+/* =========================================================
+   点击外面关闭 Emoji
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            emojiPanel.classList.contains(
+                "open"
+            ) &&
+            !emojiPanel.contains(
+                event.target
+            ) &&
+            !emojiButton.contains(
+                event.target
+            ) &&
+            !emojiUnderButton.contains(
+                event.target
+            )
+        ){
+
+            emojiPanel.classList.remove(
+                "open"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   验证码只能数字
+========================================================= */
+
+document
+    .getElementById(
+        "registerCode"
+    )
+    .addEventListener(
+        "input",
+        function(){
+
+            this.value =
+                this.value
+                    .replace(
+                        /\D/g,
+                        ""
+                    )
+                    .slice(
+                        0,
+                        8
+                    );
+
+        }
+    );
+
+
+/* =========================================================
+   图片查看器
+========================================================= */
+
+function openImageViewer(url){
+
+    document.getElementById(
+        "viewerImage"
+    ).src = url;
+
+    document.getElementById(
+        "imageViewer"
+    ).style.display = "flex";
+
+}
+
+
+function closeImageViewer(event){
+
+    if(event)
+        event.stopPropagation();
+
+    document.getElementById(
+        "imageViewer"
+    ).style.display = "none";
+
+    document.getElementById(
+        "viewerImage"
+    ).src = "";
+
+}
 
 
 /* =========================================================
@@ -4657,6 +4757,11 @@ function subscribeToMessages(){
                     table:MESSAGE_TABLE
                 },
                 async payload => {
+
+                    /*
+                     * 自己发送的消息已经本地显示，
+                     * 所以不要再次显示。
+                     */
 
                     if(
                         currentUser &&
@@ -4768,10 +4873,6 @@ function subscribeToMessages(){
 
 async function logoutUser(){
 
-    stopRecordingImmediately();
-
-    closeVoicePanel();
-
     if(realtimeChannel){
 
         await supabaseClient.removeChannel(
@@ -4782,6 +4883,8 @@ async function logoutUser(){
 
     }
 
+    stopRecordingSilently();
+
     document.body.classList.remove(
         "chat-open"
     );
@@ -4789,275 +4892,6 @@ async function logoutUser(){
     await supabaseClient.auth.signOut();
 
 }
-
-
-/* =========================================================
-   图片查看器
-========================================================= */
-
-function openImageViewer(url){
-
-    document.getElementById(
-        "viewerImage"
-    ).src = url;
-
-    document.getElementById(
-        "imageViewer"
-    ).style.display = "flex";
-
-}
-
-
-function closeImageViewer(event){
-
-    if(event)
-        event.stopPropagation();
-
-    document.getElementById(
-        "imageViewer"
-    ).style.display = "none";
-
-    document.getElementById(
-        "viewerImage"
-    ).src = "";
-
-}
-
-
-/* =========================================================
-   输入框状态
-========================================================= */
-
-function updateComposerState(){
-
-    const hasText =
-        messageInput.value
-            .trim()
-            .length > 0;
-
-
-    /*
-       有文字：
-       Emoji 隐藏
-       麦克风隐藏
-       发送显示
-    */
-
-    emojiButton.style.display =
-        hasText
-            ? "none"
-            : "flex";
-
-
-    micButton.style.display =
-        hasText
-            ? "none"
-            : "flex";
-
-
-    sendButton.style.display =
-        hasText
-            ? "flex"
-            : "none";
-
-
-    sendButton.disabled =
-        !hasText;
-
-
-    /*
-       如果用户正在输入文字，
-       自动关闭语音面板。
-    */
-
-    if(hasText){
-
-        closeVoicePanel();
-
-    }
-
-}
-
-
-/* =========================================================
-   输入
-========================================================= */
-
-messageInput.addEventListener(
-    "input",
-    updateComposerState
-);
-
-
-messageInput.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Enter" &&
-            !event.shiftKey
-        ){
-
-            event.preventDefault();
-
-            if(
-                messageInput.value.trim()
-            ){
-
-                sendMessage();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   验证码只能数字
-========================================================= */
-
-document
-    .getElementById("registerCode")
-    .addEventListener(
-        "input",
-        function(){
-
-            this.value =
-                this.value
-                    .replace(
-                        /\D/g,
-                        ""
-                    )
-                    .slice(
-                        0,
-                        8
-                    );
-
-        }
-    );
-
-
-/* =========================================================
-   Emoji
-========================================================= */
-
-const emojis = `
-
-😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚
-😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁 ☹️
-😣 😖 😫 😩 🥺 😢 😭 😤 😠 😡 🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥
-😓 🤗 🤔 🫡 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🥱 😴
-🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕
-❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎 💔 ❣️ 💕 💞 💓 💗 💖 💘 💝 💟
-👍 👎 👌 ✌️ 🤞 🤟 🤘 🤙 👋 🫶 👏 🙌 👐 🤝 💪 🙏
-🔥 ⭐ 🌟 ✨ 💯 ✅ ❌ ⚡ 🚀 💡 🎵 🎶 🎉 🎊 🎁
-😈 👿 👀 🗿 🤡 💀 ☠️ 👻 👽 🤖
-🍎 🍔 🍕 🍟 🌭 🍿 🍩 🍪 ☕ 🥤
-⚽ 🏀 🏈 ⚾ 🎮 🎯
-
-`;
-
-
-const emojiList =
-    emojis
-        .trim()
-        .split(/\s+/);
-
-
-document.getElementById(
-    "emojiScroll"
-).innerHTML =
-
-    emojiList
-        .map(
-            emoji => `
-
-                <button
-                    class="emoji-item"
-                    type="button">
-
-                    ${emoji}
-
-                </button>
-
-            `
-        )
-        .join("");
-
-
-document.getElementById(
-    "emojiScroll"
-).addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target.classList.contains(
-                "emoji-item"
-            )
-        ){
-
-            messageInput.value +=
-                event.target.textContent.trim();
-
-            updateComposerState();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   Emoji 开关
-========================================================= */
-
-function toggleEmojiPanel(){
-
-    /*
-       打开 Emoji 时关闭语音
-    */
-
-    closeVoicePanel();
-
-
-    emojiPanel.classList.toggle(
-        "open"
-    );
-
-}
-
-
-/* =========================================================
-   点击外面关闭 Emoji / 语音
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            emojiPanel.classList.contains(
-                "open"
-            ) &&
-            !emojiPanel.contains(
-                event.target
-            ) &&
-            !emojiButton.contains(
-                event.target
-            )
-        ){
-
-            emojiPanel.classList.remove(
-                "open"
-            );
-
-        }
-
-    }
-);
 
 
 /* =========================================================
