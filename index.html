@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>My Chat</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -19,7 +21,6 @@ body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#f5f5f5;
 }
 
 body{
@@ -30,7 +31,9 @@ body{
         Roboto,
         Arial,
         sans-serif;
-    color:#111;
+
+    background:#0b0d12;
+    color:#fff;
 }
 
 button,
@@ -40,27 +43,25 @@ input{
 
 button{
     cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
 }
 
-/* =========================================================
-   通用页面
-========================================================= */
 
-.page,
+/* =====================================================
+   首页
+===================================================== */
+
 #homePage{
+
     position:fixed;
     inset:0;
-    width:100%;
-    height:100dvh;
-    min-height:100%;
-}
 
-#homePage{
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     padding:20px;
+
     overflow:auto;
 
     background:
@@ -73,47 +74,76 @@ button{
 }
 
 .home-card{
+
     width:100%;
     max-width:460px;
+
     padding:50px 38px;
+
     text-align:center;
+
     border-radius:18px;
+
     background:#15171d;
+
     border:1px solid #252832;
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
 }
 
 .logo{
+
     width:82px;
     height:82px;
+
     margin:0 auto 25px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:22px;
+
     font-size:38px;
+
     background:#5865f2;
+
+    box-shadow:
+        0 15px 35px rgba(88,101,242,.35);
 }
 
 .home-card h1{
-    color:white;
+
     font-size:40px;
+
     margin-bottom:12px;
 }
 
 .home-card p{
+
     color:#a6a8b0;
+
     line-height:1.7;
+
     margin-bottom:30px;
 }
 
 .primary-button{
+
     width:100%;
+
     border:none;
-    border-radius:6px;
+
+    border-radius:4px;
+
     padding:14px 20px;
+
     color:white;
+
     font-weight:700;
+
     background:#5865f2;
 }
 
@@ -122,793 +152,1146 @@ button{
 }
 
 .primary-button:disabled{
+
     opacity:.55;
+
     cursor:not-allowed;
 }
 
-/* =========================================================
+
+/* =====================================================
    登录 / 注册
-========================================================= */
+===================================================== */
 
 .page{
+
+    position:fixed;
+    inset:0;
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
+
     overflow:auto;
+
     background:#0b0d12;
 }
 
 .auth-card{
+
     width:100%;
     max-width:430px;
+
     padding:32px;
+
     border-radius:8px;
+
     background:#15171d;
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
 }
 
 .auth-card h1{
+
     text-align:center;
+
     font-size:25px;
-    color:white;
+
     margin-bottom:8px;
 }
 
 .auth-subtitle{
+
     text-align:center;
+
     color:#a6a8b0;
+
     font-size:14px;
+
     margin-bottom:25px;
 }
 
 .form-group{
+
     margin-bottom:18px;
 }
 
 .form-group label{
+
     display:block;
+
     font-size:12px;
+
     font-weight:700;
+
     color:#b5bac1;
+
     margin-bottom:8px;
 }
 
 .form-input{
+
     width:100%;
+
     border:none;
     outline:none;
+
     padding:13px;
-    border-radius:5px;
+
+    border-radius:4px;
+
     color:white;
+
     background:#0f1116;
+
     border:1px solid #252832;
 }
 
 .form-input:focus{
+
     border-color:#5865f2;
 }
 
 .auth-link{
+
     text-align:center;
+
     margin-top:18px;
+
     font-size:14px;
+
     color:#a6a8b0;
 }
 
 .auth-link button{
+
     border:none;
+
     background:none;
+
     color:#5865f2;
+
     font-weight:600;
 }
 
 .auth-error{
+
     display:none;
+
     padding:10px;
+
     margin-bottom:15px;
-    border-radius:5px;
+
+    border-radius:4px;
+
     background:rgba(237,66,69,.12);
+
     color:#f38688;
+
     font-size:13px;
 }
 
 .auth-success{
+
     display:none;
+
     padding:10px;
+
     margin-bottom:15px;
-    border-radius:5px;
+
+    border-radius:4px;
+
     background:rgba(35,165,90,.12);
+
     color:#57d48b;
+
     font-size:13px;
 }
 
 .code-row{
+
     display:flex;
+
     gap:8px;
 }
 
 .code-row .form-input{
+
     flex:1;
-    letter-spacing:4px;
+
+    letter-spacing:5px;
+
     text-align:center;
+
     font-size:18px;
 }
 
 .code-button{
+
     width:125px;
+
     flex-shrink:0;
+
     border:none;
-    border-radius:5px;
+
+    border-radius:4px;
+
     background:#4f545c;
+
     color:white;
+
     font-size:13px;
 }
 
 .code-button:disabled{
+
     opacity:.5;
+
     cursor:not-allowed;
 }
 
-/* =========================================================
+
+/* =====================================================
    头像
-========================================================= */
+===================================================== */
 
 .avatar-upload{
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     margin-bottom:25px;
 }
 
 .avatar-preview{
+
     width:96px;
     height:96px;
+
     border-radius:50%;
+
     object-fit:cover;
+
     background:#5865f2;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     font-size:38px;
+
     margin-bottom:12px;
+
     border:3px solid #2b2e35;
 }
 
 .avatar-upload input{
+
     display:none;
 }
 
 .avatar-button{
+
     border:none;
+
     background:#4f545c;
+
     color:white;
+
     padding:8px 14px;
-    border-radius:5px;
+
+    border-radius:4px;
+
     font-size:13px;
 }
 
-/* =========================================================
-   聊天主界面
-========================================================= */
+
+/* =====================================================
+   聊天页面
+===================================================== */
 
 #chatPage{
+
     position:fixed;
+
     inset:0;
+
     width:100%;
     height:100dvh;
-    overflow:hidden;
+
     display:none;
-    background:#f5f5f5;
+
+    overflow:hidden;
+
+    background:#111318;
 }
 
 .chat-container{
-    position:fixed;
-    inset:0;
+
     width:100%;
-    height:100dvh;
+    height:100%;
+
     display:flex;
+
     flex-direction:column;
+
     overflow:hidden;
-    background:#f5f5f5;
 }
 
-/* =========================================================
-   顶部 —— 微信风格
-========================================================= */
+
+/* =====================================================
+   顶部
+===================================================== */
 
 .chat-header{
-    position:relative;
-    flex:0 0 56px;
-    height:56px;
-    min-height:56px;
+
+    height:64px;
+
+    min-height:64px;
+
+    flex:0 0 64px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    padding:
-        0
-        12px
-        0
-        14px;
+    padding:0 20px;
 
-    background:#ededed;
-    border-bottom:1px solid #d7d7d7;
-    z-index:50;
+    background:#15171d;
+
+    border-bottom:1px solid #252832;
+
+    z-index:10;
 }
 
 .chat-title{
+
     display:flex;
+
     align-items:center;
-    gap:9px;
+
+    gap:12px;
+
     min-width:0;
 }
 
 .chat-icon{
-    width:34px;
-    height:34px;
-    flex:0 0 34px;
+
+    width:38px;
+    height:38px;
+
+    flex:0 0 38px;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     border-radius:50%;
-    background:#07c160;
-    font-size:18px;
+
+    background:#5865f2;
 }
 
 .chat-title h2{
+
     font-size:16px;
-    color:#111;
-    font-weight:600;
 }
 
 .status{
-    font-size:10px;
-    color:#07a64f;
-    margin-top:1px;
+
+    font-size:11px;
+
+    color:#23a55a;
+
+    margin-top:2px;
 }
 
 .header-right{
+
     display:flex;
+
     align-items:center;
-    gap:8px;
+
+    gap:12px;
+
     flex-shrink:0;
 }
 
 .current-user{
+
     display:flex;
+
     align-items:center;
-    gap:6px;
-    color:#333;
-    font-size:12px;
+
+    gap:8px;
+
+    color:#dbdee1;
+
+    font-size:13px;
 }
 
 .header-avatar{
-    width:30px;
-    height:30px;
-    flex:0 0 30px;
+
+    width:32px;
+    height:32px;
+
+    flex:0 0 32px;
+
     border-radius:50%;
+
     object-fit:cover;
-    background:#07c160;
+
+    background:#5865f2;
 }
 
 .logout-button{
+
     border:none;
+
     border-radius:4px;
-    padding:6px 9px;
-    background:#dedede;
-    color:#333;
-    font-size:12px;
+
+    padding:8px 12px;
+
+    background:#2b2e35;
+
+    color:#dbdee1;
+
+    font-size:13px;
 }
 
 .logout-button:hover{
-    background:#d2d2d2;
+
+    background:#ed4245;
 }
 
-/* =========================================================
-   消息区域 —— 固定中间，不撑开页面
-========================================================= */
+
+/* =====================================================
+   消息区域
+===================================================== */
 
 #messages{
-    position:relative;
 
     flex:1 1 auto;
+
     min-height:0;
 
     width:100%;
+
     overflow-x:hidden;
+
     overflow-y:auto;
 
-    padding:
-        16px
-        12px
-        18px;
-
-    background:#f5f5f5;
-
     overscroll-behavior:contain;
+
     -webkit-overflow-scrolling:touch;
+
+    padding:25px;
+
+    background:#111318;
 
     overflow-anchor:none;
 }
 
-/* =========================================================
+
+/* =====================================================
    消息
-========================================================= */
+===================================================== */
 
 .message{
+
     display:flex;
-    align-items:flex-start;
-    gap:8px;
+
+    gap:12px;
+
+    margin-bottom:18px;
+
     width:100%;
-    margin-bottom:14px;
 }
 
 .message.mine{
+
     flex-direction:row-reverse;
 }
 
 .message-avatar{
-    width:36px;
-    height:36px;
-    flex:0 0 36px;
-    border-radius:4px;
+
+    width:40px;
+    height:40px;
+
+    flex:0 0 40px;
+
+    border-radius:50%;
+
     object-fit:cover;
-    background:#07c160;
+
+    background:#5865f2;
 }
 
 .message-body{
-    max-width:min(72%, 520px);
+
+    max-width:75%;
+
     min-width:0;
 }
 
 .message.mine .message-body{
+
     text-align:right;
 }
 
 .nickname{
-    font-size:11px;
-    color:#888;
-    margin-bottom:3px;
-    font-weight:500;
+
+    font-size:13px;
+
+    color:#b5bac1;
+
+    margin-bottom:4px;
+
+    font-weight:600;
 }
 
 .bubble{
-    display:inline-block;
-    max-width:100%;
-    padding:8px 10px;
-    border-radius:4px;
 
-    background:white;
-    color:#222;
+    display:inline-block;
+
+    max-width:100%;
+
+    padding:9px 13px;
+
+    border-radius:8px;
+
+    background:#1e2128;
+
+    color:#dbdee1;
 
     line-height:1.5;
-    word-break:break-word;
-    overflow-wrap:anywhere;
-    text-align:left;
 
-    box-shadow:
-        0 0 0 1px rgba(0,0,0,.02);
+    word-break:break-word;
+
+    overflow-wrap:anywhere;
+
+    text-align:left;
 }
 
 .mine .bubble{
-    background:#95ec69;
-    color:#111;
+
+    background:#5865f2;
+
+    color:white;
 }
 
-.time{
-    font-size:9px;
-    margin-top:3px;
-    color:#aaa;
-}
 
-/* =========================================================
-   图片
-========================================================= */
+/* =====================================================
+   图片消息
+===================================================== */
 
 .bubble.image-bubble{
+
     padding:0 !important;
+
     background:transparent !important;
-    box-shadow:none;
+
+    border-radius:8px;
+
     overflow:hidden;
+
+    line-height:0;
 }
 
 .chat-image{
+
     display:block;
-    max-width:280px;
-    max-height:360px;
+
+    max-width:320px;
+
+    max-height:400px;
+
     width:auto;
+
     height:auto;
-    border-radius:5px;
+
+    border-radius:8px;
+
     object-fit:contain;
+
     cursor:pointer;
 }
 
-/* =========================================================
+.chat-image:hover{
+
+    opacity:.92;
+}
+
+
+/* =====================================================
    语音消息
-========================================================= */
+===================================================== */
 
 .audio-bubble{
-    padding:5px !important;
-    background:white;
+
+    padding:6px !important;
+
+    background:#1e2128;
 }
 
 .mine .audio-bubble{
-    background:#95ec69;
+
+    background:#5865f2;
 }
 
 .audio-player{
+
     display:block;
-    width:230px;
+
+    width:260px;
+
     max-width:100%;
-    height:38px;
+
+    height:42px;
 }
 
-/* =========================================================
-   空消息
-========================================================= */
+
+/* =====================================================
+   时间
+===================================================== */
+
+.time{
+
+    font-size:10px;
+
+    margin-top:4px;
+
+    color:#6d717a;
+}
 
 .empty{
-    width:100%;
-    height:100%;
-    min-height:300px;
+
+    min-height:100%;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
-    color:#aaa;
+    color:#6d717a;
+
     text-align:center;
+
     line-height:1.8;
-    font-size:13px;
 }
 
-/* =========================================================
-   底部输入区域 —— 固定
-========================================================= */
+
+/* =====================================================
+   ★ Discord 风格输入区
+===================================================== */
 
 .input-area{
-    position:relative;
+
+    width:100%;
 
     flex:0 0 auto;
-    width:100%;
 
-    display:flex;
-    align-items:center;
-
-    padding:
-        7px
-        9px
-        calc(7px + env(safe-area-inset-bottom));
-
-    background:#f5f5f5;
-    border-top:1px solid #dedede;
-
-    z-index:100;
-}
-
-/* =========================================================
-   输入框
-========================================================= */
-
-.composer{
     position:relative;
 
+    display:flex;
+
+    align-items:center;
+
+    padding:12px 18px;
+
+    background:#15171d;
+
+    border-top:1px solid #252832;
+
+    z-index:20;
+}
+
+
+/* 输入框整体 */
+
+.composer{
+
     width:100%;
-    min-height:42px;
+
+    min-height:48px;
 
     display:flex;
+
     align-items:center;
-    gap:5px;
 
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:5px;
+    gap:8px;
 
-    padding:3px 5px;
+    padding:6px 8px;
+
+    background:#1e2128;
+
+    border-radius:10px;
+
+    border:1px solid transparent;
+
+    transition:.15s ease;
 }
 
 .composer:focus-within{
-    border-color:#cfcfcf;
+
+    border-color:#343842;
+
+    background:#20232a;
 }
 
+
+/* =====================================================
+   左边 +
+===================================================== */
+
 .plus-button{
+
     width:34px;
+
     height:34px;
+
     flex:0 0 34px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border:none;
-    border-radius:4px;
 
-    background:transparent;
-    color:#555;
+    border-radius:50%;
+
+    background:#4f545c;
+
+    color:white;
 
     font-size:24px;
+
     line-height:1;
+
+    transition:.15s;
 }
 
-.plus-button:active{
-    background:#eee;
+.plus-button:hover{
+
+    background:#5865f2;
+
+    transform:rotate(90deg);
 }
+
+
+/* =====================================================
+   输入框
+===================================================== */
 
 #messageInput{
+
     flex:1 1 auto;
+
     min-width:0;
 
-    height:34px;
+    height:36px;
 
     border:none;
+
     outline:none;
 
-    padding:4px 3px;
+    padding:5px 6px;
 
-    color:#222;
+    color:white;
+
     background:transparent;
 
     font-size:15px;
 }
 
 #messageInput::placeholder{
-    color:#aaa;
+
+    color:#6d717a;
 }
 
-/* =========================================================
+
+/* =====================================================
    右侧功能
-========================================================= */
+===================================================== */
 
 .composer-actions{
+
     display:flex;
+
     align-items:center;
-    gap:0;
+
+    gap:2px;
+
     flex:0 0 auto;
 }
 
 .composer-button{
-    width:35px;
-    height:35px;
+
+    width:36px;
+
+    height:36px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border:none;
-    border-radius:4px;
+
+    border-radius:50%;
 
     background:transparent;
-    color:#555;
+
+    color:#b5bac1;
 
     font-size:21px;
+
+    transition:.15s;
 }
 
-.composer-button:active{
-    background:#eee;
+.composer-button:hover{
+
+    color:white;
+
+    background:#2b2e35;
 }
+
+
+/* =====================================================
+   纸飞机
+===================================================== */
 
 #sendButton{
+
     display:none;
 
-    width:35px;
-    height:35px;
-    flex:0 0 35px;
+    width:38px;
+
+    height:38px;
+
+    flex:0 0 38px;
 
     align-items:center;
+
     justify-content:center;
 
     border:none;
-    border-radius:4px;
 
-    background:#07c160;
+    border-radius:50%;
+
+    background:#5865f2;
+
     color:white;
 
-    font-size:17px;
+    font-size:18px;
+
+    transition:.15s;
 }
 
-#sendButton:active{
-    background:#06a653;
+#sendButton:hover{
+
+    background:#4752c4;
+
+    transform:scale(1.05);
 }
 
 #sendButton:disabled{
+
     opacity:.5;
+
+    cursor:not-allowed;
 }
 
+
+/* =====================================================
+   有文字的时候
+===================================================== */
+
 .composer.has-text .normal-actions{
+
     display:none;
 }
 
 .composer.has-text #sendButton{
+
     display:flex;
 }
 
-/* =========================================================
-   Emoji —— 小型微信风格面板
-========================================================= */
+
+/* =====================================================
+   Emoji 面板
+===================================================== */
 
 #emojiPicker{
+
     position:absolute;
 
-    left:0;
-    right:0;
-    bottom:calc(100% + 1px);
+    right:20px;
+
+    bottom:72px;
+
+    width:320px;
+
+    max-width:calc(100vw - 30px);
+
+    padding:12px;
 
     display:none;
 
-    padding:8px 9px 9px;
+    background:#181a20;
 
-    background:#f5f5f5;
-    border-top:1px solid #ddd;
-    box-shadow:0 -4px 12px rgba(0,0,0,.06);
+    border:1px solid #2b2e35;
 
-    z-index:90;
+    border-radius:10px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
+
+    z-index:100;
 }
 
 .emoji-header{
-    height:25px;
 
     display:flex;
-    align-items:center;
+
     justify-content:space-between;
 
-    padding:0 4px 4px;
+    align-items:center;
 
-    color:#888;
-    font-size:11px;
+    padding:4px 5px 10px;
+
+    color:#b5bac1;
+
+    font-size:12px;
 }
 
 .emoji-grid{
-    display:grid;
-    grid-template-columns:repeat(10, 1fr);
-    gap:2px;
 
-    max-height:150px;
+    display:grid;
+
+    grid-template-columns:repeat(8,1fr);
+
+    gap:3px;
+
+    max-height:250px;
+
     overflow-y:auto;
 }
 
 .emoji-item{
-    width:100%;
-    height:32px;
+
+    width:34px;
+    height:34px;
 
     border:none;
+
     background:transparent;
-    border-radius:4px;
 
-    font-size:19px;
-    line-height:1;
+    border-radius:6px;
+
+    font-size:22px;
 }
 
-.emoji-item:active{
-    background:#e2e2e2;
+.emoji-item:hover{
+
+    background:#2b2e35;
 }
 
-/* =========================================================
+
+/* =====================================================
    加号菜单
-========================================================= */
+===================================================== */
 
 #plusMenu{
+
     position:absolute;
 
-    left:5px;
-    bottom:calc(100% + 7px);
+    left:18px;
 
-    width:170px;
+    bottom:72px;
 
-    padding:5px;
+    width:190px;
+
+    padding:6px;
 
     display:none;
 
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:7px;
+    background:#181a20;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.12);
-
-    z-index:95;
-}
-
-.plus-menu-item{
-    width:100%;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    border:none;
-    background:transparent;
-
-    color:#333;
-
-    padding:10px;
-
-    border-radius:5px;
-
-    text-align:left;
-    font-size:13px;
-}
-
-.plus-menu-item:active{
-    background:#f0f0f0;
-}
-
-/* =========================================================
-   按住说话浮层
-========================================================= */
-
-#holdToTalkBar{
-    position:absolute;
-
-    left:50%;
-    bottom:calc(100% + 8px);
-
-    transform:translateX(-50%);
-
-    width:min(260px, calc(100% - 30px));
-
-    display:none;
-
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    padding:14px;
-
-    background:rgba(35,35,35,.96);
-    color:white;
+    border:1px solid #2b2e35;
 
     border-radius:10px;
 
-    z-index:150;
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
+
+    z-index:100;
 }
 
-.hold-icon{
-    font-size:30px;
-    margin-bottom:6px;
+.plus-menu-item{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    border:none;
+
+    background:transparent;
+
+    color:#dbdee1;
+
+    padding:10px;
+
+    border-radius:6px;
+
+    text-align:left;
+
+    font-size:14px;
 }
 
-.hold-text{
+.plus-menu-item:hover{
+
+    background:#2b2e35;
+}
+
+
+/* =====================================================
+   录音状态
+===================================================== */
+
+#recordingBar{
+
+    position:absolute;
+
+    left:18px;
+
+    right:18px;
+
+    bottom:72px;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 14px;
+
+    background:#181a20;
+
+    border:1px solid #ed4245;
+
+    border-radius:10px;
+
+    z-index:110;
+}
+
+.recording-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    color:#f38688;
+
     font-size:13px;
 }
 
-.hold-time{
-    margin-top:4px;
-    color:#aaa;
-    font-size:11px;
+.recording-dot{
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:#ed4245;
+
+    animation:pulse 1s infinite;
 }
 
-.hold-cancel{
-    margin-top:7px;
-    color:#ff6969;
-    font-size:11px;
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.3;
+    }
+
+    100%{
+        opacity:1;
+    }
 }
 
-/* =========================================================
-   按住说话按钮
-========================================================= */
+#stopRecordingButton{
 
-.voice-button{
-    touch-action:none;
-    user-select:none;
-    -webkit-user-select:none;
+    border:none;
+
+    background:#ed4245;
+
+    color:white;
+
+    padding:7px 12px;
+
+    border-radius:5px;
+
+    font-size:12px;
 }
 
-/* =========================================================
+
+/* =====================================================
+   隐藏文件输入
+===================================================== */
+
+#imageInput{
+
+    display:none;
+}
+
+
+/* =====================================================
    图片查看器
-========================================================= */
+===================================================== */
 
 #imageViewer{
+
     position:fixed;
+
     inset:0;
 
     display:none;
 
     justify-content:center;
+
     align-items:center;
 
-    padding:15px;
+    padding:20px;
 
     background:rgba(0,0,0,.9);
 
@@ -916,173 +1299,225 @@ button{
 }
 
 #viewerImage{
+
     max-width:95vw;
+
     max-height:90vh;
 
-    border-radius:6px;
+    border-radius:8px;
 
     object-fit:contain;
 }
 
 #closeViewer{
+
     position:absolute;
 
-    top:
-        calc(12px + env(safe-area-inset-top));
+    top:20px;
 
-    right:15px;
+    right:25px;
 
-    width:42px;
-    height:42px;
+    width:45px;
+
+    height:45px;
 
     border:none;
+
     border-radius:50%;
 
     background:rgba(255,255,255,.15);
 
     color:white;
+
     font-size:28px;
 }
 
-/* =========================================================
+
+/* =====================================================
    手机
-========================================================= */
+===================================================== */
 
 @media(max-width:600px){
 
     .home-card{
+
         padding:40px 25px;
     }
 
     .home-card h1{
+
         font-size:34px;
     }
 
     .auth-card{
+
         padding:25px 20px;
     }
 
     .page{
+
         padding:12px;
     }
 
     .chat-header{
-        flex-basis:54px;
-        height:54px;
-        min-height:54px;
-        padding:0 10px 0 12px;
+
+        height:58px;
+
+        min-height:58px;
+
+        flex-basis:58px;
+
+        padding:0 12px;
     }
 
     .chat-icon{
-        width:32px;
-        height:32px;
-        flex-basis:32px;
+
+        width:34px;
+        height:34px;
+
+        flex-basis:34px;
     }
 
     .chat-title h2{
+
         font-size:15px;
     }
 
     #messages{
-        padding:
-            12px
-            9px
-            14px;
+
+        padding:18px 12px;
     }
 
     .message{
-        gap:7px;
-        margin-bottom:12px;
+
+        gap:9px;
     }
 
     .message-avatar{
-        width:35px;
-        height:35px;
-        flex-basis:35px;
+
+        width:36px;
+        height:36px;
+
+        flex-basis:36px;
     }
 
     .message-body{
-        max-width:78%;
-    }
 
-    .nickname{
-        font-size:10px;
-    }
-
-    .bubble{
-        padding:7px 9px;
-        font-size:14px;
+        max-width:80%;
     }
 
     .chat-image{
-        max-width:240px;
-        max-height:330px;
+
+        max-width:250px;
+
+        max-height:350px;
+    }
+
+    .input-area{
+
+        padding:9px 10px;
+
+        padding-bottom:
+            max(
+                9px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .composer{
+
+        min-height:46px;
+
+        padding:5px 6px;
+    }
+
+    .plus-button{
+
+        width:34px;
+        height:34px;
+
+        flex-basis:34px;
+    }
+
+    #messageInput{
+
+        font-size:14px;
+    }
+
+    .composer-button{
+
+        width:34px;
+        height:34px;
+
+        font-size:20px;
+    }
+
+    #sendButton{
+
+        width:36px;
+        height:36px;
+
+        flex-basis:36px;
     }
 
     .current-user span{
+
         display:none;
     }
 
     .logout-button{
-        padding:6px 8px;
-    }
 
-    .input-area{
-        padding:
-            6px
-            7px
-            calc(6px + env(safe-area-inset-bottom));
-    }
-
-    .composer{
-        min-height:43px;
-    }
-
-    #messageInput{
-        font-size:15px;
-    }
-
-    .emoji-grid{
-        grid-template-columns:repeat(9,1fr);
-        max-height:145px;
-    }
-
-    .emoji-item{
-        height:31px;
-        font-size:18px;
+        padding:7px 9px;
     }
 
     #emojiPicker{
-        padding:7px 7px 8px;
+
+        right:10px;
+
+        bottom:65px;
+
+        width:300px;
     }
 
-    .audio-player{
-        width:210px;
+    #plusMenu{
+
+        left:10px;
+
+        bottom:65px;
+    }
+
+    #recordingBar{
+
+        left:10px;
+
+        right:10px;
+
+        bottom:65px;
     }
 }
 
-/* =========================================================
-   超小屏
-========================================================= */
+
+/* =====================================================
+   小屏幕
+===================================================== */
 
 @media(max-width:380px){
 
     .message-body{
-        max-width:80%;
+
+        max-width:78%;
     }
 
     .emoji-grid{
-        grid-template-columns:repeat(8,1fr);
-    }
 
-    .emoji-item{
-        font-size:17px;
+        grid-template-columns:repeat(7,1fr);
     }
 }
 
-/* =========================================================
-   防止拖动/选择
-========================================================= */
+
+/* =====================================================
+   防止选择
+===================================================== */
 
 .chat-header,
 .input-area,
@@ -1092,31 +1527,20 @@ button{
 .plus-button,
 .composer-button,
 #sendButton{
+
     user-select:none;
-    -webkit-user-select:none;
 }
 
-/* =========================================================
-   键盘打开时
-========================================================= */
-
-body.keyboard-open .chat-header{
-    flex-basis:52px;
-    height:52px;
-    min-height:52px;
-}
-
-body.keyboard-open .input-area{
-    padding-bottom:5px;
-}
 </style>
 </head>
 
+
 <body>
 
-<!-- ======================================================
+
+<!-- =====================================================
      首页
-====================================================== -->
+===================================================== -->
 
 <div id="homePage">
 
@@ -1149,9 +1573,9 @@ body.keyboard-open .input-area{
 </div>
 
 
-<!-- ======================================================
+<!-- =====================================================
      登录
-====================================================== -->
+===================================================== -->
 
 <div id="loginPage" class="page">
 
@@ -1232,9 +1656,9 @@ body.keyboard-open .input-area{
 </div>
 
 
-<!-- ======================================================
+<!-- =====================================================
      注册
-====================================================== -->
+===================================================== -->
 
 <div id="registerPage" class="page">
 
@@ -1342,9 +1766,9 @@ body.keyboard-open .input-area{
 </div>
 
 
-<!-- ======================================================
+<!-- =====================================================
      完善资料
-====================================================== -->
+===================================================== -->
 
 <div id="profilePage" class="page">
 
@@ -1388,7 +1812,11 @@ body.keyboard-open .input-area{
 
             <button
                 class="avatar-button"
-                onclick="document.getElementById('avatarInput').click()">
+                onclick="
+                    document
+                    .getElementById('avatarInput')
+                    .click()
+                ">
 
                 选择头像
 
@@ -1426,13 +1854,14 @@ body.keyboard-open .input-area{
 </div>
 
 
-<!-- ======================================================
+<!-- =====================================================
      聊天
-====================================================== -->
+===================================================== -->
 
 <div id="chatPage">
 
     <div class="chat-container">
+
 
         <!-- 顶部 -->
 
@@ -1457,6 +1886,7 @@ body.keyboard-open .input-area{
                 </div>
 
             </div>
+
 
             <div class="header-right">
 
@@ -1506,9 +1936,41 @@ body.keyboard-open .input-area{
         </main>
 
 
-        <!-- 输入区域 -->
+        <!-- =================================================
+             Discord 风格输入区
+        ================================================= -->
 
         <div class="input-area">
+
+
+            <!-- 加号菜单 -->
+
+            <div id="plusMenu">
+
+                <button
+                    class="plus-menu-item"
+                    onclick="chooseImage()">
+
+                    📷
+                    <span>
+                        发送图片
+                    </span>
+
+                </button>
+
+                <button
+                    class="plus-menu-item"
+                    onclick="startRecordingFromMenu()">
+
+                    🎤
+                    <span>
+                        发送语音
+                    </span>
+
+                </button>
+
+            </div>
+
 
             <!-- Emoji -->
 
@@ -1534,67 +1996,44 @@ body.keyboard-open .input-area{
             </div>
 
 
-            <!-- 加号菜单 -->
+            <!-- 录音状态 -->
 
-            <div id="plusMenu">
+            <div id="recordingBar">
 
-                <button
-                    class="plus-menu-item"
-                    onclick="chooseImage()">
+                <div class="recording-info">
 
-                    📷
-
-                    <span>
-                        发送图片
+                    <span class="recording-dot">
                     </span>
 
-                </button>
+                    <span>
+                        正在录音
+                    </span>
+
+                    <span id="recordingTime">
+                        00:00
+                    </span>
+
+                </div>
 
                 <button
-                    class="plus-menu-item"
-                    onclick="startRecordingFromMenu()">
+                    id="stopRecordingButton"
+                    onclick="stopRecording()">
 
-                    🎤
-
-                    <span>
-                        按住说话
-                    </span>
+                    发送语音
 
                 </button>
 
             </div>
 
 
-            <!-- 按住说话状态 -->
-
-            <div id="holdToTalkBar">
-
-                <div class="hold-icon">
-                    🎤
-                </div>
-
-                <div class="hold-text">
-                    松开手指发送
-                </div>
-
-                <div
-                    id="holdTime"
-                    class="hold-time">
-                    00:00
-                </div>
-
-                <div class="hold-cancel">
-                    向上移动取消
-                </div>
-
-            </div>
-
-
-            <!-- 输入框 -->
+            <!-- 真正的输入框 -->
 
             <div
                 id="composer"
                 class="composer">
+
+
+                <!-- 左边 + -->
 
                 <button
                     id="plusButton"
@@ -1607,6 +2046,8 @@ body.keyboard-open .input-area{
                 </button>
 
 
+                <!-- 输入框 -->
+
                 <input
                     id="messageInput"
                     type="text"
@@ -1614,6 +2055,8 @@ body.keyboard-open .input-area{
                     placeholder="输入消息..."
                     autocomplete="off">
 
+
+                <!-- 没输入文字时 -->
 
                 <div
                     id="normalActions"
@@ -1629,12 +2072,11 @@ body.keyboard-open .input-area{
 
                     </button>
 
-                    <!-- 微信式按住说话 -->
-
                     <button
                         id="voiceButton"
-                        class="composer-button voice-button"
-                        title="按住说话">
+                        class="composer-button"
+                        onclick="startRecording()"
+                        title="语音">
 
                         🎤
 
@@ -1642,6 +2084,8 @@ body.keyboard-open .input-area{
 
                 </div>
 
+
+                <!-- 输入文字后 -->
 
                 <button
                     id="sendButton"
@@ -1661,7 +2105,7 @@ body.keyboard-open .input-area{
 </div>
 
 
-<!-- 隐藏图片输入 -->
+<!-- 隐藏文件 -->
 
 <input
     id="imageInput"
@@ -1669,9 +2113,9 @@ body.keyboard-open .input-area{
     accept="image/jpeg,image/png,image/gif,image/webp">
 
 
-<!-- ======================================================
+<!-- =====================================================
      图片查看器
-====================================================== -->
+===================================================== -->
 
 <div
     id="imageViewer"
@@ -1696,9 +2140,10 @@ body.keyboard-open .input-area{
 
 <script>
 
-/* =========================================================
+
+/* =====================================================
    Supabase
-========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
     "https://fhkqnknpmdddiehpktnu.supabase.co";
@@ -1713,9 +2158,9 @@ const supabaseClient =
     );
 
 
-/* =========================================================
+/* =====================================================
    数据库
-========================================================= */
+===================================================== */
 
 const MESSAGE_TABLE =
     "messages";
@@ -1733,9 +2178,9 @@ const AUDIO_BUCKET =
     "chat-audio";
 
 
-/* =========================================================
+/* =====================================================
    状态
-========================================================= */
+===================================================== */
 
 let currentUser = null;
 
@@ -1759,17 +2204,13 @@ let recordingStartTime = null;
 
 let recordingTimer = null;
 
-let recordingCancelled = false;
-
-let recordingPointerId = null;
-
 const imageUrlCache =
     new Map();
 
 
-/* =========================================================
+/* =====================================================
    DOM
-========================================================= */
+===================================================== */
 
 const homePage =
     document.getElementById("homePage");
@@ -1807,16 +2248,13 @@ const emojiPicker =
 const plusMenu =
     document.getElementById("plusMenu");
 
-const holdToTalkBar =
-    document.getElementById("holdToTalkBar");
-
-const voiceButton =
-    document.getElementById("voiceButton");
+const recordingBar =
+    document.getElementById("recordingBar");
 
 
-/* =========================================================
+/* =====================================================
    页面
-========================================================= */
+===================================================== */
 
 function hideAllPages(){
 
@@ -1830,6 +2268,7 @@ function hideAllPages(){
 
     chatPage.style.display = "none";
 }
+
 
 function openLoginPage(){
 
@@ -1846,6 +2285,7 @@ function openLoginPage(){
     },100);
 }
 
+
 function openRegisterPage(){
 
     hideAllPages();
@@ -1861,12 +2301,14 @@ function openRegisterPage(){
     },100);
 }
 
+
 function openProfilePage(){
 
     hideAllPages();
 
     profilePage.style.display = "flex";
 }
+
 
 function backToHome(){
 
@@ -1876,9 +2318,9 @@ function backToHome(){
 }
 
 
-/* =========================================================
-   错误提示
-========================================================= */
+/* =====================================================
+   错误
+===================================================== */
 
 function showError(id,text){
 
@@ -1890,6 +2332,7 @@ function showError(id,text){
     box.style.display = "block";
 }
 
+
 function hideMessage(id){
 
     const box =
@@ -1899,6 +2342,7 @@ function hideMessage(id){
 
     box.textContent = "";
 }
+
 
 function showSuccess(id,text){
 
@@ -1911,9 +2355,9 @@ function showSuccess(id,text){
 }
 
 
-/* =========================================================
+/* =====================================================
    初始化
-========================================================= */
+===================================================== */
 
 async function initializeApp(){
 
@@ -1994,9 +2438,9 @@ async function initializeApp(){
 }
 
 
-/* =========================================================
+/* =====================================================
    登录
-========================================================= */
+===================================================== */
 
 async function loginUser(){
 
@@ -2093,9 +2537,9 @@ async function loginUser(){
 }
 
 
-/* =========================================================
+/* =====================================================
    验证码
-========================================================= */
+===================================================== */
 
 async function sendRegisterCode(){
 
@@ -2325,9 +2769,7 @@ async function verifyRegisterCode(){
         currentUser =
             data.user;
 
-        const {
-            error:passwordError
-        } =
+        const {error:passwordError} =
             await supabaseClient.auth
                 .updateUser({
 
@@ -2360,9 +2802,9 @@ async function verifyRegisterCode(){
 }
 
 
-/* =========================================================
+/* =====================================================
    头像预览
-========================================================= */
+===================================================== */
 
 function previewAvatar(event){
 
@@ -2424,9 +2866,9 @@ function previewAvatar(event){
 }
 
 
-/* =========================================================
+/* =====================================================
    完善资料
-========================================================= */
+===================================================== */
 
 async function finishProfile(){
 
@@ -2488,9 +2930,7 @@ async function finishProfile(){
                 "." +
                 extension;
 
-            const {
-                error:uploadError
-            } =
+            const {error:uploadError} =
                 await supabaseClient.storage
                     .from(AVATAR_BUCKET)
                     .upload(
@@ -2511,9 +2951,7 @@ async function finishProfile(){
         }
 
 
-        const {
-            error:profileError
-        } =
+        const {error:profileError} =
             await supabaseClient
                 .from(PROFILE_TABLE)
                 .upsert({
@@ -2563,9 +3001,9 @@ async function finishProfile(){
 }
 
 
-/* =========================================================
+/* =====================================================
    当前用户资料
-========================================================= */
+===================================================== */
 
 async function loadCurrentProfile(){
 
@@ -2603,9 +3041,9 @@ async function loadCurrentProfile(){
 }
 
 
-/* =========================================================
-   私有 URL
-========================================================= */
+/* =====================================================
+   私有图片 URL
+===================================================== */
 
 async function getPrivateImageUrl(
     bucket,
@@ -2651,7 +3089,7 @@ async function getPrivateImageUrl(
     if(error){
 
         console.error(
-            "生成地址失败：",
+            "生成图片地址失败：",
             error
         );
 
@@ -2662,8 +3100,7 @@ async function getPrivateImageUrl(
         cacheKey,
         {
             url:data.signedUrl,
-            expires:
-                Date.now() + 3500000
+            expires:Date.now() + 3500000
         }
     );
 
@@ -2671,9 +3108,9 @@ async function getPrivateImageUrl(
 }
 
 
-/* =========================================================
+/* =====================================================
    打开聊天
-========================================================= */
+===================================================== */
 
 async function openChat(){
 
@@ -2700,6 +3137,9 @@ async function openChat(){
 
     chatPage.style.display = "block";
 
+    messages.scrollTop =
+        messages.scrollHeight;
+
     await updateCurrentUserUI();
 
     await loadMessages();
@@ -2710,10 +3150,7 @@ async function openChat(){
 
     setTimeout(function(){
 
-        if(
-            window.innerWidth > 600 &&
-            !isMobileDevice()
-        ){
+        if(window.innerWidth > 600){
 
             messageInput.focus();
         }
@@ -2722,9 +3159,9 @@ async function openChat(){
 }
 
 
-/* =========================================================
+/* =====================================================
    当前用户 UI
-========================================================= */
+===================================================== */
 
 async function updateCurrentUserUI(){
 
@@ -2765,9 +3202,9 @@ async function updateCurrentUserUI(){
 }
 
 
-/* =========================================================
-   加载历史消息
-========================================================= */
+/* =====================================================
+   加载消息
+===================================================== */
 
 async function loadMessages(){
 
@@ -2838,13 +3275,11 @@ async function loadMessages(){
         );
     }
 
-
     const profileById =
         new Map();
 
     const profileByNickname =
         new Map();
-
 
     if(profiles){
 
@@ -2894,12 +3329,17 @@ async function loadMessages(){
         forceScrollToBottom,
         100
     );
+
+    setTimeout(
+        forceScrollToBottom,
+        500
+    );
 }
 
 
-/* =========================================================
+/* =====================================================
    空消息
-========================================================= */
+===================================================== */
 
 function showEmpty(){
 
@@ -2922,6 +3362,7 @@ function showEmpty(){
     );
 }
 
+
 function hideEmpty(){
 
     const empty =
@@ -2934,9 +3375,9 @@ function hideEmpty(){
 }
 
 
-/* =========================================================
+/* =====================================================
    默认头像
-========================================================= */
+===================================================== */
 
 function createDefaultAvatar(name){
 
@@ -2945,7 +3386,8 @@ function createDefaultAvatar(name){
             .charAt(0)
             .toUpperCase();
 
-    const svg = `
+    const svg =
+        `
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="80"
@@ -2955,7 +3397,7 @@ function createDefaultAvatar(name){
                 width="80"
                 height="80"
                 rx="40"
-                fill="#07c160"/>
+                fill="#5865f2"/>
 
             <text
                 x="50%"
@@ -2971,7 +3413,7 @@ function createDefaultAvatar(name){
             </text>
 
         </svg>
-    `;
+        `;
 
     return(
         "data:image/svg+xml;charset=UTF-8," +
@@ -2980,9 +3422,9 @@ function createDefaultAvatar(name){
 }
 
 
-/* =========================================================
+/* =====================================================
    显示消息
-========================================================= */
+===================================================== */
 
 async function renderMessage(
     message,
@@ -3019,7 +3461,6 @@ async function renderMessage(
 
     let profile = null;
 
-
     if(
         message.user_id &&
         profileById
@@ -3031,7 +3472,6 @@ async function renderMessage(
             ) || null;
     }
 
-
     if(
         !profile &&
         profileByNickname
@@ -3042,7 +3482,6 @@ async function renderMessage(
                 message.nickname
             ) || null;
     }
-
 
     if(
         isMine &&
@@ -3168,7 +3607,11 @@ async function renderMessage(
 
             img.addEventListener(
                 "load",
-                forceScrollToBottom
+                function(){
+
+                    forceScrollToBottom();
+
+                }
             );
 
         }else{
@@ -3207,9 +3650,6 @@ async function renderMessage(
             audio.src =
                 audioUrl;
 
-            audio.preload =
-                "metadata";
-
             bubble.appendChild(
                 audio
             );
@@ -3244,23 +3684,35 @@ async function renderMessage(
         );
 
 
-    body.appendChild(name);
+    body.appendChild(
+        name
+    );
 
-    body.appendChild(bubble);
+    body.appendChild(
+        bubble
+    );
 
-    body.appendChild(time);
+    body.appendChild(
+        time
+    );
 
-    row.appendChild(avatar);
+    row.appendChild(
+        avatar
+    );
 
-    row.appendChild(body);
+    row.appendChild(
+        body
+    );
 
-    messages.appendChild(row);
+    messages.appendChild(
+        row
+    );
 }
 
 
-/* =========================================================
+/* =====================================================
    时间
-========================================================= */
+===================================================== */
 
 function formatTime(value){
 
@@ -3285,9 +3737,9 @@ function formatTime(value){
 }
 
 
-/* =========================================================
-   滚到底部
-========================================================= */
+/* =====================================================
+   强制滚到底部
+===================================================== */
 
 function forceScrollToBottom(){
 
@@ -3302,24 +3754,9 @@ function forceScrollToBottom(){
 }
 
 
-/* =========================================================
-   判断手机
-========================================================= */
-
-function isMobileDevice(){
-
-    return(
-        /Android|iPhone|iPad|iPod/i
-            .test(navigator.userAgent)
-        ||
-        window.innerWidth <= 600
-    );
-}
-
-
-/* =========================================================
-   限速
-========================================================= */
+/* =====================================================
+   发送限制
+===================================================== */
 
 function checkRateLimit(){
 
@@ -3350,9 +3787,9 @@ function checkRateLimit(){
 }
 
 
-/* =========================================================
+/* =====================================================
    发送文字
-========================================================= */
+===================================================== */
 
 async function sendMessage(){
 
@@ -3384,7 +3821,7 @@ async function sendMessage(){
     if(!checkRateLimit()){
 
         alert(
-            "发送太频繁了，请稍后再试。"
+            "发送太频繁了，请一分钟后再继续发送。"
         );
 
         return;
@@ -3395,10 +3832,7 @@ async function sendMessage(){
 
     try{
 
-        const {
-            data,
-            error
-        } =
+        const {data,error} =
             await supabaseClient
                 .from(MESSAGE_TABLE)
                 .insert({
@@ -3427,17 +3861,9 @@ async function sendMessage(){
         if(error)
             throw error;
 
-
         messageInput.value = "";
 
         updateComposerState();
-
-
-        /*
-         * 自己的消息直接显示。
-         * Realtime 收到自己消息时会跳过，
-         * 所以不会出现两遍。
-         */
 
         if(data){
 
@@ -3478,10 +3904,7 @@ async function sendMessage(){
 
         sendButton.disabled = false;
 
-        if(
-            window.innerWidth > 600 &&
-            !isMobileDevice()
-        ){
+        if(window.innerWidth > 600){
 
             messageInput.focus();
         }
@@ -3489,9 +3912,9 @@ async function sendMessage(){
 }
 
 
-/* =========================================================
+/* =====================================================
    输入框状态
-========================================================= */
+===================================================== */
 
 function updateComposerState(){
 
@@ -3523,9 +3946,9 @@ messageInput.addEventListener(
 );
 
 
-/* =========================================================
-   加号
-========================================================= */
+/* =====================================================
+   加号菜单
+===================================================== */
 
 function togglePlusMenu(){
 
@@ -3562,20 +3985,13 @@ function startRecordingFromMenu(){
     plusMenu.style.display =
         "none";
 
-    /*
-     * 菜单里的语音按钮不直接开始录音，
-     * 提示用户使用底部麦克风按住说话。
-     */
-
-    alert(
-        "请按住聊天输入框右侧的 🎤 说话，松开后自动发送。"
-    );
+    startRecording();
 }
 
 
-/* =========================================================
+/* =====================================================
    Emoji
-========================================================= */
+===================================================== */
 
 const emojis = [
 
@@ -3587,13 +4003,14 @@ const emojis = [
     "😖","😫","😩","🥺","😢","😭","😤","😠",
     "😡","🤬","🤯","😳","🥵","🥶","😱","😨",
     "😰","😥","😓","🤗","🤔","🫡","🤭","🤫",
-    "😶","😐","😑","😬","🙄","😯","😮","😲",
-    "🥱","😴","😪","😵","🤐","🥴","🤢","🤮",
-    "🤧","😷","🤒","🤕","❤️","🧡","💛","💚",
-    "💙","💜","🖤","🤍","💯","🔥","✨","⭐",
-    "🌟","💫","🎉","🎊","👍","👎","👏","🙏",
-    "💪","🤝","👀","💀","🤣","😂","😎","🤡",
-    "💩","🚀","🎮"
+    "🤥","😶","😐","😑","😬","🙄","😯","😦",
+    "😧","😮","😲","🥱","😴","🤤","😪","😵",
+    "🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕",
+    "❤️","🧡","💛","💚","💙","💜","🖤","🤍",
+    "💯","🔥","✨","⭐","🌟","💫","🎉","🎊",
+    "👍","👎","👏","🙏","💪","🤝","👀","💀",
+    "😭","🤣","😂","😎","🤡","💩","🚀","🎮"
+
 ];
 
 
@@ -3655,12 +4072,6 @@ function toggleEmojiPicker(){
 
         emojiPicker.style.display =
             "block";
-
-        /*
-         * 确保面板打开后输入框仍然稳定。
-         */
-
-        forceScrollToBottom();
     }
 }
 
@@ -3701,9 +4112,9 @@ function insertEmoji(emoji){
 }
 
 
-/* =========================================================
-   点击外部关闭
-========================================================= */
+/* =====================================================
+   点击外部关闭菜单
+===================================================== */
 
 document.addEventListener(
     "click",
@@ -3739,9 +4150,9 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   图片
-========================================================= */
+/* =====================================================
+   图片选择
+===================================================== */
 
 imageInput.addEventListener(
     "change",
@@ -3759,6 +4170,10 @@ imageInput.addEventListener(
     }
 );
 
+
+/* =====================================================
+   上传图片
+===================================================== */
 
 async function uploadImage(file){
 
@@ -3836,9 +4251,7 @@ async function uploadImage(file){
             extension;
 
 
-        const {
-            error:uploadError
-        } =
+        const {error:uploadError} =
             await supabaseClient.storage
                 .from(CHAT_IMAGE_BUCKET)
                 .upload(
@@ -3855,10 +4268,7 @@ async function uploadImage(file){
             throw uploadError;
 
 
-        const {
-            data,
-            error
-        } =
+        const {data,error} =
             await supabaseClient
                 .from(MESSAGE_TABLE)
                 .insert({
@@ -3885,7 +4295,6 @@ async function uploadImage(file){
 
         if(error)
             throw error;
-
 
         if(data){
 
@@ -3925,44 +4334,9 @@ async function uploadImage(file){
 }
 
 
-/* =========================================================
-   ★ 微信式按住说话
-========================================================= */
-
-function getSupportedAudioMimeType(){
-
-    const types = [
-
-        "audio/webm;codecs=opus",
-
-        "audio/webm",
-
-        "audio/ogg;codecs=opus",
-
-        "audio/ogg"
-
-    ];
-
-    for(
-        const type of types
-    ){
-
-        if(
-            window.MediaRecorder &&
-            MediaRecorder.isTypeSupported(type)
-        ){
-
-            return type;
-        }
-    }
-
-    return "";
-}
-
-
-/* =========================================================
-   开始录音
-========================================================= */
+/* =====================================================
+   语音录制
+===================================================== */
 
 async function startRecording(){
 
@@ -3983,7 +4357,7 @@ async function startRecording(){
     ){
 
         alert(
-            "你的浏览器不支持麦克风。"
+            "你的浏览器不支持语音录制。"
         );
 
         return;
@@ -3996,47 +4370,55 @@ async function startRecording(){
             await navigator
                 .mediaDevices
                 .getUserMedia({
-
                     audio:true
-
                 });
 
 
-        const mimeType =
-            getSupportedAudioMimeType();
+        let mimeType =
+            "";
 
+        if(
+            MediaRecorder.isTypeSupported(
+                "audio/webm;codecs=opus"
+            )
+        ){
 
-        if(mimeType){
+            mimeType =
+                "audio/webm;codecs=opus";
 
-            mediaRecorder =
-                new MediaRecorder(
-                    stream,
-                    {
-                        mimeType
-                    }
-                );
+        }else if(
+            MediaRecorder.isTypeSupported(
+                "audio/webm"
+            )
+        ){
 
-        }else{
-
-            mediaRecorder =
-                new MediaRecorder(
-                    stream
-                );
+            mimeType =
+                "audio/webm";
         }
 
 
-        audioChunks = [];
+        mediaRecorder =
+            mimeType
+            ?
+            new MediaRecorder(
+                stream,
+                {
+                    mimeType
+                }
+            )
+            :
+            new MediaRecorder(
+                stream
+            );
 
-        recordingCancelled = false;
+
+        audioChunks = [];
 
 
         mediaRecorder.ondataavailable =
             function(event){
 
-                if(
-                    event.data &&
-                    event.data.size > 0
-                ){
+                if(event.data.size > 0){
 
                     audioChunks.push(
                         event.data
@@ -4059,42 +4441,32 @@ async function startRecording(){
                     );
 
 
-                const actualType =
-                    mediaRecorder.mimeType ||
-                    mimeType ||
-                    "audio/webm";
-
-
                 const blob =
                     new Blob(
                         audioChunks,
                         {
-                            type:actualType
+                            type:
+                                mediaRecorder.mimeType ||
+                                "audio/webm"
                         }
                     );
 
 
-                const shouldSend =
-                    !recordingCancelled;
+                await uploadAudio(
+                    blob
+                );
 
 
                 mediaRecorder = null;
 
                 audioChunks = [];
 
-                stopRecordingUI();
+                recordingBar.style.display =
+                    "none";
 
-
-                if(
-                    shouldSend &&
-                    blob.size > 0
-                ){
-
-                    await uploadAudio(
-                        blob,
-                        actualType
-                    );
-                }
+                clearInterval(
+                    recordingTimer
+                );
 
             };
 
@@ -4104,14 +4476,17 @@ async function startRecording(){
         recordingStartTime =
             Date.now();
 
-        showRecordingUI();
+        recordingBar.style.display =
+            "flex";
+
 
         updateRecordingTime();
+
 
         recordingTimer =
             setInterval(
                 updateRecordingTime,
-                500
+                1000
             );
 
 
@@ -4119,44 +4494,11 @@ async function startRecording(){
 
         console.error(error);
 
-        mediaRecorder = null;
-
         alert(
             "无法使用麦克风：\n" +
             error.message
         );
     }
-}
-
-
-/* =========================================================
-   录音 UI
-========================================================= */
-
-function showRecordingUI(){
-
-    holdToTalkBar.style.display =
-        "flex";
-
-    document.getElementById(
-        "holdTime"
-    ).textContent =
-        "00:00";
-}
-
-
-function stopRecordingUI(){
-
-    holdToTalkBar.style.display =
-        "none";
-
-    clearInterval(
-        recordingTimer
-    );
-
-    recordingTimer = null;
-
-    recordingStartTime = null;
 }
 
 
@@ -4182,7 +4524,7 @@ function updateRecordingTime(){
         seconds % 60;
 
     document.getElementById(
-        "holdTime"
+        "recordingTime"
     ).textContent =
 
         String(minutes)
@@ -4195,13 +4537,11 @@ function updateRecordingTime(){
 }
 
 
-/* =========================================================
-   停止录音
-========================================================= */
-
 function stopRecording(){
 
-    if(!mediaRecorder)
+    if(
+        !mediaRecorder
+    )
         return;
 
     if(
@@ -4214,119 +4554,11 @@ function stopRecording(){
 }
 
 
-/* =========================================================
-   取消录音
-========================================================= */
-
-function cancelRecording(){
-
-    if(!mediaRecorder)
-        return;
-
-    recordingCancelled = true;
-
-    if(
-        mediaRecorder.state !==
-        "inactive"
-    ){
-
-        mediaRecorder.stop();
-    }
-}
-
-
-/* =========================================================
-   按住说话 —— Pointer Events
-========================================================= */
-
-voiceButton.addEventListener(
-    "pointerdown",
-    async function(event){
-
-        event.preventDefault();
-
-        recordingPointerId =
-            event.pointerId;
-
-        try{
-
-            voiceButton.setPointerCapture(
-                event.pointerId
-            );
-
-        }catch(e){}
-
-        await startRecording();
-
-    }
-);
-
-
-voiceButton.addEventListener(
-    "pointerup",
-    function(event){
-
-        event.preventDefault();
-
-        if(
-            recordingPointerId !==
-            event.pointerId
-        ){
-
-            return;
-        }
-
-        recordingPointerId = null;
-
-        if(mediaRecorder){
-
-            stopRecording();
-        }
-
-    }
-);
-
-
-voiceButton.addEventListener(
-    "pointercancel",
-    function(event){
-
-        event.preventDefault();
-
-        recordingPointerId = null;
-
-        if(mediaRecorder){
-
-            cancelRecording();
-        }
-
-    }
-);
-
-
-/*
- * 鼠标离开按钮时不马上取消。
- * 手机用户可以正常按住。
- */
-
-voiceButton.addEventListener(
-    "contextmenu",
-    function(event){
-
-        event.preventDefault();
-
-    }
-);
-
-
-/* =========================================================
+/* =====================================================
    上传语音
-========================================================= */
+===================================================== */
 
-async function uploadAudio(
-    blob,
-    actualMimeType
-){
+async function uploadAudio(blob){
 
     if(
         !currentUser ||
@@ -4346,6 +4578,8 @@ async function uploadAudio(
     }
 
 
+    /* 最大 10MB */
+
     if(
         blob.size >
         10 * 1024 * 1024
@@ -4361,44 +4595,14 @@ async function uploadAudio(
 
     try{
 
-        /*
-         * 根据真实录音格式决定扩展名。
-         */
-
-        let extension =
-            "webm";
-
-        let contentType =
-            actualMimeType ||
-            "audio/webm";
-
-
-        if(
-            contentType.includes(
-                "ogg"
-            )
-        ){
-
-            extension =
-                "ogg";
-        }
-
-
-        /*
-         * 这里绝不会主动写 audio/mp4。
-         */
-
         const fileName =
             currentUser.id +
             "_" +
             Date.now() +
-            "." +
-            extension;
+            ".webm";
 
 
-        const {
-            error:uploadError
-        } =
+        const {error:uploadError} =
             await supabaseClient.storage
                 .from(AUDIO_BUCKET)
                 .upload(
@@ -4407,7 +4611,8 @@ async function uploadAudio(
                     {
                         cacheControl:"3600",
                         upsert:false,
-                        contentType
+                        contentType:
+                            "audio/webm"
                     }
                 );
 
@@ -4416,10 +4621,7 @@ async function uploadAudio(
             throw uploadError;
 
 
-        const {
-            data,
-            error
-        } =
+        const {data,error} =
             await supabaseClient
                 .from(MESSAGE_TABLE)
                 .insert({
@@ -4432,7 +4634,8 @@ async function uploadAudio(
 
                     message:"",
 
-                    image_url:null,
+                    image_url:
+                        null,
 
                     audio_url:
                         fileName
@@ -4487,9 +4690,9 @@ async function uploadAudio(
 }
 
 
-/* =========================================================
+/* =====================================================
    Realtime
-========================================================= */
+===================================================== */
 
 function subscribeToMessages(){
 
@@ -4520,12 +4723,6 @@ function subscribeToMessages(){
                 },
 
                 async function(payload){
-
-                    /*
-                     * 自己刚刚发送的消息已经在
-                     * sendMessage/uploadAudio/uploadImage
-                     * 中显示，因此这里跳过。
-                     */
 
                     if(
                         currentUser &&
@@ -4627,9 +4824,9 @@ function subscribeToMessages(){
 }
 
 
-/* =========================================================
+/* =====================================================
    退出
-========================================================= */
+===================================================== */
 
 async function logoutUser(){
 
@@ -4647,9 +4844,9 @@ async function logoutUser(){
 }
 
 
-/* =========================================================
+/* =====================================================
    图片查看器
-========================================================= */
+===================================================== */
 
 function openImageViewer(url){
 
@@ -4693,9 +4890,9 @@ function closeImageViewer(event){
 }
 
 
-/* =========================================================
+/* =====================================================
    回车发送
-========================================================= */
+===================================================== */
 
 messageInput.addEventListener(
     "keydown",
@@ -4715,9 +4912,9 @@ messageInput.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    验证码只能数字
-========================================================= */
+===================================================== */
 
 document
     .getElementById("registerCode")
@@ -4734,60 +4931,16 @@ document
     );
 
 
-/* =========================================================
-   手机键盘状态
-========================================================= */
-
-if(window.visualViewport){
-
-    let lastHeight =
-        window.visualViewport.height;
-
-    window.visualViewport.addEventListener(
-        "resize",
-        function(){
-
-            const height =
-                window.visualViewport.height;
-
-            if(
-                height <
-                lastHeight - 100
-            ){
-
-                document.body.classList.add(
-                    "keyboard-open"
-                );
-
-            }
-
-            if(
-                height >
-                lastHeight - 50
-            ){
-
-                document.body.classList.remove(
-                    "keyboard-open"
-                );
-            }
-
-            lastHeight = height;
-
-        }
-    );
-}
-
-
-/* =========================================================
+/* =====================================================
    初始化 Emoji
-========================================================= */
+===================================================== */
 
 initializeEmojiPicker();
 
 
-/* =========================================================
+/* =====================================================
    启动
-========================================================= */
+===================================================== */
 
 initializeApp();
 
